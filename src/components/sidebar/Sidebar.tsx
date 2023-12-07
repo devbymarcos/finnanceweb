@@ -1,7 +1,10 @@
 import Image from "next/image";
 
 import MenuSideBar from "../menu/MenuSidebar";
-import BtnsDarkMode from "../btn-dark-mode/BtnsDarkMode";
+import {
+  BtnDarkMode,
+  BtnlightMode,
+} from "@/components/btn-dark-mode/BtnsDarkMode";
 
 const Sidebar = () => {
   const darkmode = false;
@@ -16,17 +19,20 @@ const Sidebar = () => {
             alt="logo wcapp"
             className="mx-auto"
           />
+          <MenuSideBar />
         </div>
-        <MenuSideBar />
-        <div className="p-2 w-full ">
+        {/* <div className="p-2 w-full ">
           <div className="p-4 items-center  text-lg font-bold my-12 w-full h-44 bg-base-yellow text-font-color-dark shadow-inner  shadow-neutral-500 rounded-3xl">
             <p>Escolha a carteira para controlar</p>
             <select className="text-font-color-light mt-6 w-full rounded-md py-2 px-2 text-base border-0 outline-none cursor-pointer">
               <option>minha carteira</option>
             </select>
           </div>
+        </div> */}
+        <div className="flex justify-evenly mb-12">
+          <BtnDarkMode />
+          <BtnlightMode />
         </div>
-        <BtnsDarkMode />
       </aside>
     </>
   );

@@ -3,6 +3,7 @@ import DashIcon from "../icons/DashIcon";
 import CategoryIcon from "../icons/CategoryIcon";
 import WalletIcon from "../icons/WalletIcons";
 import TransactionIcon from "../icons/TransactionIcon";
+import LogoutIcon from "../icons/LogoutIcon";
 
 const MenuSideBar = () => {
   const darkmode = false;
@@ -28,10 +29,15 @@ const MenuSideBar = () => {
       icon: <TransactionIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
       path: "/transacoes",
     },
+    {
+      title: "Logout",
+      icon: <LogoutIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
+      path: "/logout",
+    },
   ];
   return (
     <>
-      <nav className="mt-12 pb-12 ">
+      <nav className="mt-12 pb-12  ">
         <ul>
           {menuData.map((item) => {
             return (
@@ -39,7 +45,7 @@ const MenuSideBar = () => {
                 <li className="px-2 py-3">
                   <Link
                     href={item.path}
-                    className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold"
+                    className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white p-3 rounded-xl"
                   >
                     {item.icon}
                     {item.title}
@@ -50,6 +56,7 @@ const MenuSideBar = () => {
           })}
         </ul>
       </nav>
+      <span className="border-b border-base-gray-200 w-1/2 h-1 block mx-auto"></span>
     </>
   );
 };
