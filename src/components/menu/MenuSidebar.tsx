@@ -4,6 +4,13 @@ import CategoryIcon from "../icons/CategoryIcon";
 import WalletIcon from "../icons/WalletIcons";
 import TransactionIcon from "../icons/TransactionIcon";
 import LogoutIcon from "../icons/LogoutIcon";
+import React from "react";
+
+interface MenuData {
+  title: string;
+  icon: React.ReactElement;
+  path: string;
+}
 
 const MenuSideBar = () => {
   const darkmode = false;
@@ -39,10 +46,10 @@ const MenuSideBar = () => {
     <>
       <nav className="mt-12 pb-12  ">
         <ul>
-          {menuData.map((item) => {
+          {menuData.map((item: MenuData) => {
             return (
               <>
-                <li className="px-2 py-3">
+                <li key={item.title} className="px-2 py-3">
                   <Link
                     href={item.path}
                     className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white p-3 rounded-xl"
