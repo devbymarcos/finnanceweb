@@ -15,7 +15,7 @@ interface MenuData {
 const MenuSideBar = () => {
   const darkmode = false;
 
-  const menuData = [
+  const menuData: MenuData[] = [
     {
       title: "Dashboard",
       icon: <DashIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,

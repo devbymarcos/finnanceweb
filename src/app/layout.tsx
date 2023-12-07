@@ -1,6 +1,7 @@
 import { roboto } from "@/fonts";
 import "./globals.css";
 import Sidebar from "@/components/sidebar/Sidebar";
+import { AppContext, useAppContext } from "@/hooks/useContexApp";
 
 export default function RootLayout({
   children,
@@ -10,8 +11,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <Sidebar />
-        {children}
+        <AppContext>
+          <Sidebar />
+          {children}
+        </AppContext>
       </body>
     </html>
   );
