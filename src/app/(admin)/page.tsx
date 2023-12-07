@@ -1,7 +1,7 @@
 function Index() {
   return (
     <>
-      <h1>Aqui vai ser a dash initial</h1>
+      <h1>ESTAMO NA DASHBOARD</h1>
     </>
   );
 }
