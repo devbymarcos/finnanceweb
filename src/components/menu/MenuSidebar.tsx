@@ -49,10 +49,10 @@ const MenuSideBar = () => {
         <ul>
           {menuData.map((item: MenuData) => {
             return (
-              <li key={item.title} className="px-2 py-1">
+              <li key={item.title} className="px-2 py-2">
                 <Link
                   href={item.path}
-                  className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white dark:hover:bg-base-black-200 p-2 rounded-xl"
+                  className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white dark:hover:bg-base-black-200 py-3 rounded-xl"
                 >
                   {item.icon}
                   {item.title}
