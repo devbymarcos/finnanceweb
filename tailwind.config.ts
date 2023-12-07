@@ -14,6 +14,7 @@ const config: Config = {
         "base-gray-200": "#bdc3c7",
         "base-yellow": "#f3b43f",
         "base-black": "#1c1d21",
+        "base-black-200": "#000",
         "base-white": "#fff",
         "font-color-light": "#1c1d21",
         "font-color-dark": "#f8f8f8",

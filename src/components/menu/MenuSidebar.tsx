@@ -5,6 +5,7 @@ import WalletIcon from "../icons/WalletIcons";
 import TransactionIcon from "../icons/TransactionIcon";
 import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
+import { useContextApp } from "@/hooks/useContextApp";
 
 interface MenuData {
   title: string;
@@ -13,32 +14,32 @@ interface MenuData {
 }
 
 const MenuSideBar = () => {
-  const darkmode = false;
+  const { dark } = useContextApp();
 
   const menuData: MenuData[] = [
     {
       title: "Dashboard",
-      icon: <DashIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <DashIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
       path: "/",
     },
     {
-      title: "categorias",
-      icon: <CategoryIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
+      title: "Categorias",
+      icon: <CategoryIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
       path: "/",
     },
     {
       title: "Carterias",
-      icon: <WalletIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <WalletIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
       path: "/carteiras",
     },
     {
-      title: "Transaçcões",
-      icon: <TransactionIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
+      title: "Transações",
+      icon: <TransactionIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
       path: "/transacoes",
     },
     {
       title: "Logout",
-      icon: <LogoutIcon colors={darkmode ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <LogoutIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
       path: "/logout",
     },
   ];
@@ -48,17 +49,15 @@ const MenuSideBar = () => {
         <ul>
           {menuData.map((item: MenuData) => {
             return (
-              <>
-                <li key={item.title} className="px-2 py-3">
-                  <Link
-                    href={item.path}
-                    className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white p-3 rounded-xl"
-                  >
-                    {item.icon}
-                    {item.title}
-                  </Link>
-                </li>
-              </>
+              <li key={item.title} className="px-2 py-1">
+                <Link
+                  href={item.path}
+                  className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white dark:hover:bg-base-black-200 p-2 rounded-xl"
+                >
+                  {item.icon}
+                  {item.title}
+                </Link>
+              </li>
             );
           })}
         </ul>

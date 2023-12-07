@@ -4,7 +4,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 const AppCreateContext = createContext<{
   dark: boolean;
   setDark: React.Dispatch<React.SetStateAction<boolean>>;
-} | null>(null);
+}>({ dark: false, setDark: () => {} });
 
 interface AppContextProviderProps {
   children: ReactNode;
@@ -20,6 +20,6 @@ export const AppContext = ({ children }: AppContextProviderProps) => {
   );
 };
 
-export const useAppContext = () => {
+export const useContextApp = () => {
   return useContext(AppCreateContext);
 };

@@ -1,16 +1,13 @@
 import Image from "next/image";
 
 import MenuSideBar from "../menu/MenuSidebar";
-import {
-  BtnDarkMode,
-  BtnlightMode,
-} from "@/components/btn-dark-mode/BtnsDarkMode";
+import BtnDark from "@/components/btn-dark-mode/BtnDark";
+import BtnLight from "../btn-dark-mode/BtnLight";
 
 const Sidebar = () => {
-  const darkmode = false;
   return (
     <>
-      <aside className="w-64 bg-base-gray h-screen fixed flex flex-col justify-between dark:bg-base-black overflow-y-auto">
+      <aside className="w-64 bg-base-gray h-screen fixed flex flex-col justify-between dark:bg-base-black overflow-y-auto  ">
         <div className="w-full mt-6">
           <Image
             src="/images/logo/logo-light.png"
@@ -30,8 +27,8 @@ const Sidebar = () => {
           </div>
         </div> */}
         <div className="flex justify-evenly mb-12">
-          <BtnDarkMode />
-          <BtnlightMode />
+          <BtnDark />
+          <BtnLight />
         </div>
       </aside>
     </>
