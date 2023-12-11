@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import Chart from "react-apexcharts";
-
+import { useState } from "react";
 const ChartPieDash = ({ value }) => {
   let options = {
     chart: {
@@ -15,7 +15,7 @@ const ChartPieDash = ({ value }) => {
         endAngle: 225,
         hollow: {
           margin: 0,
-          size: "70%",
+          size: "75%",
           background: "#fff",
           image: undefined,
           imageOffsetX: 0,
@@ -23,7 +23,7 @@ const ChartPieDash = ({ value }) => {
           //@ts-ignore
           position: "front",
           dropShadow: {
-            enabled: false,
+            enabled: true,
             top: 3,
             left: 0,
             blur: 4,
@@ -52,12 +52,13 @@ const ChartPieDash = ({ value }) => {
           },
           value: {
             formatter: function (val: any) {
-              return parseInt(val);
+              return parseInt(val) + "%";
             },
             color: "#111",
-            fontSize: "35px",
+            fontSize: "20px",
             show: true,
-            offsetY: -6,
+            offsetY: -9,
+            fontWeight: "bold",
           },
         },
       },
@@ -72,10 +73,9 @@ const ChartPieDash = ({ value }) => {
     labels: [""],
   };
 
-  const series = [value];
   return (
     <>
-      <Chart options={options} height={200} series={series} type="radialBar" />
+      <Chart options={options} height={180} series={value} type="radialBar" />
     </>
   );
 };

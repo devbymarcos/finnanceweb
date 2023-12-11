@@ -1,35 +1,74 @@
 import DashIcon from "@/components/icons/DashIcon";
-import CardDashStyle from "./dash/CardDashStyle";
+import CardStyle from "../../components/cards/CardStyle";
 import HeaderDash from "./dash/HeaderDash";
-import ChartPieDash from "./dash/ChartPieDash";
+import dynamic from "next/dynamic";
 
+const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
+  ssr: false,
+});
+
+const ChartAreaDash = dynamic(
+  () => import("@/app/(admin)/dash/ChartAreaDash"),
+  {
+    ssr: false,
+  }
+);
 function Index() {
   return (
     <>
       <HeaderDash />
-      <section className=" grid grid-cols-3 gap-5">
+      <section className=" grid grid-cols-3 gap-5 mb-5">
         <div className="grid grid-cols-1 gap-5">
-          <CardDashStyle>
-            <h3 className="text-xl text-base-black dark:text-base-white font-bold">
+          <CardStyle>
+            <h3 className="text-xl text-base-yellow uppercase font-bold">
               Total Income
             </h3>
-            <p className="text-2xl font-bold">R$ 90.000,00</p>
-          </CardDashStyle>
-          <CardDashStyle>
-            <h3 className="text-xl text-base-black dark:text-base-white font-bold">
+            <p className="text-2xl text-base-black dark:text-base-white font-bold ">
+              R$ 90.000,00
+            </p>
+          </CardStyle>
+          <CardStyle>
+            <h3 className="text-xl text-base-yellow uppercase font-bold">
               Total Expense
             </h3>
-            <p className="text-2xl font-bold">R$ 80.000,00 </p>
-          </CardDashStyle>
+            <p className="text-2xl text-base-black dark:text-base-white font-bold">
+              R$ 80.000,00{" "}
+            </p>
+          </CardStyle>
         </div>
         <div>
-          <CardDashStyle>
+          <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
-              ANALYTICS
+              Analytics
             </h3>
-            <ChartPieDash value={90} />
-            <ChartPieDash value={50} />
-          </CardDashStyle>
+            <div className="  items-center">
+              <ChartPieDash value={[90]} />
+              <p className="text-center  font-bold text-base-black dark:text-base-white">
+                Income
+              </p>
+            </div>
+            <div className=" items-center">
+              <ChartPieDash value={[50]} />
+              <p className="font-bold text-center text-base-black dark:text-base-white">
+                Expense
+              </p>
+            </div>
+          </CardStyle>
+        </div>
+        <div>
+          <CardStyle>
+            <h3 className="text-base-yellow first-line:font-bold text-lg">
+              Profit
+            </h3>
+          </CardStyle>
+        </div>
+        <div className="col-span-2">
+          <CardStyle>
+            <h3 className="text-base-yellow first-line:font-bold text-lg">
+              Profit
+            </h3>
+            <ChartAreaDash />
+          </CardStyle>
         </div>
       </section>
     </>
