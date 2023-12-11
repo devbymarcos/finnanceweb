@@ -6,7 +6,7 @@ import BtnLight from "../btn-dark-mode/BtnLight";
 const Sidebar = () => {
   return (
     <>
-      <aside className="w-[250px] bg-base-gray h-screen fixed flex flex-col justify-between dark:bg-base-black overflow-y-auto  ">
+      <aside className="w-[250px] -left-[250px] md:left-0 transition-all bg-base-gray h-screen fixed flex flex-col justify-between dark:bg-base-black overflow-y-auto  ">
         <div className="w-full mt-6">
           <Image
             src="/images/logo/logo-light.png"

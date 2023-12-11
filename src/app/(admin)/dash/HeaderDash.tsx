@@ -1,3 +1,5 @@
+import BtnMenuMobile from "@/components/btn-menu-mobile/BtnMenumobile";
+
 const HeaderDash = () => {
   return (
     <header className="flex justify-between items-center mb-12">
@@ -7,6 +9,7 @@ const HeaderDash = () => {
           Olá Marcos, Bem vindo de volta
         </p>
       </div>
+      <BtnMenuMobile colors="#000" />
     </header>
   );
 };

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .w-full-custom {
+    width: calc(100% - 250px);
+  }
+}

@@ -12,7 +12,9 @@ export default function RootLayout({
   return (
     <AppContext>
       <Sidebar />
-      <main className="absolute left-[250px] p-6">{children}</main>
+      <main className="absolute md:left-[250px] w-full md:w-full-custom  p-6">
+        <div className="container mx-auto">{children}</div>
+      </main>
     </AppContext>
   );
 }

@@ -13,11 +13,12 @@ const ChartAreaDash = dynamic(
     ssr: false,
   }
 );
+
 function Index() {
   return (
     <>
       <HeaderDash />
-      <section className=" grid grid-cols-3 gap-5 mb-5">
+      <section className=" grid  grid-cols-1 md:grid-cols-3 gap-5 mb-5">
         <div className="grid grid-cols-1 gap-5">
           <CardStyle>
             <h3 className="text-xl text-base-yellow uppercase font-bold">
@@ -58,11 +59,11 @@ function Index() {
         <div>
           <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
-              Profit
+              Saving Plans
             </h3>
           </CardStyle>
         </div>
-        <div className="col-span-2">
+        <div className="sm:col-span-2">
           <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
               Profit
