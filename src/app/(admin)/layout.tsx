@@ -12,7 +12,7 @@ export default function RootLayout({
   return (
     <AppContext>
       <Sidebar />
-      <main className="absolute left-[250px]">{children}</main>
+      <main className="absolute left-[250px] p-6">{children}</main>
     </AppContext>
   );
 }
