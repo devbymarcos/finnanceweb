@@ -1,9 +1,9 @@
 // @ts-nocheck
 "use client";
 import Chart from "react-apexcharts";
-import { useState } from "react";
+
 const ChartPieDash = ({ value }) => {
-  let options = {
+  const options = {
     chart: {
       toolbar: {
         show: false,
@@ -20,7 +20,6 @@ const ChartPieDash = ({ value }) => {
           image: undefined,
           imageOffsetX: 0,
           imageOffsetY: 0,
-          //@ts-ignore
           position: "front",
           dropShadow: {
             enabled: true,
@@ -46,7 +45,7 @@ const ChartPieDash = ({ value }) => {
           show: true,
           name: {
             offsetY: -10,
-            show: true,
+            show: false,
             color: "#888",
             fontSize: "17px",
           },
@@ -57,7 +56,7 @@ const ChartPieDash = ({ value }) => {
             color: "#111",
             fontSize: "20px",
             show: true,
-            offsetY: -9,
+            offsetY: 6,
             fontWeight: "bold",
           },
         },

@@ -1,4 +1,3 @@
-import DashIcon from "@/components/icons/DashIcon";
 import CardStyle from "../../components/cards/CardStyle";
 import HeaderDash from "./dash/HeaderDash";
 import dynamic from "next/dynamic";
