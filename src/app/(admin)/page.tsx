@@ -1,3 +1,4 @@
+import SavePlansItem from "@/components/save-plans/SavePlansItem";
 import CardStyle from "../../components/cards/CardStyle";
 import HeaderDash from "./dash/HeaderDash";
 import dynamic from "next/dynamic";
@@ -60,6 +61,9 @@ function Index() {
             <h3 className="text-base-yellow first-line:font-bold text-lg">
               Saving Plans
             </h3>
+            <SavePlansItem title="Vendas" type="income" value="1200,00" />
+            <SavePlansItem title="Energia" type="expense" value="500,00" />
+            <SavePlansItem title="Alimentação" type="expense" value="90,00" />
           </CardStyle>
         </div>
         <div className="sm:col-span-2">

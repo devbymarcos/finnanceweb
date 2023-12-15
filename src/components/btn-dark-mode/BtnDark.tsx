@@ -1,13 +1,14 @@
 import MoonIcon from "../icons/MoonIcon";
-import { useContextApp } from "@/hooks/useContextApp";
+import { useStore } from "@/hooks/useStore";
 
 export const BtnDark = () => {
-  const { dark, setDark } = useContextApp();
+  const dark = useStore((state) => state.dark);
+  const updateDark = useStore((state) => state.updateDarkMode);
 
   function modeChange(e: any) {
     const html = document.querySelector("html");
     html?.classList.toggle("dark");
-    setDark(!dark);
+    updateDark(!dark);
   }
 
   return (

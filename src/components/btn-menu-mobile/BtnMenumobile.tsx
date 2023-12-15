@@ -1,15 +1,27 @@
 "use client";
-import { useContextApp } from "@/hooks/useContextApp";
+import { useStore } from "@/hooks/useStore";
 
 type Props = {
   colors: string;
 };
 
 const BtnMenuMobile = ({ colors }: Props) => {
-  const { dark } = useContextApp();
+  const [dark, updateOpenSideBar, openSideBar] = useStore((state) => [
+    state.dark,
+    state.updateOpenSideBar,
+    state.openSideBar,
+  ]);
+
+  function open() {
+    updateOpenSideBar(!openSideBar);
+  }
+
   return (
     <>
-      <button className="bg-base-gray dark:bg-base-black p-2 block md:hidden rounded-xl">
+      <button
+        onClick={open}
+        className="bg-base-gray dark:bg-base-black p-2 block md:hidden rounded-xl"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"

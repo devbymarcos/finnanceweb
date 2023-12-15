@@ -5,8 +5,7 @@ import WalletIcon from "../icons/WalletIcons";
 import TransactionIcon from "../icons/TransactionIcon";
 import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
-import { useContextApp } from "@/hooks/useContextApp";
-
+import { useStore } from "@/hooks/useStore";
 interface MenuData {
   title: string;
   icon: React.ReactElement;
@@ -14,7 +13,7 @@ interface MenuData {
 }
 
 const MenuSideBar = () => {
-  const { dark } = useContextApp();
+  const dark = useStore((state) => state.dark);
 
   const menuData: MenuData[] = [
     {
