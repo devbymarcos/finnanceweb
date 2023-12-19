@@ -6,4 +6,8 @@
   .w-full-custom {
     width: calc(100% - 250px);
   }
+  .container-custom {
+    width: 100%;
+    max-width: 1205px;
+  }
 }

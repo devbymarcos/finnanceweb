@@ -1,7 +1,8 @@
-import SavePlansItem from "@/components/save-plans/SavePlansItem";
+import SavePlansItem from "@/app/(admin)/dash/SavePlansItem";
 import CardStyle from "../../components/cards/CardStyle";
 import HeaderDash from "./dash/HeaderDash";
 import dynamic from "next/dynamic";
+import LastTransaction from "./dash/LastTransaction";
 
 const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
   ssr: false,
@@ -22,18 +23,24 @@ function Index() {
         <div className="grid grid-cols-1 gap-5">
           <CardStyle>
             <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Total Income
+              Total Renda
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold ">
               R$ 90.000,00
             </p>
+            <p className="text-base-black dark:text-base-white font-bold ">
+              60% comparado com mes anterior
+            </p>
           </CardStyle>
           <CardStyle>
             <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Total Expense
+              Total Gastos
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold">
               R$ 80.000,00{" "}
+            </p>
+            <p className="text-base-black dark:text-base-white font-bold">
+              9% comparado com mes anterior
             </p>
           </CardStyle>
         </div>
@@ -45,13 +52,13 @@ function Index() {
             <div className="  items-center">
               <ChartPieDash value={[90]} />
               <p className="text-center  font-bold text-base-black dark:text-base-white">
-                Income
+                Renda
               </p>
             </div>
             <div className=" items-center">
               <ChartPieDash value={[50]} />
               <p className="font-bold text-center text-base-black dark:text-base-white">
-                Expense
+                Gastos
               </p>
             </div>
           </CardStyle>
@@ -72,6 +79,28 @@ function Index() {
               Profit
             </h3>
             <ChartAreaDash />
+          </CardStyle>
+        </div>
+        <div>
+          <CardStyle>
+            <h3 className="text-base-yellow uppercase first-line:font-bold text-lg">
+              Transações recentes
+            </h3>
+            <LastTransaction
+              item={{ name: "Comissão", type: "income", value: 900 }}
+            />
+            <LastTransaction
+              item={{ name: "Energia", type: "income", value: 150 }}
+            />
+            <LastTransaction
+              item={{ name: "Aluguel", type: "income", value: 900 }}
+            />
+            <LastTransaction
+              item={{ name: "Mercado", type: "expense", value: 400 }}
+            />
+            <LastTransaction
+              item={{ name: "Internet", type: "expense", value: 70 }}
+            />
           </CardStyle>
         </div>
       </section>

@@ -11,8 +11,8 @@ export default function RootLayout({
   return (
     <>
       <Sidebar />
-      <main className="absolute md:left-[250px] w-full md:w-full-custom  p-6">
-        <div className="container mx-auto">{children}</div>
+      <main className="absolute md:left-[250px] w-full md:w-full-custom   p-6">
+        <div className="container-custom mx-auto">{children}</div>
       </main>
     </>
   );
