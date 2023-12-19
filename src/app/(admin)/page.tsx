@@ -63,14 +63,29 @@ function Index() {
             </div>
           </CardStyle>
         </div>
-        <div>
+        <div className="col-span-2 md:col-span-1">
           <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
               Saving Plans
             </h3>
-            <SavePlansItem title="Vendas" type="income" value="1200,00" />
-            <SavePlansItem title="Energia" type="expense" value="500,00" />
-            <SavePlansItem title="Alimentação" type="expense" value="90,00" />
+            <SavePlansItem
+              title="Vendas"
+              type="income"
+              value="1200,00"
+              percentage="50"
+            />
+            <SavePlansItem
+              title="Energia"
+              type="expense"
+              value="500,00"
+              percentage="60"
+            />
+            <SavePlansItem
+              title="Alimentação"
+              type="expense"
+              value="90,00"
+              percentage="40"
+            />
           </CardStyle>
         </div>
         <div className="sm:col-span-2">
