@@ -9,7 +9,7 @@ type Props = {
 
 const LastTransaction = ({ item }: Props) => {
   return (
-    <div className="flex gap-2 justify-between items-center font-bold">
+    <div className="flex gap-2 justify-between text-base-black dark:text-base-white items-center font-bold">
       <div className="flex items-center gap-2">
         {item.type == "income" ? <IncomeIconType /> : <ExpenseIconType />}
         <p>{item.name}</p>

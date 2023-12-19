@@ -2,6 +2,7 @@
 
 import "../globals.css";
 import Sidebar from "@/components/sidebar/Sidebar";
+import Header from "./dash/Header";
 
 export default function RootLayout({
   children,
@@ -12,7 +13,10 @@ export default function RootLayout({
     <>
       <Sidebar />
       <main className="absolute md:left-[250px] w-full md:w-full-custom   p-6">
-        <div className="container-custom mx-auto">{children}</div>
+        <div className="container-custom mx-auto">
+          <Header />
+          {children}
+        </div>
       </main>
     </>
   );

@@ -1,11 +1,7 @@
 "use client";
 import { useStore } from "@/hooks/useStore";
 
-type Props = {
-  colors: string;
-};
-
-const BtnMenuMobile = ({ colors }: Props) => {
+const BtnMenuMobile = () => {
   const [dark, updateOpenSideBar, openSideBar] = useStore((state) => [
     state.dark,
     state.updateOpenSideBar,
