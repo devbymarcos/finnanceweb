@@ -2,7 +2,11 @@
 
 Aqui temos a construção apenas do front-end do WalletControl v2
 
-# OBS:
+### VISITE PARA SABER COMO ESTA FICANDO
+
+https://wcapp.vercel.app/
+
+# FORK:
 
 Faça um Fork caso deseje utilizar em seu projeto.
 
