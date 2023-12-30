@@ -39,7 +39,7 @@ const MenuSideBar = () => {
     {
       title: "Logout",
       icon: <LogoutIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
-      path: "/logout",
+      path: "/login",
     },
   ];
   return (
