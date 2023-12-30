@@ -5,7 +5,7 @@ interface Children {
 const LoginLayout = ({ children }: Children) => {
   return (
     <>
-      <main className=" bg-base-gray dark:bg-base-black-200 w-full h-screen grid grid-cols-1  content-center">
+      <main className=" bg-base-gray dark:bg-base-black-200 w-full h-screen grid grid-cols-1">
         {children}
       </main>
     </>

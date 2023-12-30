@@ -5,8 +5,8 @@ import Label from "@/components/form/Label";
 const Login = () => {
   return (
     <>
-      <section className="grid grid-cols-2">
-        <div>
+      <section className="grid md:grid-cols-2   ">
+        <div className="self-center">
           <div className="mb-3 w-full max-w-[300px] mx-auto">
             <h1 className="mb-2 text-lg font-bold  dark:text-base-white text-base-black">
               Insira os dados e acesse
@@ -25,7 +25,7 @@ const Login = () => {
               </div>
               <div className="mb-12">
                 <Link href="/">
-                  <button className="bg-base-yellow px-2 py-3 font-bold block w-full rounded-sm">
+                  <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">
                     Login
                   </button>
                 </Link>
@@ -39,6 +39,7 @@ const Login = () => {
             </form>
           </div>
         </div>
+        <div className="w-full hidden md:block  bg-base-yellow"></div>
       </section>
     </>
   );
