@@ -13,6 +13,7 @@ const Login = () => {
       password: formData.get("password"),
     };
 
+    //TODO [CREATE NEW USER] -  Validar dados e implementar envio
     console.log(rawFormData);
   }
 
