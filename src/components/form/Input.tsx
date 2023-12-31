@@ -3,9 +3,10 @@ interface Props {
   value?: string;
   placeholder?: string;
   name: string;
+  required?: boolean;
 }
 
-const Input = ({ type, value, placeholder, name }: Props) => {
+const Input = ({ type, value, placeholder, name, required }: Props) => {
   return (
     <input
       type={type}
@@ -13,6 +14,7 @@ const Input = ({ type, value, placeholder, name }: Props) => {
       value={value}
       placeholder={placeholder}
       name={name}
+      required={required}
     />
   );
 };
