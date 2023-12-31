@@ -1,20 +1,21 @@
+"use client";
 import Link from "next/link";
 import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
 import Image from "next/image";
 
+import { useFormState } from "react-dom";
+import { userLogin } from "./actions";
+
+const initialState = {
+  message: {
+    email: [],
+    password: [],
+  },
+};
+
 const Login = () => {
-  async function userLogin(formData: FormData) {
-    "use server";
-    const rawFormData = {
-      email: formData.get("email"),
-      pass: formData.get("password"),
-    };
-
-    //TODO [LOGIN] -  Validar dados e implementar envio
-    console.log(rawFormData);
-  }
-
+  const [state, formAction] = useFormState(userLogin, initialState);
   return (
     <>
       <section className="grid md:grid-cols-2   ">
@@ -26,14 +27,16 @@ const Login = () => {
           </div>
 
           <div className="w-full max-w-[300px] mx-auto bg-base-white dark:bg-base-black  p-8 rounded-lg">
-            <form action={userLogin}>
+            <form action={formAction}>
               <div className="mb-6">
                 <Label>Email</Label>
                 <Input type="text" name="email" />
+                <p className="text-red-500">{state?.message.email}</p>
               </div>
               <div className="mb-12">
                 <Label>Password</Label>
                 <Input type="password" name="password" />
+                <p className="text-red-500">{state?.message.password}</p>
               </div>
               <div className="mb-12">
                 <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">
