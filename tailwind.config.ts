@@ -19,6 +19,15 @@ const config: Config = {
         "font-color-light": "#1c1d21",
         "font-color-dark": "#f8f8f8",
       },
+      keyframes: {
+        slideDown: {
+          "0%": { transform: "translate(-50%,-20%)", opacity: "0" },
+          "100%": { transform: "translate(-50%,0%)", opacity: "1" },
+        },
+      },
+      animation: {
+        "slide-down": "slideDown 0.2s linear",
+      },
     },
   },
   plugins: [],

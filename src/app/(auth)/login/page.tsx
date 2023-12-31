@@ -3,21 +3,42 @@ import Link from "next/link";
 import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
 import Image from "next/image";
+import { Alert } from "@/components/alert/Alert";
 
 import { useFormState } from "react-dom";
 import { userLogin } from "./actions";
+import { useEffect } from "react";
 
-const initialState = {
-  message: {
-    email: [],
-    password: [],
+interface StateTypes {
+  data: {
+    errors: {
+      email: string;
+      password: string;
+    };
+    message: string | boolean;
+  };
+}
+
+const initialState: StateTypes = {
+  data: {
+    errors: {
+      email: "",
+      password: "",
+    },
+    message: "",
   },
 };
 
 const Login = () => {
   const [state, formAction] = useFormState(userLogin, initialState);
+  let m = false;
+  if (state.data.message) {
+    m = true;
+  }
+
   return (
     <>
+      <Alert message={state.data.message} type="error" active={m} />
       <section className="grid md:grid-cols-2   ">
         <div className="self-center">
           <div className="mb-3 w-full max-w-[300px] mx-auto">
@@ -31,12 +52,12 @@ const Login = () => {
               <div className="mb-6">
                 <Label>Email</Label>
                 <Input type="text" name="email" />
-                <p className="text-red-500">{state?.message.email}</p>
+                <p className="text-red-500">{state?.data.errors.email}</p>
               </div>
               <div className="mb-12">
                 <Label>Password</Label>
                 <Input type="password" name="password" />
-                <p className="text-red-500">{state?.message.password}</p>
+                <p className="text-red-500">{state?.data.errors.password}</p>
               </div>
               <div className="mb-12">
                 <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">

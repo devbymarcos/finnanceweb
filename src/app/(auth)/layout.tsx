@@ -1,3 +1,6 @@
+"use client";
+import Alert from "@/components/alert/Alert";
+
 interface Children {
   children: React.ReactNode;
 }
