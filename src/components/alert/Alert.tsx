@@ -13,7 +13,7 @@ export const Alert = ({ message, type, active }: Props) => {
         type == "succes" ? "bg-green-400" : ""
       } ${
         type == "error" ? "bg-red-500" : ""
-      }  px-9 py-4 font-bold fixed left-1/2 top-20 -translate-x-1/2 rounded-md text-center min-w-[250px] animate-slide-down`}
+      }  px-9 py-4 font-bold fixed right-20 top-20  rounded-md text-center min-w-[250px] animate-slide-down`}
     >
       <p>{message}</p>
     </div>

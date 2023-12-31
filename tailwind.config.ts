@@ -21,12 +21,12 @@ const config: Config = {
       },
       keyframes: {
         slideDown: {
-          "0%": { transform: "translate(-50%,-20%)", opacity: "0" },
-          "100%": { transform: "translate(-50%,0%)", opacity: "1" },
+          "0%": { transform: "translate(0,-20%)", opacity: "0" },
+          "100%": { transform: "translate(0,0%)", opacity: "1" },
         },
       },
       animation: {
-        "slide-down": "slideDown 0.2s linear",
+        "slide-down": "slideDown 0.1s linear",
       },
     },
   },
