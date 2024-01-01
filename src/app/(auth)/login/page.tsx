@@ -3,21 +3,12 @@ import Link from "next/link";
 import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
 import Image from "next/image";
-import { Alert } from "@/components/alert/Alert";
+import { Alert, useAlert } from "@/components/alert/Alert";
 
 import { useFormState } from "react-dom";
 import { userLogin } from "./actions";
 import { useEffect } from "react";
-
-interface StateTypes {
-  data: {
-    errors: {
-      email: string;
-      password: string;
-    };
-    message: string | boolean;
-  };
-}
+import { StateTypes } from "./types";
 
 const initialState: StateTypes = {
   data: {
@@ -31,14 +22,20 @@ const initialState: StateTypes = {
 
 const Login = () => {
   const [state, formAction] = useFormState(userLogin, initialState);
-  let m = false;
-  if (state.data.message) {
-    m = true;
-  }
+  const { alert, setAlert } = useAlert();
 
+  useEffect(() => {
+    if (state.data.message) {
+      setAlert({
+        active: true,
+        message: state.data.message,
+        type: "error",
+      });
+    }
+  }, [state.data.message]);
   return (
     <>
-      <Alert message={state.data.message} type="error" active={m} />
+      <Alert {...alert} />
       <section className="grid md:grid-cols-2   ">
         <div className="self-center">
           <div className="mb-3 w-full max-w-[300px] mx-auto">
