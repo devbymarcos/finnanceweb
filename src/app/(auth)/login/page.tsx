@@ -23,7 +23,8 @@ const initialState: StateTypes = {
 const Login = () => {
   const [state, formAction] = useFormState(userLogin, initialState);
   const { alert, setAlert } = useAlert();
-
+  console.log(state.data.message);
+  console.log(alert);
   useEffect(() => {
     if (state.data.message) {
       setAlert({
@@ -32,7 +33,7 @@ const Login = () => {
         type: "error",
       });
     }
-  }, [state.data.message]);
+  }, [state]);
   return (
     <>
       <Alert {...alert} />
