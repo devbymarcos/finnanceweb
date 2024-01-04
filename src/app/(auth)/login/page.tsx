@@ -9,15 +9,8 @@ import { useFormState, useFormStatus } from "react-dom";
 import { userLogin } from "./actions";
 import { useEffect } from "react";
 import { StateTypes } from "./types";
+import Submit from "@/components/form/Submit";
 
-const Submit = () => {
-  const { pending } = useFormStatus();
-  return (
-    <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">
-      {pending ? "Processando..." : "Logar"}
-    </button>
-  );
-};
 const initialState: StateTypes = {
   data: {
     errors: {
@@ -72,7 +65,7 @@ const Login = () => {
                 </p>
               </div>
               <div className="mb-12">
-                <Submit />
+                <Submit text="Logar" />
               </div>
               <Link
                 className="my-4 text-sm dark:text-base-white text-base-black"
