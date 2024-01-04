@@ -1,6 +1,8 @@
 "use server";
 import { z } from "zod";
 import { postLoginApi } from "@/api/api";
+import { redirect } from "next/navigation";
+
 const schema = z.object({
   email: z.string().email("Email Inválido"),
   password: z.string().min(8, "Deve conter no mínimo 8 caracteres"),
@@ -26,6 +28,9 @@ export async function userLogin(prevState: any, formData: FormData) {
   const response = await fetch(url, options);
   const json = await response.json();
   console.log(json);
+  if (Array.isArray(json.data) && json.data[0].id) {
+    redirect("/");
+  }
 
   return {
     data: {
@@ -36,12 +41,4 @@ export async function userLogin(prevState: any, formData: FormData) {
       message: json.message,
     },
   };
-
-  //TODO  continua o script. Realiza requisicao API
-  // const rawFormData = {
-  //   email: formData.get("email"),
-  //   password: formData.get("password"),
-  // };
-
-  // console.log(rawFormData);
 }

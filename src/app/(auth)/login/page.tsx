@@ -5,11 +5,19 @@ import Label from "@/components/form/Label";
 import Image from "next/image";
 import { Alert, useAlert } from "@/components/alert/Alert";
 
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { userLogin } from "./actions";
 import { useEffect } from "react";
 import { StateTypes } from "./types";
 
+const Submit = () => {
+  const { pending } = useFormStatus();
+  return (
+    <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">
+      {pending ? "Processando..." : "Logar"}
+    </button>
+  );
+};
 const initialState: StateTypes = {
   data: {
     errors: {
@@ -22,7 +30,9 @@ const initialState: StateTypes = {
 
 const Login = () => {
   const [state, formAction] = useFormState(userLogin, initialState);
+
   const { alert, setAlert } = useAlert();
+
   console.log(state.data.message);
   console.log(alert);
   useEffect(() => {
@@ -50,17 +60,19 @@ const Login = () => {
               <div className="mb-6">
                 <Label>Email</Label>
                 <Input type="text" name="email" />
-                <p className="text-red-500">{state?.data.errors.email}</p>
+                <p className="text-red-500 text-[11px] ">
+                  {state?.data.errors.email}
+                </p>
               </div>
               <div className="mb-12">
                 <Label>Password</Label>
                 <Input type="password" name="password" />
-                <p className="text-red-500">{state?.data.errors.password}</p>
+                <p className="text-red-500 text-[11px]">
+                  {state?.data.errors.password}
+                </p>
               </div>
               <div className="mb-12">
-                <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">
-                  Login
-                </button>
+                <Submit />
               </div>
               <Link
                 className="my-4 text-sm dark:text-base-white text-base-black"
