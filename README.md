@@ -10,7 +10,7 @@ https://wcapp.vercel.app/
 
 Faça um Fork caso deseje utilizar em seu projeto.
 
-## NÃO ESQUEÇA DE DEIXA R UMA ESTRELA POR AQUI OK - GOOD JOB
+## NÃO ESQUEÇA DE DEIXAR UMA ESTRELA POR AQUI OK - GOOD JOB
 
 ## O QUE JA TENHO FEITO POR AQUI:
 
