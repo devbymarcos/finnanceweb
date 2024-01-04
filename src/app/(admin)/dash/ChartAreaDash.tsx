@@ -2,7 +2,7 @@
 "use client";
 import Chart from "react-apexcharts";
 
-const ChartAreaDash = () => {
+const ChartAreaDash = ({ dataMonths, dataValues }) => {
   let options = {
     chart: {
       toolbar: {
@@ -22,22 +22,14 @@ const ChartAreaDash = () => {
     },
     xaxis: {
       type: "category",
-      categories: [
-        "Janeiro",
-        "Fevereiro",
-        "Março",
-        "Abril",
-        "Maio",
-        "Junho",
-        "Julho",
-      ],
+      categories: dataMonths,
     },
   };
 
   let series = [
     {
       name: "Resultado",
-      data: [100, 200.5, 190.0, 520, 42, 109, 100],
+      data: dataValues,
     },
   ];
 
