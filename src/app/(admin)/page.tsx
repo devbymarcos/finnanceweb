@@ -1,8 +1,9 @@
 import SavePlansItem from "@/app/(admin)/dash/SavePlansItem";
 import CardStyle from "../../components/cards/CardStyle";
-
+import { getDashApi } from "@/api/api";
 import dynamic from "next/dynamic";
 import LastTransaction from "./dash/LastTransaction";
+import { currencyFormatUI } from "@/functions/helpers";
 
 const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
   ssr: false,
@@ -14,18 +15,37 @@ const ChartAreaDash = dynamic(
     ssr: false,
   }
 );
-
-function Index() {
+type ApiReturn = {
+  data: {
+    result: {
+      months: string[];
+      values: number[];
+    };
+    paidMonth: number;
+    receivedMonth: number;
+    balanceSum: number;
+  };
+  message: string;
+  request: string;
+};
+const getDataDash = async (): Promise<ApiReturn> => {
+  const { url, options } = getDashApi(3);
+  const response = await fetch(url, options);
+  return await response.json();
+};
+async function Index() {
+  const data = await getDataDash();
+  console.log("TCL: Index -> data", data);
   return (
     <>
       <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-5">
         <div className="grid grid-cols-1 gap-5">
           <CardStyle>
             <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Total Renda
+              Renda Mes
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold ">
-              R$ 90.000,00
+              {currencyFormatUI(data.data.receivedMonth)}
             </p>
             <p className="text-base-black dark:text-base-white font-bold ">
               60% comparado com mes anterior
@@ -36,7 +56,7 @@ function Index() {
               Total Gastos
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold">
-              R$ 80.000,00{" "}
+              {currencyFormatUI(data.data.paidMonth)}
             </p>
             <p className="text-base-black dark:text-base-white font-bold">
               9% comparado com mes anterior
@@ -92,7 +112,10 @@ function Index() {
             <h3 className="text-base-yellow first-line:font-bold text-lg">
               Profit
             </h3>
-            <ChartAreaDash />
+            <ChartAreaDash
+              dataMonths={data.data.result.months}
+              dataValues={data.data.result.values}
+            />
           </CardStyle>
         </div>
         <div>
