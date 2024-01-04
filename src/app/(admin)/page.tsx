@@ -15,6 +15,7 @@ const ChartAreaDash = dynamic(
     ssr: false,
   }
 );
+
 type ApiReturn = {
   data: {
     result: {
@@ -33,6 +34,7 @@ const getDataDash = async (): Promise<ApiReturn> => {
   const response = await fetch(url, options);
   return await response.json();
 };
+
 async function Index() {
   const data = await getDataDash();
   console.log("TCL: Index -> data", data);
@@ -42,7 +44,7 @@ async function Index() {
         <div className="grid grid-cols-1 gap-5">
           <CardStyle>
             <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Renda Mes
+              Renda Mês
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold ">
               {currencyFormatUI(data.data.receivedMonth)}
@@ -53,10 +55,21 @@ async function Index() {
           </CardStyle>
           <CardStyle>
             <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Total Gastos
+              Gastos Mês
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold">
               {currencyFormatUI(data.data.paidMonth)}
+            </p>
+            <p className="text-base-black dark:text-base-white font-bold">
+              9% comparado com mes anterior
+            </p>
+          </CardStyle>
+          <CardStyle>
+            <h3 className="text-xl text-base-yellow uppercase font-bold">
+              Saldo
+            </h3>
+            <p className="text-2xl text-base-black dark:text-base-white font-bold">
+              {currencyFormatUI(data.data.balanceSum)}
             </p>
             <p className="text-base-black dark:text-base-white font-bold">
               9% comparado com mes anterior

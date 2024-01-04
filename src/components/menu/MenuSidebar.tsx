@@ -6,6 +6,7 @@ import TransactionIcon from "../icons/TransactionIcon";
 import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
 import { useStore } from "@/hooks/useStore";
+
 interface MenuData {
   title: string;
   icon: React.ReactElement;
@@ -24,7 +25,7 @@ const MenuSideBar = () => {
     {
       title: "Categorias",
       icon: <CategoryIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
-      path: "/",
+      path: "/categorias/list",
     },
     {
       title: "Carterias",
