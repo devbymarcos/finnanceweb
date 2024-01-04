@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { postLoginApi } from "@/api/api";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 const schema = z.object({
   email: z.string().email("Email Inválido"),
@@ -29,6 +30,16 @@ export async function userLogin(prevState: any, formData: FormData) {
   const json = await response.json();
   console.log(json);
   if (Array.isArray(json.data) && json.data[0].id) {
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    cookies().set({
+      name: "token",
+      value: json.data[0].token,
+      httpOnly: true,
+      path: "/",
+      expires: new Date(Date.now() + oneDay),
+    });
+
     redirect("/");
   }
 
