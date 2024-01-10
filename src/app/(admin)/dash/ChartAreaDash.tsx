@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 import Chart from "react-apexcharts";
-
+import { currencyFormatUI } from "@/functions/helpers";
 const ChartAreaDash = ({ dataMonths, dataValues }) => {
   let options = {
     chart: {
@@ -23,6 +23,21 @@ const ChartAreaDash = ({ dataMonths, dataValues }) => {
     xaxis: {
       type: "category",
       categories: dataMonths,
+    },
+    tooltip: {
+      enabled: true,
+      y: {
+        formatter: function (value) {
+          return currencyFormatUI(value);
+        },
+      },
+    },
+    yaxis: {
+      labels: {
+        formatter: function (value) {
+          return currencyFormatUI(value);
+        },
+      },
     },
   };
 

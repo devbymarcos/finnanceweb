@@ -15,7 +15,7 @@ interface ApiRequestOptions {
 
 interface ApiRequest {
   url: string;
-  options: ApiRequestOptions;
+  options: RequestInit;
 }
 
 export const postLoginApi = (dataForm: FormData): ApiRequest => {
@@ -24,7 +24,7 @@ export const postLoginApi = (dataForm: FormData): ApiRequest => {
     options: {
       method: "POSt",
       body: dataForm,
-      cache: "no-store",
+      cache: "no-cache",
     },
   };
 };
@@ -38,7 +38,7 @@ export const getDashApi = (wallet_id: number): ApiRequest => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      cache: "no-store",
+      cache: "no-cache",
     },
   };
 };

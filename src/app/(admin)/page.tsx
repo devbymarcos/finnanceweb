@@ -4,6 +4,7 @@ import { getDashApi } from "@/api/api";
 import dynamic from "next/dynamic";
 import LastTransaction from "./dash/LastTransaction";
 import { currencyFormatUI } from "@/functions/helpers";
+import { redirect } from "next/navigation";
 
 const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
   ssr: false,
@@ -32,6 +33,12 @@ type ApiReturn = {
 const getDataDash = async (): Promise<ApiReturn> => {
   const { url, options } = getDashApi(3);
   const response = await fetch(url, options);
+  console.log("TCL: response", response);
+
+  if (response.status == 401) {
+    redirect("/login");
+  }
+
   return await response.json();
 };
 
