@@ -1,3 +1,4 @@
+"use server";
 import SavePlansItem from "@/app/(admin)/dash/SavePlansItem";
 import CardStyle from "../../components/cards/CardStyle";
 import { getDashApi } from "@/api/api";
@@ -5,7 +6,7 @@ import dynamic from "next/dynamic";
 import LastTransaction from "./dash/LastTransaction";
 import { currencyFormatUI } from "@/functions/helpers";
 import { redirect } from "next/navigation";
-
+import { cookies } from "next/headers";
 const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
   ssr: false,
 });
@@ -31,7 +32,8 @@ type ApiReturn = {
   request: string;
 };
 const getDataDash = async (): Promise<ApiReturn> => {
-  const { url, options } = getDashApi(3);
+  const token: string | undefined = cookies().get("token")?.value;
+  const { url, options } = getDashApi(token,3);
   const response = await fetch(url, options);
   console.log("TCL: response", response);
 

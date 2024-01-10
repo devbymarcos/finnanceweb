@@ -1,6 +1,5 @@
-import { cookies } from "next/headers";
+
 const URL = process.env.API_HOST;
-const token: string | undefined = cookies().get("token")?.value;
 
 //LOGIN INIT
 interface ApiRequestOptions {
@@ -15,7 +14,7 @@ interface ApiRequestOptions {
 
 interface ApiRequest {
   url: string;
-  options: RequestInit;
+  options: ApiRequestOptions;
 }
 
 export const postLoginApi = (dataForm: FormData): ApiRequest => {
@@ -29,7 +28,7 @@ export const postLoginApi = (dataForm: FormData): ApiRequest => {
   };
 };
 
-export const getDashApi = (wallet_id: number): ApiRequest => {
+export const getDashApi = (token:string | undefined,wallet_id: number): ApiRequest => {
   return {
     url: `${URL}/dash?wallet_id=${wallet_id}`,
     options: {
