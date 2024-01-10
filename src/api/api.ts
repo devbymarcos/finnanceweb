@@ -41,3 +41,16 @@ export const getDashApi = (token:string | undefined,wallet_id: number): ApiReque
     },
   };
 };
+export const getCategoryApi = (token:string | undefined): ApiRequest => {
+  return {
+    url: `${URL}/categories`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      
+    },
+  };
+};
