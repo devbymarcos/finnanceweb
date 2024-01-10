@@ -49,7 +49,15 @@ const ListCategory = async () => {
                 >
                   {item.name}
                 </th>
-                <td className="px-6 py-4">{item.type}</td>
+                <td className="px-6 py-4">
+                  <span
+                    className={`${
+                      item.type == "expense" ? "bg-red-500" : "bg-blue-500"
+                    } text-[12px] py-1 px-2 text-white rounded-md`}
+                  >
+                    {item.type == "expense" ? "Despesa" : "Receita"}
+                  </span>
+                </td>
 
                 <td className="px-6 py-4">
                   <Link href={`/categorias/editar/${item.id}`}>
