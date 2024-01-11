@@ -14,7 +14,7 @@ const ListIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      color={dark ? "#f8f8f8" : "#1c1d21"}
+      color="#1c1d21"
     >
       <line x1="8" x2="21" y1="6" y2="6" />
       <line x1="8" x2="21" y1="12" y2="12" />

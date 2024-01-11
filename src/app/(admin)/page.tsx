@@ -48,7 +48,7 @@ async function Index() {
   const data = await getDataDash();
   return (
     <>
-      <section className="grid grid-cols-2 gap-5 mb-5">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <FlowSectionMonth
           currencyUI={{
             receveidMonth: data.data.receivedMonth,
@@ -60,11 +60,11 @@ async function Index() {
       <section className="mb-5">
         <WalletSection />
       </section>
-      <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-5">
-        <div className="sm:col-span-2">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        <div className="">
           <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
-              Profit
+              Resultado
             </h3>
             <ChartAreaDash
               dataMonths={data.data.result.months}
@@ -98,6 +98,7 @@ async function Index() {
           </CardStyle>
         </div>
       </section>
+      <section></section>
     </>
   );
 }

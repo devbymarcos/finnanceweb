@@ -50,7 +50,7 @@ const ChartAreaDash = ({ dataMonths, dataValues }) => {
 
   return (
     <>
-      <Chart options={options} height={350} series={series} type="area" />
+      <Chart options={options} height={400} series={series} type="area" />
     </>
   );
 };
