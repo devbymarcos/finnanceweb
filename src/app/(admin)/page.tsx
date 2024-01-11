@@ -3,10 +3,11 @@ import SavePlansItem from "@/app/(admin)/dash/SavePlansItem";
 import CardStyle from "../../components/cards/CardStyle";
 import { getDashApi } from "@/api/api";
 import dynamic from "next/dynamic";
-import LastTransaction from "./dash/LastTransaction";
-import { currencyFormatUI } from "@/functions/helpers";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import WalletSection from "./dash/WalletSection";
+import FlowSectionMonth from "./dash/FlowSectionMonth";
+
 const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
   ssr: false,
 });
@@ -33,9 +34,8 @@ type ApiReturn = {
 };
 const getDataDash = async (): Promise<ApiReturn> => {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getDashApi(token,3);
+  const { url, options } = getDashApi(token, 3);
   const response = await fetch(url, options);
-  console.log("TCL: response", response);
 
   if (response.status == 401) {
     redirect("/login");
@@ -46,71 +46,39 @@ const getDataDash = async (): Promise<ApiReturn> => {
 
 async function Index() {
   const data = await getDataDash();
-  console.log("TCL: Index -> data", data);
   return (
     <>
+      <section className="grid grid-cols-2 gap-5 mb-5">
+        <FlowSectionMonth
+          currencyUI={{
+            receveidMonth: data.data.receivedMonth,
+            paidMonth: data.data.paidMonth,
+            balaceSum: data.data.balanceSum,
+          }}
+        />
+      </section>
+      <section className="mb-5">
+        <WalletSection />
+      </section>
       <section className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-5">
-        <div className="grid grid-cols-1 gap-5">
-          <CardStyle>
-            <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Renda Mês
-            </h3>
-            <p className="text-2xl text-base-black dark:text-base-white font-bold ">
-              {currencyFormatUI(data.data.receivedMonth)}
-            </p>
-            <p className="text-base-black dark:text-base-white font-bold ">
-              60% comparado com mes anterior
-            </p>
-          </CardStyle>
-          <CardStyle>
-            <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Gastos Mês
-            </h3>
-            <p className="text-2xl text-base-black dark:text-base-white font-bold">
-              {currencyFormatUI(data.data.paidMonth)}
-            </p>
-            <p className="text-base-black dark:text-base-white font-bold">
-              9% comparado com mes anterior
-            </p>
-          </CardStyle>
-          <CardStyle>
-            <h3 className="text-xl text-base-yellow uppercase font-bold">
-              Saldo
-            </h3>
-            <p className="text-2xl text-base-black dark:text-base-white font-bold">
-              {currencyFormatUI(data.data.balanceSum)}
-            </p>
-            <p className="text-base-black dark:text-base-white font-bold">
-              9% comparado com mes anterior
-            </p>
-          </CardStyle>
-        </div>
-        <div>
+        <div className="sm:col-span-2">
           <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
-              Analytics
+              Profit
             </h3>
-            <div className="  items-center">
-              <ChartPieDash value={[90]} />
-              <p className="text-center  font-bold text-base-black dark:text-base-white">
-                Renda
-              </p>
-            </div>
-            <div className=" items-center">
-              <ChartPieDash value={[50]} />
-              <p className="font-bold text-center text-base-black dark:text-base-white">
-                Gastos
-              </p>
-            </div>
+            <ChartAreaDash
+              dataMonths={data.data.result.months}
+              dataValues={data.data.result.values}
+            />
           </CardStyle>
         </div>
-        <div className="sm:col-span-2 md:col-span-1">
+        <div className="">
           <CardStyle>
             <h3 className="text-base-yellow first-line:font-bold text-lg">
-              Saving Plans
+              Metas
             </h3>
             <SavePlansItem
-              title="Vendas"
+              title="Viagem exterior "
               type="income"
               value="1200,00"
               percentage="50"
@@ -126,39 +94,6 @@ async function Index() {
               type="expense"
               value="90,00"
               percentage="40"
-            />
-          </CardStyle>
-        </div>
-        <div className="sm:col-span-2">
-          <CardStyle>
-            <h3 className="text-base-yellow first-line:font-bold text-lg">
-              Profit
-            </h3>
-            <ChartAreaDash
-              dataMonths={data.data.result.months}
-              dataValues={data.data.result.values}
-            />
-          </CardStyle>
-        </div>
-        <div>
-          <CardStyle>
-            <h3 className="text-base-yellow uppercase first-line:font-bold text-lg">
-              Transações recentes
-            </h3>
-            <LastTransaction
-              item={{ name: "Comissão", type: "income", value: 900 }}
-            />
-            <LastTransaction
-              item={{ name: "Energia", type: "income", value: 150 }}
-            />
-            <LastTransaction
-              item={{ name: "Aluguel", type: "income", value: 900 }}
-            />
-            <LastTransaction
-              item={{ name: "Mercado", type: "expense", value: 400 }}
-            />
-            <LastTransaction
-              item={{ name: "Internet", type: "expense", value: 70 }}
             />
           </CardStyle>
         </div>

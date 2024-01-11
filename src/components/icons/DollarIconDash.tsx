@@ -1,7 +1,7 @@
 "use client";
 import { useStore } from "@/hooks/useStore";
 
-const WalletIcon = () => {
+const DollarDashIcon = () => {
   const dark = useStore((state) => state.dark);
   return (
     <>
@@ -15,13 +15,13 @@ const WalletIcon = () => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        color={dark ? "#f8f8f8" : "#1c1d21"}
+        color="#1c1d21"
       >
-        <path d="M17 14h.01" />
-        <path d="M7 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14" />
+        <line x1="12" x2="12" y1="2" y2="22" />
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
       </svg>
     </>
   );
 };
 
-export default WalletIcon;
+export default DollarDashIcon;
