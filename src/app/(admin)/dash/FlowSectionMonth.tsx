@@ -7,7 +7,6 @@ type Props = {
   currencyUI: {
     receveidMonth: number;
     paidMonth: number;
-    balaceSum: number;
   };
 };
 

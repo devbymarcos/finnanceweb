@@ -26,8 +26,6 @@ const Login = () => {
 
   const { alert, setAlert } = useAlert();
 
-  console.log(state.data.message);
-  console.log(alert);
   useEffect(() => {
     if (state.data.message) {
       setAlert({

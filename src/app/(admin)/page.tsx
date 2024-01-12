@@ -27,7 +27,11 @@ type ApiReturn = {
     };
     paidMonth: number;
     receivedMonth: number;
-    balanceSum: number;
+    balanceSum: Array<{
+      walletId: number;
+      saldo: number;
+      name: string;
+    }>;
   };
   message: string;
   request: string;
@@ -46,6 +50,7 @@ const getDataDash = async (): Promise<ApiReturn> => {
 
 async function Index() {
   const data = await getDataDash();
+  console.log("TCL: Index -> data", data);
   return (
     <>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
@@ -53,12 +58,11 @@ async function Index() {
           currencyUI={{
             receveidMonth: data.data.receivedMonth,
             paidMonth: data.data.paidMonth,
-            balaceSum: data.data.balanceSum,
           }}
         />
       </section>
       <section className="mb-5">
-        <WalletSection />
+        <WalletSection data={data.data.balanceSum} />
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <div className="">
