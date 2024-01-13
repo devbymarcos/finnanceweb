@@ -1,6 +1,6 @@
 "use client";
 
-import "../globals.css";
+import "../../globals.css";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Header from "./dash/Header";
 

@@ -1,6 +1,6 @@
 "use server";
-import SavePlansItem from "@/app/(admin)/dash/SavePlansItem";
-import CardStyle from "../../components/cards/CardStyle";
+import SavePlansItem from "@/app/(admin)/web/dash/SavePlansItem";
+import CardStyle from "../../../components/cards/CardStyle";
 import { getDashApi } from "@/api/api";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
@@ -8,12 +8,15 @@ import { cookies } from "next/headers";
 import WalletSection from "./dash/WalletSection";
 import FlowSectionMonth from "./dash/FlowSectionMonth";
 
-const ChartPieDash = dynamic(() => import("@/app/(admin)/dash/ChartPieDash"), {
-  ssr: false,
-});
+const ChartPieDash = dynamic(
+  () => import("@/app/(admin)/web/dash/ChartPieDash"),
+  {
+    ssr: false,
+  }
+);
 
 const ChartAreaDash = dynamic(
-  () => import("@/app/(admin)/dash/ChartAreaDash"),
+  () => import("@/app/(admin)/web/dash/ChartAreaDash"),
   {
     ssr: false,
   }
