@@ -1,10 +1,8 @@
-"use client";
-
 interface Children {
   children: React.ReactNode;
 }
 
-const LoginLayout = ({ children }: Children) => {
+const SiteLayout = ({ children }: Children) => {
   return (
     <>
       <main className=" bg-base-gray dark:bg-base-black-200 w-full h-screen grid grid-cols-1">
@@ -13,4 +11,4 @@ const LoginLayout = ({ children }: Children) => {
     </>
   );
 };
-export default LoginLayout;
+export default SiteLayout;
