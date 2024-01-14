@@ -1,4 +1,3 @@
-
 const URL = process.env.API_HOST;
 
 //LOGIN INIT
@@ -28,7 +27,10 @@ export const postLoginApi = (dataForm: FormData): ApiRequest => {
   };
 };
 
-export const getDashApi = (token:string | undefined,wallet_id: number): ApiRequest => {
+export const getDashApi = (
+  token: string | undefined,
+  wallet_id: number
+): ApiRequest => {
   return {
     url: `${URL}/dash?wallet_id=${wallet_id}`,
     options: {
@@ -41,7 +43,7 @@ export const getDashApi = (token:string | undefined,wallet_id: number): ApiReque
     },
   };
 };
-export const getCategoryApi = (token:string | undefined): ApiRequest => {
+export const getCategoryApi = (token: string | undefined): ApiRequest => {
   return {
     url: `${URL}/categories`,
     options: {
@@ -50,7 +52,18 @@ export const getCategoryApi = (token:string | undefined): ApiRequest => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      
+    },
+  };
+};
+export const getWalletApi = (token: string | undefined): ApiRequest => {
+  return {
+    url: `${URL}/wallets`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     },
   };
 };

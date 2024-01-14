@@ -16,7 +16,7 @@ const TrLink = ({ children, router }: Props) => {
   return (
     <tr
       onClick={goView}
-      className="bg-white border-b cursor-pointer dark:bg-base-black dark:border-gray-700"
+      className="bg-white border-b hover:bg-slate-300 cursor-pointer dark:bg-base-black dark:border-gray-700"
     >
       {children}
     </tr>

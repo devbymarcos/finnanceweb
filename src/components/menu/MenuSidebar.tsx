@@ -35,7 +35,7 @@ const MenuSideBar = () => {
     {
       title: "Transações",
       icon: <TransactionIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
-      path: "/web/transacoes",
+      path: "/web/transacoes/list",
     },
     {
       title: "Logout",
