@@ -2,6 +2,7 @@ import { getCategoryApi } from "@/api/api";
 import EditIcon from "@/components/icons/EditIcon";
 import Link from "next/link";
 import { cookies } from "next/headers";
+import TrLink from "@/components/table/TrLink";
 
 async function getCategory() {
   const token: string | undefined = cookies().get("token")?.value;
@@ -34,15 +35,12 @@ const ListCategory = async () => {
             <th scope="col" className="px-6 py-3">
               Tipo
             </th>
-            <th scope="col" className="px-6 py-3">
-              Ação
-            </th>
           </tr>
         </thead>
         <tbody>
           {data.data.map((item: dataTypesMap) => {
             return (
-              <tr className="bg-white border-b dark:bg-base-black dark:border-gray-700">
+              <TrLink router={`/categorias/editar/${item.id}`}>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -58,13 +56,7 @@ const ListCategory = async () => {
                     {item.type == "expense" ? "Despesa" : "Receita"}
                   </span>
                 </td>
-
-                <td className="px-6 py-4">
-                  <Link href={`/categorias/editar/${item.id}`}>
-                    <EditIcon />
-                  </Link>
-                </td>
-              </tr>
+              </TrLink>
             );
           })}
         </tbody>
