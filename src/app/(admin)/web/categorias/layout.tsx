@@ -13,16 +13,16 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
         <ul className="flex gap-4">
           <li>
             <Link
-              href="/categorias/list"
-              className="bg-base-yellow px-4 py-2  text-base-black block rounded-md"
+              href="/web/categorias/list"
+              className="bg-base-secondary px-4 py-2  text-base-white block rounded-md"
             >
               <ListIcon />
             </Link>
           </li>
           <li>
             <Link
-              href="/categorias/nova"
-              className="bg-base-yellow px-4 py-2  block text-base-black  rounded-md"
+              href="/web/categorias/nova"
+              className="bg-base-secondary px-4 py-2  block text-base-white  rounded-md"
             >
               <CreateIcon />
             </Link>

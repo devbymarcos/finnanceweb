@@ -75,13 +75,12 @@ const Login = () => {
           </div>
         </div>
 
-        <div className="w-full hidden md:flex items-center justify-center   bg-base-yellow">
+        <div className="w-full hidden md:flex items-center justify-center   bg-base-secondary">
           <Image
-            src="/images/logo/logo-svg.svg"
-            width={100}
-            height={100}
+            src="/images/logo/wc-logo-white.png"
+            width={300}
+            height={300}
             alt="Logo do aplicativo"
-            className=" shadow-lg rounded-3xl  "
           />
         </div>
       </section>

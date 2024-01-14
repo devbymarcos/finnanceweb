@@ -23,7 +23,7 @@ const SavePlansItem = ({ title, type, value, percentage }: Props) => {
   }, []);
   return (
     <div className=" p-1 flex gap-4 items-center -mb-3">
-      <div className="p-2 rounded-xl bg-base-yellow">
+      <div className="p-2 rounded-xl bg-base-secondary">
         {type == "income" && <IncomeIconType />}
         {type == "expense" && <ExpenseIconType />}
       </div>

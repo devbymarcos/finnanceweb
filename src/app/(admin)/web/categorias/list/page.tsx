@@ -27,7 +27,7 @@ const ListCategory = async () => {
   return (
     <div className="relative overflow-x-auto rounded-md">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
-        <thead className="text-xs text-gray-700 uppercase bg-base-yellow   ">
+        <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
             <th scope="col" className="px-6 py-3">
               Descrição

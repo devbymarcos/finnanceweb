@@ -15,9 +15,9 @@ const Sidebar = () => {
       >
         <div className="w-full mt-6">
           <Image
-            src="/images/logo/logo-svg.svg"
-            width={70}
-            height={70}
+            src="/images/logo/wc-logo.png"
+            width={100}
+            height={100}
             alt="logo wcapp"
             className="mx-auto"
           />

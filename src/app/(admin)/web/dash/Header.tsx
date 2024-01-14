@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center mb-12">
       <div>
-        <h1 className="text-base-yellow font-bold">Wallet Control</h1>
+        <h1 className="text-base-secondary font-bold">Wallet Control</h1>
         <p className="font-bold text-base-black dark:text-base-white">
           Olá Marcos, Bem vindo de volta
         </p>
@@ -19,7 +19,7 @@ const Header = () => {
           alt="user avatar"
         />
         <div className="text-base-black dark:text-base-white font-bold">
-          <p className="text-base-yellow font-bold">Marcos</p>
+          <p className="text-base-secondary font-bold">Marcos</p>
           <p>Admin</p>
         </div>
       </div>

@@ -15,7 +15,7 @@ const CreateIcon = () => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        color="#1c1d21"
+        color="#fff"
       >
         <circle cx="12" cy="12" r="10" />
         <path d="M8 12h8" />

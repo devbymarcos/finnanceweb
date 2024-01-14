@@ -58,7 +58,7 @@ const Login = () => {
                 />
               </div>
               <div className="mb-12">
-                <button className="bg-base-yellow px-2 py-3 font-bold  w-full rounded-sm">
+                <button className="bg-base-secondary px-2 py-3 font-bold  w-full rounded-sm">
                   Registrar
                 </button>
               </div>
@@ -71,7 +71,7 @@ const Login = () => {
             </form>
           </div>
         </div>
-        <div className="w-full hidden md:flex items-center justify-center   bg-base-yellow">
+        <div className="w-full hidden md:flex items-center justify-center   bg-base-secondary">
           <Image
             src="/images/logo/logo-svg.svg"
             width={100}
