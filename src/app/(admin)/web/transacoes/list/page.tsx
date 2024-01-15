@@ -1,7 +1,7 @@
 import { getInvoiceApi } from "@/api/api";
 import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
-
+import { currencyFormatUI, formattedDateView } from "@/functions/helpers";
 import Search from "../search/Search";
 
 type params =
@@ -26,7 +26,8 @@ type Props = {
 };
 
 const ListTransaction = async ({ searchParams }: Props) => {
-  const data = getInvoiceList(searchParams);
+  const data = await getInvoiceList(searchParams);
+  console.log(data);
   console.log(searchParams);
   return (
     <div className="relative overflow-x-auto rounded-md">
@@ -40,34 +41,32 @@ const ListTransaction = async ({ searchParams }: Props) => {
           </tr>
         </thead>
         <tbody>
-          <TrLink router={`/web/transacoes/editar?invoiceId=${"2"}`}>
-            <th
-              scope="row"
-              className="px-6 py-4 flex items-center justify-between font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              <div>
-                <p>Combustivel Alcool</p>
-                <p className="text-[11px]">01/03/2024</p>
-              </div>
-              <div className={`${true ? "text-blue-500" : "text-red-500"}`}>
-                R$ 250,00
-              </div>
-            </th>
-          </TrLink>
-          <TrLink router={`/web/transacoes/editar?invoiceId=${"2"}`}>
-            <th
-              scope="row"
-              className="px-6 py-4 flex items-center justify-between font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              <div>
-                <p>Mercado</p>
-                <p className="text-[11px]">01/03/2024</p>
-              </div>
-              <div className={`${false ? "text-blue-500" : "text-red-500"}`}>
-                R$ 250,00
-              </div>
-            </th>
-          </TrLink>
+          {data.data &&
+            data.data.map((invoice: any) => {
+              return (
+                <TrLink
+                  router={`/web/transacoes/editar?invoiceId=${invoice.id}`}
+                  key={invoice.id}
+                >
+                  <th
+                    scope="row"
+                    className="px-6 py-4 flex items-center justify-between font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <div>
+                      <p>{invoice.description}</p>
+                      <p className="text-[11px]">
+                        {formattedDateView(invoice.due_at)}
+                      </p>
+                    </div>
+                    <div
+                      className={`${true ? "text-blue-500" : "text-red-500"}`}
+                    >
+                      {currencyFormatUI(invoice.price)}
+                    </div>
+                  </th>
+                </TrLink>
+              );
+            })}
         </tbody>
       </table>
     </div>

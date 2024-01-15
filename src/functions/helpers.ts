@@ -4,3 +4,8 @@ export function currencyFormatUI(value: number) {
     currency: "BRL",
   }).format(value);
 }
+
+export function formattedDateView(date: string) {
+  const dateFormatted = new Date(date);
+  return dateFormatted.toLocaleDateString("pt-BR");
+}

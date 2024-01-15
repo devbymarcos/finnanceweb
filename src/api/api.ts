@@ -76,13 +76,14 @@ export const getInvoiceApi = (
   date: params
 ): ApiRequest => {
   return {
-    url: `${URL}/invoice?dateInit=${date?.dateone}&dateTwo=${date?.datetwo}`,
+    url: `${URL}/invoice?date_one=${date?.dateone}&date_two=${date?.datetwo}`,
     options: {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   };
 };
