@@ -30,22 +30,23 @@ const ListCategory = async () => {
             <th scope="col" className="px-6 py-3">
               Descrição
             </th>
-            <th scope="col" className="px-6 py-3">
-              Description
-            </th>
           </tr>
         </thead>
         <tbody>
           {data.data.map((item: dataTypesMap) => {
             return (
-              <TrLink router={`/carteiras/editar/${item.id}`}>
+              <TrLink router={`/web/carteiras/editar?wallwetId=${item.id}`}>
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  {item.name}
+                  <div>
+                    <p>{item.name}</p>
+                    <p className="text-[11px] text-base-secondary">
+                      {item.description}
+                    </p>
+                  </div>
                 </th>
-                <td className="px-6 py-4">{item.description}</td>
               </TrLink>
             );
           })}

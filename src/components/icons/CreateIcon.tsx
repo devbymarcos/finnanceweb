@@ -17,9 +17,8 @@ const CreateIcon = () => {
         strokeLinejoin="round"
         color="#fff"
       >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M8 12h8" />
-        <path d="M12 8v8" />
+        <path d="M5 12h14" />
+        <path d="M12 5v14" />
       </svg>
     </>
   );

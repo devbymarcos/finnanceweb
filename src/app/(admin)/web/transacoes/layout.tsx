@@ -1,3 +1,4 @@
+import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
 import CreateIcon from "@/components/icons/CreateIcon";
 import ListIcon from "@/components/icons/ListIcon";
 import Link from "next/link";
@@ -12,20 +13,14 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
       <nav className="mb-12">
         <ul className="flex gap-4">
           <li>
-            <Link
-              href="/web/transacoes/list"
-              className="bg-base-secondary px-4 py-2  text-base-white block rounded-md"
-            >
+            <BtnLinkSubMenu href="/web/transacoes/list">
               <ListIcon />
-            </Link>
+            </BtnLinkSubMenu>
           </li>
           <li>
-            <Link
-              href="/web/transacoes/nova"
-              className="bg-base-secondary px-4 py-2  block text-base-white  rounded-md"
-            >
+            <BtnLinkSubMenu href="/web/transacoes/nova">
               <CreateIcon />
-            </Link>
+            </BtnLinkSubMenu>
           </li>
         </ul>
       </nav>

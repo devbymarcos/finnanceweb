@@ -40,7 +40,7 @@ const ListTransaction = async ({ searchParams }: Props) => {
           </tr>
         </thead>
         <tbody>
-          <TrLink router={`/web/transacao/editar/${"2"}`}>
+          <TrLink router={`/web/transacoes/editar?invoiceId=${"2"}`}>
             <th
               scope="row"
               className="px-6 py-4 flex items-center justify-between font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -54,7 +54,7 @@ const ListTransaction = async ({ searchParams }: Props) => {
               </div>
             </th>
           </TrLink>
-          <TrLink router={`/categorias/editar/`}>
+          <TrLink router={`/web/transacoes/editar?invoiceId=${"2"}`}>
             <th
               scope="row"
               className="px-6 py-4 flex items-center justify-between font-medium text-gray-900 whitespace-nowrap dark:text-white"

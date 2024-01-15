@@ -23,15 +23,16 @@ const MenuSideBar = () => {
       path: "/web",
     },
     {
-      title: "Categorias",
-      icon: <CategoryIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
-      path: "/web/categorias/list",
-    },
-    {
       title: "Carterias",
       icon: <WalletIcon />,
       path: "/web/carteiras/list",
     },
+    {
+      title: "Categorias",
+      icon: <CategoryIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
+      path: "/web/categorias/list",
+    },
+
     {
       title: "Transações",
       icon: <TransactionIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
