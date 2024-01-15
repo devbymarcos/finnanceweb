@@ -8,7 +8,7 @@ const Index = () => {
       </div>
       <Link className="m-2" href="/">
         Site
-      </Link>{" "}
+      </Link>
     </div>
   );
 };

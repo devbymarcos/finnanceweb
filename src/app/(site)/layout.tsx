@@ -7,10 +7,8 @@ interface Children {
 const SiteLayout = ({ children }: Children) => {
   return (
     <>
-      <main className=" bg-base-gray dark:bg-base-black-200 w-full h-screen">
-        <HeaderSite />
-        {children}
-      </main>
+      <HeaderSite />
+      <main className="w-full">{children}</main>
     </>
   );
 };
