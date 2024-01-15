@@ -55,9 +55,31 @@ export const getCategoryApi = (token: string | undefined): ApiRequest => {
     },
   };
 };
+
 export const getWalletApi = (token: string | undefined): ApiRequest => {
   return {
     url: `${URL}/wallets`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
+type params =
+  | {
+      dateone?: string;
+      datetwo?: string;
+    }
+  | undefined;
+export const getInvoiceApi = (
+  token: string | undefined,
+  date: params
+): ApiRequest => {
+  return {
+    url: `${URL}/invoice?dateInit=${date?.dateone}&dateTwo=${date?.datetwo}`,
     options: {
       method: "GET",
       headers: {

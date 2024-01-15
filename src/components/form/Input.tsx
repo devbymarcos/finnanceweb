@@ -4,9 +4,17 @@ interface Props {
   placeholder?: string;
   name: string;
   required?: boolean;
+  onChange?: (e: any) => void;
 }
 
-const Input = ({ type, value, placeholder, name, required }: Props) => {
+const Input = ({
+  type,
+  value,
+  placeholder,
+  name,
+  required,
+  onChange,
+}: Props) => {
   return (
     <input
       type={type}
@@ -15,6 +23,7 @@ const Input = ({ type, value, placeholder, name, required }: Props) => {
       placeholder={placeholder}
       name={name}
       required={required}
+      onChange={onChange}
     />
   );
 };

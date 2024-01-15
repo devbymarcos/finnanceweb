@@ -1,32 +1,36 @@
-import { getCategoryApi } from "@/api/api";
+import { getInvoiceApi } from "@/api/api";
 import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
-import Input from "@/components/form/Input";
-import { date } from "zod";
-import Submit from "@/components/form/Submit";
 
-async function getInvoiceList() {
+import Search from "../search/Search";
+
+type params =
+  | {
+      dateone?: string;
+      datetwo?: string;
+    }
+  | undefined;
+async function getInvoiceList(date: params) {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getCategoryApi(token);
+  const { url, options } = getInvoiceApi(token, date);
   const response = await fetch(url, options);
 
   return await response.json();
 }
 
-const ListCategory = async () => {
+type Props = {
+  searchParams?: {
+    dateone?: string;
+    datetwo?: string;
+  };
+};
+
+const ListTransaction = async ({ searchParams }: Props) => {
+  const data = getInvoiceList(searchParams);
+  console.log(searchParams);
   return (
     <div className="relative overflow-x-auto rounded-md">
-      <form action="" className="flex gap-2 mb-3 items-center w-1/2">
-        <div className="w-full">
-          <Input name="data_one" value="" type="date" />
-        </div>
-        <div className="w-full">
-          <Input name="data_two" value="" type="date" />
-        </div>
-        <div className="w-full">
-          <Submit text="Buscar" />
-        </div>
-      </form>
+      <Search />
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
@@ -70,4 +74,4 @@ const ListCategory = async () => {
   );
 };
 
-export default ListCategory;
+export default ListTransaction;
