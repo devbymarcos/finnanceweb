@@ -35,7 +35,10 @@ const ListCategory = async () => {
         <tbody>
           {data.data.map((item: dataTypesMap) => {
             return (
-              <TrLink router={`/web/carteiras/editar?wallwetId=${item.id}`}>
+              <TrLink
+                key={item.id}
+                router={`/web/carteiras/editar?wallwetId=${item.id}`}
+              >
                 <th
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"

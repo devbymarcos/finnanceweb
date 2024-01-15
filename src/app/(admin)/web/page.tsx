@@ -41,7 +41,7 @@ type ApiReturn = {
 };
 const getDataDash = async (): Promise<ApiReturn> => {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getDashApi(token, 3);
+  const { url, options } = getDashApi(token);
   const response = await fetch(url, options);
 
   if (response.status == 401) {

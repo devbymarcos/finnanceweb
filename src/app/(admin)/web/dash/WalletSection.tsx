@@ -22,7 +22,10 @@ const WalletSection = ({ data }: Props) => {
         <ul className="w-full">
           {data.map((wallet) => {
             return (
-              <li className="mb-2 flex gap-2 bg-base-white dark:bg-base-black-200 items-center py-3 px-3 rounded-lg">
+              <li
+                key={wallet.walletId}
+                className="mb-2 flex gap-2 bg-base-white dark:bg-base-black-200 items-center py-3 px-3 rounded-lg"
+              >
                 <WalletDashUiIcon />
                 <div className="w-full flex justify-between items-center ">
                   <p>{wallet.name}</p>

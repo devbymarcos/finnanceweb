@@ -23,7 +23,6 @@ const initialState: StateTypes = {
 
 const Login = () => {
   const [state, formAction] = useFormState(userLogin, initialState);
-
   const { alert, setAlert } = useAlert();
 
   useEffect(() => {
