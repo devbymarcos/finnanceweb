@@ -13,7 +13,7 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
         <ul className="flex gap-4">
           <li>
             <Link
-              href="/web/categorias/list"
+              href="/web/transacoes/list"
               className="bg-base-secondary px-4 py-2  text-base-white block rounded-md"
             >
               <ListIcon />
@@ -21,7 +21,7 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
           </li>
           <li>
             <Link
-              href="/web/categorias/nova"
+              href="/web/transacoes/nova"
               className="bg-base-secondary px-4 py-2  block text-base-white  rounded-md"
             >
               <CreateIcon />

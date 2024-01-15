@@ -19,7 +19,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
             <DollarDashIcon />
           </span>
           <div>
-            <h3 className="text-sm text-base-yellow uppercase font-bold">
+            <h3 className="text-sm text-base-secondary uppercase font-bold">
               Receitas
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold ">
@@ -34,7 +34,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
             <DollarDashIcon />
           </span>
           <div>
-            <h3 className="text-sm text-base-yellow uppercase font-bold">
+            <h3 className="text-sm text-base-secondary uppercase font-bold">
               Despesas
             </h3>
             <p className="text-2xl text-base-black dark:text-base-white font-bold">

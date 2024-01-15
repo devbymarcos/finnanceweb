@@ -14,7 +14,7 @@ type Props = {
 const WalletSection = ({ data }: Props) => {
   return (
     <CardStyle>
-      <h3 className="text-md text-base-black dark:text-base-white flex gap-3 items-center  font-bold">
+      <h3 className="text-md text-base-secondary  flex gap-3 items-center  font-bold">
         <WalletIcon />
         Minhas carteiras
       </h3>

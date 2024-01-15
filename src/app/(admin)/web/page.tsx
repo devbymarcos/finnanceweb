@@ -70,7 +70,7 @@ async function Index() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <div className="">
           <CardStyle>
-            <h3 className="text-base-yellow first-line:font-bold text-lg">
+            <h3 className="text-base-secondary first-line:font-bold text-lg">
               Resultado
             </h3>
             <ChartAreaDash
@@ -81,7 +81,7 @@ async function Index() {
         </div>
         <div className="">
           <CardStyle>
-            <h3 className="text-base-yellow first-line:font-bold text-lg">
+            <h3 className="text-base-secondary first-line:font-bold text-lg">
               Metas
             </h3>
             <SavePlansItem

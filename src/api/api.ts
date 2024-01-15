@@ -27,12 +27,9 @@ export const postLoginApi = (dataForm: FormData): ApiRequest => {
   };
 };
 
-export const getDashApi = (
-  token: string | undefined,
-  wallet_id: number
-): ApiRequest => {
+export const getDashApi = (token: string | undefined): ApiRequest => {
   return {
-    url: `${URL}/dash?wallet_id=${wallet_id}`,
+    url: `${URL}/dash`,
     options: {
       method: "GET",
       headers: {

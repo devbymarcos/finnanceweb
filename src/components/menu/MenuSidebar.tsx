@@ -30,7 +30,7 @@ const MenuSideBar = () => {
     {
       title: "Carterias",
       icon: <WalletIcon />,
-      path: "/web/carteiras",
+      path: "/web/carteiras/list",
     },
     {
       title: "Transações",
