@@ -1,5 +1,5 @@
 interface MoonIcon {
-  colors: string;
+  colors?: string;
 }
 
 const LogoutIcon = ({ colors }: MoonIcon) => {

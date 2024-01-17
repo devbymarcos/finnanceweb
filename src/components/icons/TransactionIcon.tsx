@@ -1,5 +1,5 @@
 interface TransactionIcon {
-  colors: string;
+  colors?: string;
 }
 
 const TransactionIcon = ({ colors }: TransactionIcon) => {
