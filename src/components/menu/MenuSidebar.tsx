@@ -19,28 +19,28 @@ const MenuSideBar = () => {
   const menuData: MenuData[] = [
     {
       title: "Dashboard",
-      icon: <DashIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <DashIcon colors="#fff" />,
       path: "/web",
     },
     {
       title: "Carterias",
-      icon: <WalletIcon />,
+      icon: <WalletIcon colors="#fff" />,
       path: "/web/carteiras/list",
     },
     {
       title: "Categorias",
-      icon: <CategoryIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <CategoryIcon colors="#fff" />,
       path: "/web/categorias/list",
     },
 
     {
       title: "Transações",
-      icon: <TransactionIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <TransactionIcon colors="#fff" />,
       path: "/web/transacoes/list",
     },
     {
       title: "Logout",
-      icon: <LogoutIcon colors={dark ? "#f8f8f8" : "#1c1d21"} />,
+      icon: <LogoutIcon colors="#fff" />,
       path: "/login",
     },
   ];
@@ -53,7 +53,7 @@ const MenuSideBar = () => {
               <li key={item.title} className="px-2 py-2">
                 <Link
                   href={item.path}
-                  className="flex gap-4 pl-8 text-font-color-light  dark:text-font-color-dark  font-bold hover:bg-base-white dark:hover:bg-base-black-200 py-3 rounded-xl"
+                  className="flex gap-4 pl-8 text-font-color-dark  font-bold hover:bg-slate-500 dark:hover:bg-base-black-200 py-3 rounded-xl"
                 >
                   {item.icon}
                   {item.title}
