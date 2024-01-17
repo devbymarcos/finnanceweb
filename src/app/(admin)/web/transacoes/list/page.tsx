@@ -27,8 +27,7 @@ type Props = {
 
 const ListTransaction = async ({ searchParams }: Props) => {
   const data = await getInvoiceList(searchParams);
-  console.log(data);
-  console.log(searchParams);
+
   return (
     <div className="relative overflow-x-auto rounded-md">
       <Search />

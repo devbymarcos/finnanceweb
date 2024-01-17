@@ -53,7 +53,6 @@ const getDataDash = async (): Promise<ApiReturn> => {
 
 async function Index() {
   const data = await getDataDash();
-  console.log("TCL: Index -> data", data);
   return (
     <>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">

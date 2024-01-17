@@ -71,6 +71,7 @@ type params =
       datetwo?: string;
     }
   | undefined;
+
 export const getInvoiceApi = (
   token: string | undefined,
   date: params
@@ -84,6 +85,22 @@ export const getInvoiceApi = (
         Authorization: `Bearer ${token}`,
       },
       cache: "no-cache",
+    },
+  };
+};
+
+export const getInvoiceIdApi = (
+  token: string | undefined,
+  invoiceId?: string
+) => {
+  return {
+    url: `${URL}/invoice/${invoiceId}`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     },
   };
 };
