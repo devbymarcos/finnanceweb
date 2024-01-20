@@ -12,11 +12,9 @@ export default function RootLayout({
   return (
     <>
       <Sidebar />
-      <main className="absolute bg-base-white md:left-[250px] w-full md:w-full-custom   p-6">
-        <div className="container-custom mx-auto">
-          <Header />
-          {children}
-        </div>
+      <main className="absolute bg-base-white md:left-[250px] w-full md:w-full-custom min-h-screen   p-6">
+        <Header />
+        {children}
       </main>
     </>
   );

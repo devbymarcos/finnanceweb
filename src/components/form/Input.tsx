@@ -5,6 +5,7 @@ interface Props {
   name: string;
   required?: boolean;
   onChange?: (e: any) => void;
+  defaultValue?: string;
 }
 
 const Input = ({
@@ -14,12 +15,13 @@ const Input = ({
   name,
   required,
   onChange,
+  defaultValue,
 }: Props) => {
   return (
     <input
       type={type}
       className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
-      value={value}
+      defaultValue={defaultValue}
       placeholder={placeholder}
       name={name}
       required={required}

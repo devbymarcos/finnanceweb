@@ -65,6 +65,23 @@ export const getWalletApi = (token: string | undefined): ApiRequest => {
     },
   };
 };
+
+export const getWalletIdApi = (
+  token: string | undefined,
+  walletId: string | undefined
+): ApiRequest => {
+  return {
+    url: `${URL}/wallet/${walletId}`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
+
 type params =
   | {
       dateone?: string;
