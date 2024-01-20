@@ -1,8 +1,12 @@
+"use client";
+import { useStore } from "@/hooks/useStore";
+
 interface MoonIcon {
   colors?: string;
 }
 
 const LogoutIcon = ({ colors }: MoonIcon) => {
+  const dark = useStore((state) => state.dark);
   return (
     <>
       <svg
@@ -15,7 +19,7 @@ const LogoutIcon = ({ colors }: MoonIcon) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        color={colors}
+        color={dark ? "#f8f8f8" : "#1c1d21"}
       >
         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
         <polyline points="16 17 21 12 16 7" />

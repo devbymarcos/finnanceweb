@@ -38,11 +38,6 @@ const MenuSideBar = () => {
       icon: <TransactionIcon colors="#fff" />,
       path: "/web/transacoes/list",
     },
-    {
-      title: "Logout",
-      icon: <LogoutIcon colors="#fff" />,
-      path: "/login",
-    },
   ];
   return (
     <>
@@ -61,6 +56,7 @@ const MenuSideBar = () => {
               </li>
             );
           })}
+          <li className="pl-8 py-2"></li>
         </ul>
       </nav>
       <span className="border-b border-base-gray-200 w-1/2 h-1 block mx-auto"></span>
