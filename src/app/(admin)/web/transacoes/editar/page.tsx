@@ -3,7 +3,7 @@ import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
 import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
-import { getInvoiceIdApi } from "@/api/api";
+import { getInvoiceIdApi, getWalletApi, getCategoryApi } from "@/api/api";
 import { cookies } from "next/headers";
 import { formattedDateInput, formattedDateView } from "@/functions/helpers";
 
@@ -14,14 +14,32 @@ async function getInvoiceId(invoiceId?: string) {
   return await response.json();
 }
 
+async function getWallet() {
+  const token = cookies().get("token")?.value;
+  const { url, options } = getWalletApi(token);
+  const response = await fetch(url, options);
+  return await response.json();
+}
+
+async function getCategory() {
+  const token: string | undefined = cookies().get("token")?.value;
+  const { url, options } = getCategoryApi(token);
+  const response = await fetch(url, options);
+
+  return await response.json();
+}
+
 type Props = {
   searchParams?: {
     invoiceId?: string;
   };
 };
 const CreateTransaction = async ({ searchParams }: Props) => {
-  const data = await getInvoiceId(searchParams?.invoiceId);
-  console.log(formattedDateView(data.data.due_at));
+  const invoice = await getInvoiceId(searchParams?.invoiceId);
+  const wallet = await getWallet();
+  const category = await getCategory();
+
+  console.log(formattedDateView(invoice.data[0].due_at));
   return (
     <section>
       <CardStyle>
@@ -32,12 +50,16 @@ const CreateTransaction = async ({ searchParams }: Props) => {
               <Input
                 type="text"
                 name="description"
-                value={data.data.description}
+                defaultValue={invoice.data[0].description}
               />
             </div>
             <div className="mb-3">
               <Label>Valor</Label>
-              <Input type="text" name="value" value={data.data.price} />
+              <Input
+                type="text"
+                name="value"
+                defaultValue={invoice.data[0].price}
+              />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -46,7 +68,7 @@ const CreateTransaction = async ({ searchParams }: Props) => {
               <Input
                 type="date"
                 name="due_at"
-                value={formattedDateInput(data.data.due_at)}
+                defaultValue={formattedDateInput(invoice.data[0].due_at)}
               />
             </div>
 
@@ -55,14 +77,14 @@ const CreateTransaction = async ({ searchParams }: Props) => {
               <Select name="type">
                 <option>Escolha...</option>
                 <option
-                  selected={data.data.type == "income" ? true : false}
-                  value="income"
+                  selected={invoice.data[0].type == "income" && true}
+                  defaultValue="income"
                 >
                   Receitas
                 </option>
                 <option
-                  selected={data.data.type == "expense" ? true : false}
-                  value="expense"
+                  selected={invoice.data[0].type == "expense" && true}
+                  defaultValue="expense"
                 >
                   Despesas
                 </option>
@@ -74,28 +96,55 @@ const CreateTransaction = async ({ searchParams }: Props) => {
               <Label>Carteira</Label>
               <Select name="wallet-id">
                 <option>Escolha...</option>
-                <option value="expense">wallet 1</option>
-                <option value="expense">wallet 2</option>
+                {wallet.data.map((item: any) => {
+                  return (
+                    <option
+                      selected={invoice.data[0].wallet_id == item.id && true}
+                      value={item.id}
+                    >
+                      {item.name}
+                    </option>
+                  );
+                })}
               </Select>
             </div>
             <div className="mb-3">
               <Label>Categoria</Label>
               <Select name="category_id">
                 <option>Escolha...</option>
-                <option value="expense">wallet 1</option>
-                <option value="expense">wallet 2</option>
+
+                {category.data.map((item: any) => {
+                  return (
+                    <option
+                      selected={invoice.data[0].category_id == item.id && true}
+                      value={item.id}
+                    >
+                      {item.name}
+                    </option>
+                  );
+                })}
               </Select>
             </div>
             <div className="mb-3">
               <Label>Pagamento status</Label>
               <Select name="pay">
                 <option>Escolha...</option>
-                <option value="paid">Pago</option>
-                <option value="unpaid">Não pago</option>
+                <option
+                  selected={invoice.data[0].pay == "paid" && true}
+                  value="paid"
+                >
+                  Pago
+                </option>
+                <option
+                  selected={invoice.data[0].pay == "unpaid" && true}
+                  value="unpaid"
+                >
+                  Não pago
+                </option>
               </Select>
             </div>
           </div>
-          <div className="mb-3">
+          <div className="my-3 grid grid-cols-1 md:grid-cols-3">
             <Submit text="Salvar" />
           </div>
         </form>

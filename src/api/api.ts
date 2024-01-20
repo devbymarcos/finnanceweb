@@ -52,6 +52,21 @@ export const getCategoryApi = (token: string | undefined): ApiRequest => {
     },
   };
 };
+export const getCategoryIdApi = (
+  token: string | undefined,
+  categoryId?: string
+): ApiRequest => {
+  return {
+    url: `${URL}/category/${categoryId}`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
 
 export const getWalletApi = (token: string | undefined): ApiRequest => {
   return {
