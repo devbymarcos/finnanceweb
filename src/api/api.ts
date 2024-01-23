@@ -3,11 +3,11 @@ const URL = process.env.API_HOST;
 //LOGIN INIT
 interface ApiRequestOptions {
   method: string;
-  body?: FormData | string;
+  body?: string;
   cache?: RequestCache | undefined;
   headers?: {
     "Content-Type": string;
-    Authorization: string;
+    Authorization?: string;
   };
 }
 
@@ -16,11 +16,14 @@ interface ApiRequest {
   options: ApiRequestOptions;
 }
 
-export const postLoginApi = (dataForm: FormData): ApiRequest => {
+export const postLoginApi = (dataForm: string): ApiRequest => {
   return {
     url: `${URL}/login`,
     options: {
-      method: "POSt",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: dataForm,
       cache: "no-cache",
     },
@@ -124,7 +127,7 @@ export const getInvoiceApi = (
 export const getInvoiceIdApi = (
   token: string | undefined,
   invoiceId?: string
-) => {
+): ApiRequest => {
   return {
     url: `${URL}/invoice/${invoiceId}`,
     options: {
@@ -133,6 +136,24 @@ export const getInvoiceIdApi = (
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+    },
+  };
+};
+
+export const postInvoiceApi = (
+  token: string | undefined,
+  dataForm: string
+): ApiRequest => {
+  return {
+    url: `${URL}/invoice`,
+    options: {
+      method: "POST",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: dataForm,
     },
   };
 };
