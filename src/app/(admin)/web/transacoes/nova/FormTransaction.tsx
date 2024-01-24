@@ -8,7 +8,8 @@ import { useFormState } from "react-dom";
 import { postTransaction } from "./actions";
 import { typesTransaction } from "./types";
 import { Alert, useAlert } from "@/components/alert/Alert";
-import { useFormStatus } from "react-dom";
+import { currency } from "remask";
+import { useState } from "react";
 
 const initialState: typesTransaction = {
   data: {
@@ -53,9 +54,25 @@ type Props = {
 const FormTransaction = ({ wallet, category }: Props) => {
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
+  const [priceMask, setPriceMask] = useState("0");
+
+  const onChange = (event: Event) => {
+    const inputElement = event.target as HTMLInputElement;
+    const originalValue = currency.unmask({
+      locale: "pt-BR",
+      currency: "BRL",
+      value: inputElement.value,
+    });
+    const maskedValue = currency.mask({
+      locale: "pt-BR",
+      currency: "BRL",
+      value: originalValue,
+    });
+
+    setPriceMask(maskedValue);
+  };
 
   useEffect(() => {
-    console.log(state.data.type);
     if (state.data.status) {
       setAlert({
         active: true,
@@ -79,7 +96,12 @@ const FormTransaction = ({ wallet, category }: Props) => {
           </div>
           <div className="mb-3">
             <Label>Valor</Label>
-            <Input type="text" name="price" />
+            <Input
+              type="text"
+              name="price"
+              value={priceMask}
+              onChange={onChange}
+            />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.price}
             </p>

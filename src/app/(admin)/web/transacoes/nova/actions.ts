@@ -2,6 +2,8 @@
 import { z } from "zod";
 import { postInvoiceApi } from "@/api/api";
 import { cookies } from "next/headers";
+import { jsonFormatterFormData } from "@/functions/helpers";
+import { currency } from "remask";
 
 const schema = z.object({
   description: z.string().min(8, "escreva uma descrição"),
@@ -40,13 +42,18 @@ export async function postTransaction(prevState: any, formData: FormData) {
     };
   }
   const token: string | undefined = cookies().get("token")?.value;
-  let jsonObject: any = {};
-  formData.forEach(function (value, key) {
-    jsonObject[key] = value;
+  //Remoção da mask para Database
+  const priceDb = currency.unmask({
+    locale: "pt-BR",
+    currency: "BRL",
+    value: String(formData.get("price")),
   });
-  const jsonData = JSON.stringify(jsonObject);
-
-  const { url, options } = postInvoiceApi(token, jsonData);
+  //adicionado valor de volta ao objeto FormData
+  formData.set("price", String(priceDb));
+  const { url, options } = postInvoiceApi(
+    token,
+    jsonFormatterFormData(formData)
+  );
   const response = await fetch(url, options);
   const json = await response.json();
   if (json.data && json.data[0].id) {

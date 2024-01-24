@@ -3,6 +3,7 @@ import { z } from "zod";
 import { postLoginApi } from "@/api/api";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { jsonFormatterFormData } from "@/functions/helpers";
 
 const schema = z.object({
   email: z.string().email("Email Inválido"),
@@ -25,10 +26,10 @@ export async function userLogin(prevState: any, formData: FormData) {
     };
   }
 
-  const { url, options } = postLoginApi(formData);
+  const { url, options } = postLoginApi(jsonFormatterFormData(formData));
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log(json);
+
   if (Array.isArray(json.data) && json.data[0].id) {
     const oneDay = 24 * 60 * 60 * 1000;
 
