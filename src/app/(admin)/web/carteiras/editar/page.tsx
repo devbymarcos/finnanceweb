@@ -1,7 +1,7 @@
 import CardStyle from "@/components/cards/CardStyle";
 import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
-import { getWalletIdApi } from "@/api/api";
+import { getWalletIdApi } from "@/http/api";
 import React from "react";
 import Submit from "@/components/form/Submit";
 import { cookies } from "next/headers";

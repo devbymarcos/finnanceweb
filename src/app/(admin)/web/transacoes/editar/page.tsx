@@ -3,7 +3,7 @@ import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
 import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
-import { getInvoiceIdApi, getWalletApi, getCategoryApi } from "@/api/api";
+import { getInvoiceIdApi, getWalletApi, getCategoryApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { formattedDateInput, formattedDateView } from "@/functions/helpers";
 

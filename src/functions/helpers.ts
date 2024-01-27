@@ -6,8 +6,8 @@ export function currencyFormatUI(value: number) {
 }
 // @return "DD/MM/YY"
 export function formattedDateView(date: string) {
-  const dateFormatted = new Date(date);
-  return dateFormatted.toLocaleDateString("pt-BR");
+  const dateString = date.split("T")[0];
+  return dateString.split("-").reverse().join("/");
 }
 
 export function formattedDateInput(dateString: string) {

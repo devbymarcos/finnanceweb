@@ -4,7 +4,7 @@ import Label from "@/components/form/Label";
 import Select from "@/components/form/Select";
 import React from "react";
 import Submit from "@/components/form/Submit";
-import { getCategoryIdApi } from "@/api/api";
+import { getCategoryIdApi } from "@/http/api";
 import { cookies } from "next/headers";
 async function getCategory(categoryId?: string) {
   const token = cookies().get("token")?.value;

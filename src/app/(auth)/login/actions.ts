@@ -1,6 +1,6 @@
 "use server";
 import { z } from "zod";
-import { postLoginApi } from "@/api/api";
+import { postLoginApi } from "@/http/api";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";

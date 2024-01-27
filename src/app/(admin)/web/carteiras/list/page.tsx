@@ -1,4 +1,4 @@
-import { getWalletApi } from "@/api/api";
+import { getWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
 

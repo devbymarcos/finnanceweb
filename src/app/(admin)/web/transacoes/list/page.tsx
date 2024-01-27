@@ -1,4 +1,4 @@
-import { getInvoiceApi } from "@/api/api";
+import { getInvoiceApi } from "@/http/api";
 import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
 import { currencyFormatUI, formattedDateView } from "@/functions/helpers";

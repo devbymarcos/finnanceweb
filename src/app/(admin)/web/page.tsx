@@ -1,7 +1,7 @@
 "use server";
 import SavePlansItem from "@/app/(admin)/web/dash/SavePlansItem";
 import CardStyle from "../../../components/cards/CardStyle";
-import { getDashApi } from "@/api/api";
+import { getDashApi } from "@/http/api";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";

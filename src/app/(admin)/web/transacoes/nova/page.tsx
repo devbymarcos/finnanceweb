@@ -1,6 +1,6 @@
 import CardStyle from "@/components/cards/CardStyle";
 import FormTransaction from "./FormTransaction";
-import { getWalletApi, getCategoryApi } from "@/api/api";
+import { getWalletApi, getCategoryApi } from "@/http/api";
 import { cookies } from "next/headers";
 
 async function getWallet() {

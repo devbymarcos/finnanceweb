@@ -1,4 +1,4 @@
-import { getCategoryApi } from "@/api/api";
+import { getCategoryApi } from "@/http/api";
 import EditIcon from "@/components/icons/EditIcon";
 import Link from "next/link";
 import { cookies } from "next/headers";

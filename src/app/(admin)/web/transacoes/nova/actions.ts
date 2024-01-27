@@ -1,6 +1,6 @@
 "use server";
 import { z } from "zod";
-import { postInvoiceApi } from "@/api/api";
+import { postInvoiceApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";
 import { currency } from "remask";
@@ -57,7 +57,6 @@ export async function postTransaction(prevState: any, formData: FormData) {
   const response = await fetch(url, options);
   const json = await response.json();
   if (json.data && json.data[0].id) {
-    console.log(json.data);
     return {
       data: {
         errors: {

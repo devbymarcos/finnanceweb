@@ -67,6 +67,7 @@ export const getCategoryIdApi = (
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   };
 };
@@ -80,6 +81,7 @@ export const getWalletApi = (token: string | undefined): ApiRequest => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   };
 };
@@ -96,6 +98,7 @@ export const getWalletIdApi = (
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   };
 };
@@ -136,6 +139,7 @@ export const getInvoiceIdApi = (
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      cache: "no-cache",
     },
   };
 };

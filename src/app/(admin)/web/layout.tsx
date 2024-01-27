@@ -13,7 +13,7 @@ export default function RootLayout({
     <>
       <Sidebar />
       <Header />
-      <main className="absolute bg-base-white dark:bg-base-black-200 md:left-[250px] w-full md:w-full-custom min-h-screen   p-6 mt-24">
+      <main className="absolute bg-base-white dark:bg-base-black-200 md:left-[250px] w-full md:w-full-custom min-h-screen    p-6 mt-24">
         {children}
       </main>
     </>
