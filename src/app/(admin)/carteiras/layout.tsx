@@ -8,17 +8,17 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
   return (
     <section>
       <h1 className="text-base-black text-xl mb-4 font-bold dark:text-base-white">
-        Transações
+        Carteiras
       </h1>
       <nav className="mb-12">
         <ul className="flex gap-4">
           <li>
-            <BtnLinkSubMenu href="/web/transacoes/list">
+            <BtnLinkSubMenu href="/carteiras/list">
               <ListIcon />
             </BtnLinkSubMenu>
           </li>
           <li>
-            <BtnLinkSubMenu href="/web/transacoes/nova">
+            <BtnLinkSubMenu href="/carteiras/nova">
               <CreateIcon />
             </BtnLinkSubMenu>
           </li>

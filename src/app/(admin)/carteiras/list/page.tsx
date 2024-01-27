@@ -37,7 +37,7 @@ const ListCategory = async () => {
             return (
               <TrLink
                 key={item.id}
-                router={`/web/carteiras/editar?walletId=${item.id}`}
+                router={`/carteiras/editar?walletId=${item.id}`}
               >
                 <th
                   scope="row"

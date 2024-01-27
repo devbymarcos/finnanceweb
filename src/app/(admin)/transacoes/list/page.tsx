@@ -44,7 +44,7 @@ const ListTransaction = async ({ searchParams }: Props) => {
             data.data.map((invoice: any) => {
               return (
                 <TrLink
-                  router={`/web/transacoes/editar?invoiceId=${invoice.id}`}
+                  router={`/transacoes/editar?invoiceId=${invoice.id}`}
                   key={invoice.id}
                 >
                   <th

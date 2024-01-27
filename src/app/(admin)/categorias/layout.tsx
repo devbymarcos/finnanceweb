@@ -6,19 +6,19 @@ import React from "react";
 
 const layoutCategory = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section>
+    <section className="mb-12">
       <h1 className="text-base-black text-xl mb-4 font-bold dark:text-base-white">
-        Carteiras
+        Categorias
       </h1>
       <nav className="mb-12">
         <ul className="flex gap-4">
           <li>
-            <BtnLinkSubMenu href="/web/carteiras/list">
+            <BtnLinkSubMenu href="/categorias/list">
               <ListIcon />
             </BtnLinkSubMenu>
           </li>
           <li>
-            <BtnLinkSubMenu href="/web/carteiras/nova">
+            <BtnLinkSubMenu href="/categorias/nova">
               <CreateIcon />
             </BtnLinkSubMenu>
           </li>

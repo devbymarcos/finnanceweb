@@ -51,6 +51,30 @@ type Props = {
     }>;
   };
 };
+
+interface InputMask {
+  type: string;
+  value?: string;
+  placeholder?: string;
+  name: string;
+  required?: boolean;
+  onChange?: (e: any) => void;
+  defaultValue?: string;
+}
+
+const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
+  return (
+    <input
+      type={type}
+      className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
+      value={value}
+      name={name}
+      required={required}
+      onChange={onChange}
+    />
+  );
+};
+
 const FormTransaction = ({ wallet, category }: Props) => {
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
@@ -96,7 +120,7 @@ const FormTransaction = ({ wallet, category }: Props) => {
           </div>
           <div className="mb-3">
             <Label>Valor</Label>
-            <Input
+            <InputMask
               type="text"
               name="price"
               value={priceMask}

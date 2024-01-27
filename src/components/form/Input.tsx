@@ -10,7 +10,6 @@ interface Props {
 
 const Input = ({
   type,
-  value,
   placeholder,
   name,
   required,
@@ -21,8 +20,7 @@ const Input = ({
     <input
       type={type}
       className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
-      // defaultValue={defaultValue}
-      value={value}
+      defaultValue={defaultValue}
       placeholder={placeholder}
       name={name}
       required={required}

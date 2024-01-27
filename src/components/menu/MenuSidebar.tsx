@@ -20,23 +20,23 @@ const MenuSideBar = () => {
     {
       title: "Dashboard",
       icon: <DashIcon colors="#fff" />,
-      path: "/web",
+      path: "/",
     },
     {
       title: "Carterias",
       icon: <WalletIcon colors="#fff" />,
-      path: "/web/carteiras/list",
+      path: "/carteiras/list",
     },
     {
       title: "Categorias",
       icon: <CategoryIcon colors="#fff" />,
-      path: "/web/categorias/list",
+      path: "/categorias/list",
     },
 
     {
       title: "Transações",
       icon: <TransactionIcon colors="#fff" />,
-      path: "/web/transacoes/list",
+      path: "/transacoes/list",
     },
   ];
   return (
