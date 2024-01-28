@@ -56,15 +56,21 @@ const ListTransaction = async ({ searchParams }: Props) => {
                       <p className="text-[11px]">
                         {formattedDateView(invoice.due_at)}
                       </p>
+                      <p className={`inline-block  py-1 text-[10px] `}>
+                        {invoice.type == "income" ? "Receita" : "Despesa"}
+                      </p>
                     </div>
                     <div
                       className={`${
                         invoice.type == "income"
                           ? "text-blue-500"
                           : "text-red-500"
-                      }`}
+                      } `}
                     >
-                      {currencyFormatUI(invoice.price)}
+                      {invoice.type == "income" &&
+                        "+ " + currencyFormatUI(invoice.price)}
+                      {invoice.type == "expense" &&
+                        "- " + currencyFormatUI(invoice.price)}
                     </div>
                   </th>
                 </TrLink>
