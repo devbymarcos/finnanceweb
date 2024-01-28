@@ -58,7 +58,11 @@ const ListTransaction = async ({ searchParams }: Props) => {
                       </p>
                     </div>
                     <div
-                      className={`${true ? "text-blue-500" : "text-red-500"}`}
+                      className={`${
+                        invoice.type == "income"
+                          ? "text-blue-500"
+                          : "text-red-500"
+                      }`}
                     >
                       {currencyFormatUI(invoice.price)}
                     </div>

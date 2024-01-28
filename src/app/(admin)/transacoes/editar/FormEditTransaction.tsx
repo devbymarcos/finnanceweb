@@ -22,8 +22,6 @@ const initialState: InitialState = {
       wallet_id: "",
       category_id: "",
       pay: "",
-      repeat_when: "",
-      installments: "",
     },
     message: "",
     status: false,
@@ -60,6 +58,7 @@ const FormEditTransaction = ({
       currency: "BRL",
       value: inputElement.value,
     });
+
     const maskedValue = currency.mask({
       locale: "pt-BR",
       currency: "BRL",
@@ -69,7 +68,6 @@ const FormEditTransaction = ({
     setPriceMask(maskedValue);
   };
 
-  console.log(invoice.data[0].price);
   useEffect(() => {
     setPriceMask(
       currency.mask({
@@ -95,8 +93,8 @@ const FormEditTransaction = ({
       <Alert {...alert} />
       <form action={formAction}>
         <input type="hidden" value={invoice.data[0].id} name="id" />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="mb-3 md:col-span-3">
+        <div className="grid grid-cols-1 ">
+          <div className="mb-3 ">
             <Label>Descrição</Label>
             <Input
               type="text"
@@ -105,6 +103,20 @@ const FormEditTransaction = ({
             />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.description}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-3">
+            <Label>Data</Label>
+            <Input
+              type="date"
+              name="due_at"
+              defaultValue={formattedDateInput(invoice.data[0].due_at)}
+            />
+            <p className="text-red-500 text-[11px] ">
+              {state?.data.errors.due_at}
             </p>
           </div>
           <div className="mb-3">
@@ -120,52 +132,48 @@ const FormEditTransaction = ({
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="mb-3">
-            <Label>Data</Label>
-            <Input
-              type="date"
-              name="due_at"
-              defaultValue={formattedDateInput(invoice.data[0].due_at)}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
+          <div className="flex items-center mb-4">
+            <input
+              id="income"
+              type="radio"
+              value="income"
+              name="type"
+              className="w-5 h-5 cursor-pointer "
+              defaultChecked={invoice.data[0].type === "income" && true}
             />
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.due_at}
-            </p>
+            <label
+              htmlFor="income"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+            >
+              Receitas
+            </label>
           </div>
-
-          <div className="mb-3">
-            <Label>Tipo</Label>
-            <Select name="type">
-              <option>Escolha...</option>
-              <option
-                selected={invoice.data[0].type == "income" && true}
-                defaultValue="income"
-              >
-                Receitas
-              </option>
-              <option
-                selected={invoice.data[0].type == "expense" && true}
-                defaultValue="expense"
-              >
-                Despesas
-              </option>
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.type}
-            </p>
+          <div className="flex items-center mb-4">
+            <input
+              id="expense"
+              type="radio"
+              value="expense"
+              name="type"
+              className="w-5 h-5 cursor-pointer"
+              defaultChecked={invoice.data[0].type === "expense" && true}
+            />
+            <label
+              htmlFor="expense"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+            >
+              Despesas
+            </label>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="mb-3">
             <Label>Carteira</Label>
-            <Select name="wallet_id">
+            <Select name="wallet_id" defaultValue={invoice.data[0].wallet_id}>
               <option>Escolha...</option>
               {wallet.data.map((item: any) => {
                 return (
-                  <option
-                    selected={invoice.data[0].wallet_id == item.id && true}
-                    value={item.id}
-                  >
+                  <option value={item.id} key={item.id}>
                     {item.name}
                   </option>
                 );
@@ -177,15 +185,14 @@ const FormEditTransaction = ({
           </div>
           <div className="mb-3">
             <Label>Categoria</Label>
-            <Select name="category_id">
+            <Select
+              name="category_id"
+              defaultValue={invoice.data[0].category_id}
+            >
               <option>Escolha...</option>
-
               {category.data.map((item: any) => {
                 return (
-                  <option
-                    selected={invoice.data[0].category_id == item.id && true}
-                    value={item.id}
-                  >
+                  <option value={item.id} key={item.id}>
                     {item.name}
                   </option>
                 );
@@ -197,20 +204,10 @@ const FormEditTransaction = ({
           </div>
           <div className="mb-3">
             <Label>Pagamento status</Label>
-            <Select name="pay">
+            <Select name="pay" defaultValue={invoice.data[0].pay}>
               <option>Escolha...</option>
-              <option
-                selected={invoice.data[0].pay == "paid" && true}
-                value="paid"
-              >
-                Pago
-              </option>
-              <option
-                selected={invoice.data[0].pay == "unpaid" && true}
-                value="unpaid"
-              >
-                Não pago
-              </option>
+              <option value="paid">Pago</option>
+              <option value="unpaid">Não pago</option>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.pay}
@@ -218,7 +215,7 @@ const FormEditTransaction = ({
           </div>
         </div>
         <div className="my-3 grid grid-cols-1 md:grid-cols-3">
-          <Submit text="Salvar" />
+          <Submit text="Atualizar" />
         </div>
       </form>
     </>

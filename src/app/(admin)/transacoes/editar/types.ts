@@ -42,8 +42,6 @@ export interface InitialState {
       wallet_id: string;
       category_id: string;
       pay: string;
-      repeat_when: string;
-      installments: string;
     };
     message: string;
     status: boolean;

@@ -49,13 +49,13 @@ const CreateCategory = async ({ searchParams }: Params) => {
               <option>Escolhar...</option>
               <option
                 selected={category.data[0].type == "expense" && true}
-                value="expense"
+                defaultValue="expense"
               >
                 Despesas
               </option>
               <option
                 selected={category.data[0].type == "income" && true}
-                value="income"
+                defaultValue="income"
               >
                 Receitas
               </option>

@@ -110,12 +110,20 @@ const FormTransaction = ({ wallet, category }: Props) => {
     <>
       <Alert {...alert} />
       <form action={formAction}>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div className="mb-3 md:col-span-3">
-            <Label>Descrição</Label>
-            <Input type="text" name="description" />
+        <div className="mb-3 md:col-span-3">
+          <Label>Descrição</Label>
+          <Input type="text" name="description" />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.description}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-3">
+            <Label>Data</Label>
+            <Input type="date" name="due_at" />
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.description}
+              {state?.data.errors.due_at}
             </p>
           </div>
           <div className="mb-3">
@@ -131,24 +139,36 @@ const FormTransaction = ({ wallet, category }: Props) => {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="mb-3">
-            <Label>Data</Label>
-            <Input type="date" name="due_at" />
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.due_at}
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
+          <div className="flex items-center mb-4">
+            <input
+              id="income"
+              type="radio"
+              value="income"
+              name="type"
+              className="w-5 h-5 cursor-pointer "
+            />
+            <label
+              htmlFor="income"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+            >
+              Receitas
+            </label>
           </div>
-          <div className="mb-3">
-            <Label>Tipo</Label>
-            <Select name="type" placeholder="Escolha...">
-              <option value="">Escolha...</option>
-              <option value="income">Receitas</option>
-              <option value="expense">Despesas</option>
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.type}
-            </p>
+          <div className="flex items-center mb-4">
+            <input
+              id="expense"
+              type="radio"
+              value="expense"
+              name="type"
+              className="w-5 h-5 cursor-pointer"
+            />
+            <label
+              htmlFor="expense"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+            >
+              Despesas
+            </label>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
