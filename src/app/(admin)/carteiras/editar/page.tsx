@@ -22,7 +22,7 @@ type Params = {
 const CreateCategory = async ({ searchParams }: Params) => {
   const wallet = await getWallet(searchParams?.walletId);
   console.log("TCL: CreateCategory -> wallet", wallet);
-
+  // TODO ENVIAR DADOS PARA API PARA EDICAO
   return (
     <section>
       <CardStyle>

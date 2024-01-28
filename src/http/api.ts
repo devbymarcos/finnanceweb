@@ -161,3 +161,21 @@ export const postInvoiceApi = (
     },
   };
 };
+
+export const putInvoiceApi = (
+  token: string | undefined,
+  dataForm: string
+): ApiRequest => {
+  return {
+    url: `${URL}/invoice`,
+    options: {
+      method: "PUT",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: dataForm,
+    },
+  };
+};
