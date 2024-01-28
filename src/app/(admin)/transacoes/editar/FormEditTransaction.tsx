@@ -68,6 +68,18 @@ const FormEditTransaction = ({
     setPriceMask(maskedValue);
   };
 
+  const deleteAlert = () => {
+    const confirmed = confirm(
+      "Você marcou este registro para ser removido. Tem Certeza?"
+    );
+    if (!confirmed) {
+      const inputElem: HTMLElement | null = document.getElementById("delete");
+      if (inputElem instanceof HTMLInputElement) {
+        inputElem.checked = false;
+      }
+    }
+  };
+
   useEffect(() => {
     setPriceMask(
       currency.mask({
@@ -214,8 +226,24 @@ const FormEditTransaction = ({
             </p>
           </div>
         </div>
-        <div className="my-3 grid grid-cols-1 md:grid-cols-3">
-          <Submit text="Atualizar" />
+        <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
+          <Submit text="Salvar" />
+          <div className="flex items-center mb-4 col-start-4">
+            <input
+              id="delete"
+              type="checkbox"
+              name="delete"
+              className="w-5 h-5 cursor-pointer "
+              defaultValue=""
+              onChange={deleteAlert}
+            />
+            <label
+              htmlFor="delete"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+            >
+              Apagar este registro
+            </label>
+          </div>
         </div>
       </form>
     </>
