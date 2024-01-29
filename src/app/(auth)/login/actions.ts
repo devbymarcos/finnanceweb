@@ -41,7 +41,7 @@ export async function userLogin(prevState: any, formData: FormData) {
       expires: new Date(Date.now() + oneDay),
     });
 
-    redirect("/web");
+    redirect("/");
   }
 
   return {
