@@ -1,10 +1,11 @@
 "use server";
 import { z } from "zod";
-import { putInvoiceApi } from "@/http/api";
+import { deleteInvoiceApi, putInvoiceApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";
 import { currency } from "remask";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 const schema = z.object({
   description: z.string().min(8, "escreva uma descrição"),
@@ -17,6 +18,18 @@ const schema = z.object({
 });
 
 export async function UpdateTransaction(prevState: any, formData: FormData) {
+  if (formData.get("delete") === "true") {
+    const id = String(formData.get("id"));
+    const token: string | undefined = cookies().get("token")?.value;
+    const { url, options } = deleteInvoiceApi(token, id);
+
+    const response = await fetch(url, options);
+    const json = await response.json();
+
+    revalidatePath("/transacoes/list");
+    redirect("/transacoes/list");
+  }
+
   const validatedFields = schema.safeParse({
     description: formData.get("description"),
     price: formData.get("price"),

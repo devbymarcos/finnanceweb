@@ -179,3 +179,19 @@ export const putInvoiceApi = (
     },
   };
 };
+export const deleteInvoiceApi = (
+  token: string | undefined,
+  id: string
+): ApiRequest => {
+  return {
+    url: `${URL}/invoice/${id}`,
+    options: {
+      method: "DELETE",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
