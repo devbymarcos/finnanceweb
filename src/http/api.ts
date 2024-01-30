@@ -103,6 +103,24 @@ export const getWalletIdApi = (
   };
 };
 
+export const putWalletApi = (
+  token: string | undefined,
+  formData: string
+): ApiRequest => {
+  return {
+    url: `${URL}/wallet`,
+    options: {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-cache",
+      body: formData,
+    },
+  };
+};
+
 type params =
   | {
       dateone?: string;

@@ -7,7 +7,7 @@ import { currency } from "remask";
 import { revalidatePath } from "next/cache";
 
 const schema = z.object({
-  description: z.string().min(8, "escreva uma descrição"),
+  description: z.string().min(8, "A descriçao deve ter no mínimo 8 caracteres"),
   price: z.string().min(1, "Prencha um valor"),
   due_at: z.string().min(10, "Preencha a Data"),
   type: z.string().min(6, "Escolha o tipo"),
@@ -32,7 +32,6 @@ export async function postTransaction(prevState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
     return {
       data: {
         errors: validatedFields.error.flatten().fieldErrors,
