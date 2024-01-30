@@ -4,6 +4,7 @@ import { postInvoiceApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";
 import { currency } from "remask";
+import { revalidatePath } from "next/cache";
 
 const schema = z.object({
   description: z.string().min(8, "escreva uma descrição"),
@@ -56,6 +57,7 @@ export async function postTransaction(prevState: any, formData: FormData) {
   );
   const response = await fetch(url, options);
   const json = await response.json();
+  revalidatePath("/transacoes/list");
   if (json.data && json.data[0].id) {
     return {
       data: {
