@@ -103,6 +103,24 @@ export const getWalletIdApi = (
   };
 };
 
+export const postWalletApi = (
+  token: string | undefined,
+  formData: string
+): ApiRequest => {
+  return {
+    url: `${URL}/wallet`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-cache",
+      body: formData,
+    },
+  };
+};
+
 export const putWalletApi = (
   token: string | undefined,
   formData: string
@@ -117,6 +135,23 @@ export const putWalletApi = (
       },
       cache: "no-cache",
       body: formData,
+    },
+  };
+};
+
+export const deleteWalletApi = (
+  token: string | undefined,
+  walletId: string
+): ApiRequest => {
+  return {
+    url: `${URL}/wallet/${walletId}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-cache",
     },
   };
 };

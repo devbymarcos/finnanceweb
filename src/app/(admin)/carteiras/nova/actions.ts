@@ -1,10 +1,9 @@
 "use server";
 import { z } from "zod";
-import { deleteWalletApi, putWalletApi } from "@/http/api";
+import { postWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 const schema = z.object({
   name: z.string().min(3, "Insira um nome para carteira"),
@@ -13,26 +12,13 @@ const schema = z.object({
     .min(3, "Escreva uma descrição com no minimo 8 caracteres"),
 });
 
-export async function updateWallet(prevState: any, formData: FormData) {
-  if (formData.get("delete") === "true") {
-    const id = String(formData.get("id"));
-    const token: string | undefined = cookies().get("token")?.value;
-    const { url, options } = deleteWalletApi(token, id);
-
-    const response = await fetch(url, options);
-    const json = await response.json();
-
-    revalidatePath("/carteiras/list");
-    redirect("/carteiras/list");
-  }
-
+export async function createWallet(prevState: any, formData: FormData) {
   const validatedFields = schema.safeParse({
     name: formData.get("name"),
     description: formData.get("description"),
   });
 
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
     return {
       data: {
         errors: validatedFields.error.flatten().fieldErrors,
@@ -44,7 +30,10 @@ export async function updateWallet(prevState: any, formData: FormData) {
   }
 
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = putWalletApi(token, jsonFormatterFormData(formData));
+  const { url, options } = postWalletApi(
+    token,
+    jsonFormatterFormData(formData)
+  );
 
   const response = await fetch(url, options);
   const json = await response.json();
