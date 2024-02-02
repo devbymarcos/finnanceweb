@@ -33,26 +33,27 @@ const ListCategory = async () => {
           </tr>
         </thead>
         <tbody>
-          {data.data.map((item: dataTypesMap) => {
-            return (
-              <TrLink
-                key={item.id}
-                router={`/carteiras/editar?walletId=${item.id}`}
-              >
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          {data.data &&
+            data.data.map((item: dataTypesMap) => {
+              return (
+                <TrLink
+                  key={item.id}
+                  router={`/carteiras/editar?walletId=${item.id}`}
                 >
-                  <div>
-                    <p>{item.name}</p>
-                    <p className="text-[11px] text-base-secondary">
-                      {item.description}
-                    </p>
-                  </div>
-                </th>
-              </TrLink>
-            );
-          })}
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <div>
+                      <p>{item.name}</p>
+                      <p className="text-[11px] text-base-secondary">
+                        {item.description}
+                      </p>
+                    </div>
+                  </th>
+                </TrLink>
+              );
+            })}
         </tbody>
       </table>
     </div>
