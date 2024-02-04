@@ -56,6 +56,23 @@ export const getCategoryApi = (token: string | undefined): ApiRequest => {
   };
 };
 
+export const postCategoryApi = (
+  token: string | undefined,
+  formData: string
+): ApiRequest => {
+  return {
+    url: `${URL}/category`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    },
+  };
+};
+
 export const putCategoryApi = (
   token: string | undefined,
   formData: string
