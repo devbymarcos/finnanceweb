@@ -55,6 +55,40 @@ export const getCategoryApi = (token: string | undefined): ApiRequest => {
     },
   };
 };
+
+export const putCategoryApi = (
+  token: string | undefined,
+  formData: string
+): ApiRequest => {
+  return {
+    url: `${URL}/category`,
+    options: {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    },
+  };
+};
+
+export const deleteCategoryApi = (
+  token: string | undefined,
+  id: string
+): ApiRequest => {
+  return {
+    url: `${URL}/category/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
+
 export const getCategoryIdApi = (
   token: string | undefined,
   categoryId?: string
