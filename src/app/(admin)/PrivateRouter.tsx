@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -6,6 +7,9 @@ type Props = {
 
 const PrivateRouter = ({ children }: Props) => {
   const token: boolean = cookies().has("token");
+  if (!token) {
+    redirect("/login");
+  }
   return (
     <>
       {!token && null}

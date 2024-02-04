@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import MenuSideBar from "../menu/MenuSidebar";
 import BtnDark from "@/components/btn-dark-mode/BtnDark";

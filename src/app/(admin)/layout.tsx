@@ -1,5 +1,3 @@
-"use client";
-
 import "../globals.css";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Header from "../../components/header/Header";
