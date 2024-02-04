@@ -32,9 +32,6 @@ const ListCategory = async () => {
             <th scope="col" className="px-6 py-3">
               Descrição
             </th>
-            <th scope="col" className="px-6 py-3">
-              Tipo
-            </th>
           </tr>
         </thead>
         <tbody>
@@ -49,16 +46,14 @@ const ListCategory = async () => {
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   {item.name}
-                </th>
-                <td className="px-6 py-4">
                   <span
                     className={`${
-                      item.type == "expense" ? "bg-red-500" : "bg-blue-500"
-                    } text-[12px] py-1 px-2 text-white rounded-md`}
+                      item.type == "expense" ? "text-red-500" : "text-blue-500"
+                    } text-[12px]    rounded-md block`}
                   >
                     {item.type == "expense" ? "Despesa" : "Receita"}
                   </span>
-                </td>
+                </th>
               </TrLink>
             );
           })}
