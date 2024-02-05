@@ -1,5 +1,5 @@
 "use server";
-import SavePlansItem from "@/app/(admin)/dash/SavePlansItem";
+import OpenTransaction from "@/app/(admin)/dash/OpenTransaction";
 import CardStyle from "../../components/cards/CardStyle";
 import { getDashApi } from "@/http/api";
 import dynamic from "next/dynamic";
@@ -78,26 +78,11 @@ async function Index() {
         <div className="">
           <CardStyle>
             <h3 className="text-base-secondary first-line:font-bold text-lg">
-              Metas
+              Transações Em aberto
             </h3>
-            <SavePlansItem
-              title="Viagem exterior "
-              type="income"
-              value="1200,00"
-              percentage="50"
-            />
-            <SavePlansItem
-              title="Energia"
-              type="expense"
-              value="500,00"
-              percentage="60"
-            />
-            <SavePlansItem
-              title="Alimentação"
-              type="expense"
-              value="90,00"
-              percentage="40"
-            />
+            <OpenTransaction title="Viagem exterior " value="1200,00" />
+            <OpenTransaction title="Energia" value="500,00" />
+            <OpenTransaction title="Alimentação" value="90,00" />
           </CardStyle>
         </div>
       </section>
