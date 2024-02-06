@@ -4,6 +4,7 @@ import DashIcon from "../icons/DashIcon";
 import CategoryIcon from "../icons/CategoryIcon";
 import WalletIcon from "../icons/WalletIcons";
 import TransactionIcon from "../icons/TransactionIcon";
+import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
 import { useStore } from "@/hooks/useStore";
 
@@ -44,6 +45,11 @@ const MenuSideBar = () => {
       title: "Transações",
       icon: <TransactionIcon colors="#fff" />,
       path: "/transacoes/list",
+    },
+    {
+      title: "Logout",
+      icon: <LogoutIcon />,
+      path: "/logout",
     },
   ];
   return (
