@@ -25,7 +25,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="flex gap-2 mb-3 items-center w-1/2">
+      <div className="flex  flex-col md:flex-row gap-2 mb-3 items-center md:w-1/2">
         <div className="w-full">
           <Input
             onChange={(e) => {
