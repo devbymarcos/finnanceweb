@@ -1,9 +1,9 @@
+"use client";
 import Link from "next/link";
 import DashIcon from "../icons/DashIcon";
 import CategoryIcon from "../icons/CategoryIcon";
 import WalletIcon from "../icons/WalletIcons";
 import TransactionIcon from "../icons/TransactionIcon";
-import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
 import { useStore } from "@/hooks/useStore";
 
@@ -14,8 +14,15 @@ interface MenuData {
 }
 
 const MenuSideBar = () => {
-  const dark = useStore((state) => state.dark);
+  const [dark, updateOpenSideBar, openSideBar] = useStore((state) => [
+    state.dark,
+    state.updateOpenSideBar,
+    state.openSideBar,
+  ]);
 
+  function open() {
+    updateOpenSideBar(!openSideBar);
+  }
   const menuData: MenuData[] = [
     {
       title: "Dashboard",
@@ -45,7 +52,7 @@ const MenuSideBar = () => {
         <ul>
           {menuData.map((item: MenuData) => {
             return (
-              <li key={item.title} className="px-2 py-2">
+              <li key={item.title} className="px-2 py-2" onClick={open}>
                 <Link
                   href={item.path}
                   className="flex gap-4 pl-8 text-font-color-dark  font-bold hover:bg-slate-500 dark:hover:bg-base-black-200 py-3 rounded-xl"
