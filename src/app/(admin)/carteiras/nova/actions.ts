@@ -47,7 +47,7 @@ export async function createWallet(prevState: any, formData: FormData) {
           name: "",
           description: "",
         },
-        message: "Registro Atualizado com sucesso",
+        message: "Carteira criada com sucesso",
         status: true,
         type: "succes",
       },
