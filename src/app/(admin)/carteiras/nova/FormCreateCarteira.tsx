@@ -2,7 +2,7 @@
 import Label from "@/components/form/Label";
 import Input from "@/components/form/Input";
 import { Alert, useAlert } from "@/components/alert/Alert";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Submit from "@/components/form/Submit";
 import { InitialState } from "./types";
 import { useFormState } from "react-dom";
@@ -23,6 +23,7 @@ const initialState: InitialState = {
 const FormCreateCarteira = () => {
   const [state, formAction] = useFormState(createWallet, initialState);
   const { alert, setAlert } = useAlert();
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     if (state.data.status) {
@@ -31,12 +32,13 @@ const FormCreateCarteira = () => {
         message: state.data.message,
         type: state.data.type,
       });
+      formRef.current?.reset();
     }
   }, [state]);
   return (
     <>
       <Alert {...alert} />
-      <form action={formAction}>
+      <form ref={formRef} action={formAction}>
         <div className="mb-12">
           <Label>Nome</Label>
           <Input type="text" name="name" defaultValue="" />
