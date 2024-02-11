@@ -17,13 +17,23 @@ export async function userLogin(prevState: any, formData: FormData) {
   });
 
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors);
     return {
       data: {
         errors: validatedFields.error.flatten().fieldErrors,
         message: false,
       },
     };
+  }
+  if (formData.get("remember")) {
+    const loginRemember = String(formData.get("email"));
+    cookies().set({
+      name: "remember",
+      value: loginRemember,
+      httpOnly: true,
+      path: "/",
+    });
+  } else {
+    cookies().delete("remember");
   }
 
   const { url, options } = postLoginApi(jsonFormatterFormData(formData));

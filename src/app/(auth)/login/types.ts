@@ -7,3 +7,6 @@ export interface StateTypes {
     message: string | boolean;
   };
 }
+export type PropsFormLogin = {
+  remember?: string;
+};
