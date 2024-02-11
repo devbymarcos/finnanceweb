@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Input from "@/components/form/Input";
 import Label from "@/components/form/Label";
 import Select from "@/components/form/Select";
@@ -79,6 +79,7 @@ const FormTransaction = ({ wallet, category }: Props) => {
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
   const [priceMask, setPriceMask] = useState("0");
+  const formRef = useRef<HTMLFormElement>(null);
 
   const onChange = (event: Event) => {
     const inputElement = event.target as HTMLInputElement;
@@ -103,13 +104,14 @@ const FormTransaction = ({ wallet, category }: Props) => {
         message: state.data.message,
         type: state.data.type,
       });
+      formRef.current?.reset();
     }
   }, [state]);
 
   return (
     <>
       <Alert {...alert} />
-      <form action={formAction}>
+      <form ref={formRef} action={formAction}>
         <div className="mb-3 md:col-span-3">
           <Label>Descrição</Label>
           <Input type="text" name="description" />
