@@ -1,11 +1,10 @@
-import { Children } from "react";
-
 interface Props {
   children: React.ReactNode;
   defaultValue?: string;
   placeholder?: string;
   name: string;
   required?: boolean;
+  onChange?: (e: any) => void;
 }
 
 const Select = ({
@@ -14,6 +13,7 @@ const Select = ({
   placeholder,
   name,
   required,
+  onChange,
 }: Props) => {
   return (
     <select
@@ -22,6 +22,7 @@ const Select = ({
       placeholder={placeholder}
       name={name}
       required={required}
+      onChange={onChange}
     >
       {children}
     </select>
