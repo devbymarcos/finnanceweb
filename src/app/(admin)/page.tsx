@@ -88,6 +88,7 @@ async function Index() {
                   href={`/transacoes/editar?invoiceId=${invoice.id}`}
                   title={invoice.name}
                   value={invoice.price}
+                  key={invoice.id}
                 />
               );
             })}
