@@ -1,4 +1,4 @@
-import { getInvoiceApi } from "@/http/api";
+import { getInvoiceApi, getWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
 import { currencyFormatUI, formattedDateView } from "@/functions/helpers";
@@ -10,27 +10,40 @@ type params =
       datetwo?: string;
     }
   | undefined;
-async function getInvoiceList(date: params) {
+async function getInvoiceList(data: params) {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getInvoiceApi(token, date);
+  const { url, options } = getInvoiceApi(token, data);
   const response = await fetch(url, options);
 
   return await response.json();
 }
 
+async function getWallet() {
+  const token: string | undefined = cookies().get("token")?.value;
+  const { url, options } = getWalletApi(token);
+  const response = await fetch(url, options);
+
+  return await response.json();
+}
 type Props = {
   searchParams?: {
     dateone?: string;
     datetwo?: string;
+    walletId?: string;
   };
 };
 
 const ListTransaction = async ({ searchParams }: Props) => {
-  const data = await getInvoiceList(searchParams);
+  let invoice, wallet;
+
+  if (searchParams) {
+    invoice = await getInvoiceList(searchParams);
+    wallet = await getWallet();
+  }
 
   return (
     <div className="relative overflow-x-auto rounded-md">
-      <Search />
+      <Search wallet={wallet} />
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
@@ -40,8 +53,8 @@ const ListTransaction = async ({ searchParams }: Props) => {
           </tr>
         </thead>
         <tbody>
-          {data.data &&
-            data.data.map((invoice: any) => {
+          {invoice.data &&
+            invoice.data.map((invoice: any) => {
               return (
                 <TrLink
                   router={`/transacoes/editar?invoiceId=${invoice.id}`}

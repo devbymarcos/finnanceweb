@@ -211,15 +211,16 @@ type params =
   | {
       dateone?: string;
       datetwo?: string;
+      walletId?: string;
     }
   | undefined;
 
 export const getInvoiceApi = (
   token: string | undefined,
-  date: params
+  data: params
 ): ApiRequest => {
   return {
-    url: `${URL}/invoice?date_one=${date?.dateone}&date_two=${date?.datetwo}`,
+    url: `${URL}/invoice?date_one=${data?.dateone}&date_two=${data?.datetwo}&walletId=${data?.walletId}`,
     options: {
       method: "GET",
       headers: {

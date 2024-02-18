@@ -2,7 +2,7 @@ import { getWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
 
-async function getCategory() {
+async function getWallet() {
   const token: string | undefined = cookies().get("token")?.value;
   const { url, options } = getWalletApi(token);
   const response = await fetch(url, options);
@@ -20,7 +20,7 @@ type dataTypesMap = {
   updated_at: string;
 };
 const ListCategory = async () => {
-  const data = await getCategory();
+  const data = await getWallet();
 
   return (
     <div className="relative overflow-x-auto rounded-md">
