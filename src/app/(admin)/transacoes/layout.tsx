@@ -1,7 +1,7 @@
 import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
 import CreateIcon from "@/components/icons/CreateIcon";
 import ListIcon from "@/components/icons/ListIcon";
-import Link from "next/link";
+import TransfIcon from "@/components/icons/TransfIcon";
 import React from "react";
 
 const layoutCategory = ({ children }: { children: React.ReactNode }) => {
@@ -20,6 +20,11 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
           <li>
             <BtnLinkSubMenu href="/transacoes/nova">
               <CreateIcon />
+            </BtnLinkSubMenu>
+          </li>
+          <li>
+            <BtnLinkSubMenu href="/transacoes/nova">
+              <TransfIcon />
             </BtnLinkSubMenu>
           </li>
         </ul>
