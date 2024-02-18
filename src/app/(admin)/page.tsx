@@ -32,6 +32,7 @@ type ApiReturn = {
       saldo: number;
       name: string;
     }>;
+    invoiceOpen: any;
   };
   message: string;
   request: string;
@@ -50,6 +51,7 @@ const getDataDash = async (): Promise<ApiReturn> => {
 
 async function Index() {
   const data = await getDataDash();
+
   return (
     <>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
@@ -80,9 +82,16 @@ async function Index() {
             <h3 className="text-base-secondary first-line:font-bold text-lg">
               Transações Em aberto
             </h3>
-            <OpenTransaction title="Viagem exterior " value="1200,00" />
-            <OpenTransaction title="Energia" value="500,00" />
-            <OpenTransaction title="Alimentação" value="90,00" />
+            {data.data.invoiceOpen.map((invoice: any) => {
+              return (
+                <OpenTransaction
+                  href={`/transacoes/editar?invoiceId=${invoice.id}`}
+                  title={invoice.name}
+                  value={invoice.price}
+                  key={invoice.id}
+                />
+              );
+            })}
           </CardStyle>
         </div>
       </section>
