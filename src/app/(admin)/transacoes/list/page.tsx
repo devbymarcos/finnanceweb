@@ -34,8 +34,12 @@ type Props = {
 };
 
 const ListTransaction = async ({ searchParams }: Props) => {
-  const invoice = await getInvoiceList(searchParams);
-  const wallet = await getWallet();
+  let invoice, wallet;
+
+  if (searchParams) {
+    invoice = await getInvoiceList(searchParams);
+    wallet = await getWallet();
+  }
 
   return (
     <div className="relative overflow-x-auto rounded-md">

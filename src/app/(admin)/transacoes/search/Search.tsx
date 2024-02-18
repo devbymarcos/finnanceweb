@@ -25,12 +25,11 @@ const Search = ({ wallet }: any) => {
     replace(
       `${pathName}?dateone=${dateOne}&datetwo=${dateTwo}&walletId=${walletId}`
     );
-    console.log(pathName);
   }
 
   return (
     <>
-      <div className="flex  flex-col items-center md:flex-row gap-2 mb-3  md:w-1/2">
+      <div className="flex  flex-col items-center md:flex-row gap-2 mb-3  ">
         <div className="w-full">
           <Input
             onChange={(e) => {
@@ -69,9 +68,9 @@ const Search = ({ wallet }: any) => {
         <div className="w-full">
           <button
             onClick={search}
-            className="bg-base-secondary px-3 py-3 rounded-lg"
+            className="bg-base-secondary px-3 py-3 w-full text-white font-bold text-lg   rounded-lg"
           >
-            <SearchIcon />
+            Buscar
           </button>
         </div>
       </div>
