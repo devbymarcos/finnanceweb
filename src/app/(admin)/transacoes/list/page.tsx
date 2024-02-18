@@ -77,10 +77,8 @@ const ListTransaction = async ({ searchParams }: Props) => {
                         </p>
                       )}
                       {invoice.pay == "unpaid" && (
-                        <p
-                          className={`inline-block  text-red-500   font-bold text-[12px] `}
-                        >
-                          Aguardando pagamento
+                        <p className="text-[11px] bg-orange-400 inline-block text-white px-2 rounded">
+                          Aberto
                         </p>
                       )}
                     </div>

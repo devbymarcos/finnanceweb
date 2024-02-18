@@ -1,14 +1,20 @@
 "use client";
 import { useEffect, useRef, MutableRefObject } from "react";
+import Link from "next/link";
+import { currencyFormatUI } from "@/functions/helpers";
 
 type Props = {
   title: string;
   value: string;
+  href: string;
 };
 
-const OpenTransaction = ({ title, value }: Props) => {
+const OpenTransaction = ({ title, value, href }: Props) => {
   return (
-    <div className=" p-1 flex gap-4 items-center -mb-3">
+    <Link
+      href={href}
+      className=" p-1 flex gap-4 items-center -mb-3 bg-base-white px-2 py-2 rounded-lg"
+    >
       <div className="w-full">
         <p
           className="text-base-black dark:text-base-white text-sm
@@ -21,9 +27,9 @@ const OpenTransaction = ({ title, value }: Props) => {
         </p>
       </div>
       <p className="text-base-black dark:text-base-white font-bold text-sm">
-        R${value}
+        {currencyFormatUI(Number(value))}
       </p>
-    </div>
+    </Link>
   );
 };
 
