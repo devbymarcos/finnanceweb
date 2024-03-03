@@ -86,7 +86,7 @@ async function Index() {
               return (
                 <OpenTransaction
                   href={`/transacoes/editar?invoiceId=${invoice.id}`}
-                  title={invoice.name}
+                  description={invoice.description}
                   value={invoice.price}
                   key={invoice.id}
                 />

@@ -4,12 +4,12 @@ import Link from "next/link";
 import { currencyFormatUI } from "@/functions/helpers";
 
 type Props = {
-  title: string;
+  description: string;
   value: string;
   href: string;
 };
 
-const OpenTransaction = ({ title, value, href }: Props) => {
+const OpenTransaction = ({ description, value, href }: Props) => {
   return (
     <Link
       href={href}
@@ -20,7 +20,7 @@ const OpenTransaction = ({ title, value, href }: Props) => {
           className="text-base-black dark:text-base-white text-sm
           "
         >
-          {title}
+          {description}
         </p>
         <p className="text-[11px] bg-orange-400 inline-block text-white px-2 rounded">
           Aberto
