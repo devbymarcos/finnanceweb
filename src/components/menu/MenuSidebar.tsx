@@ -26,7 +26,7 @@ const MenuSideBar = () => {
   }
   const menuData: MenuData[] = [
     {
-      title: "Dashboard",
+      title: "Home",
       icon: <DashIcon colors="#fff" />,
       path: "/",
     },
@@ -39,12 +39,6 @@ const MenuSideBar = () => {
       title: "Categorias",
       icon: <CategoryIcon colors="#fff" />,
       path: "/categorias/list",
-    },
-
-    {
-      title: "Transações",
-      icon: <TransactionIcon colors="#fff" />,
-      path: "/transacoes/list",
     },
     {
       title: "Logout",

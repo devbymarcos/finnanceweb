@@ -1,17 +1,16 @@
+"use client";
 import CardStyle from "@/components/cards/CardStyle";
 import WalletIcon from "@/components/icons/WalletIcons";
 import WalletDashUiIcon from "@/components/icons/WalletDashUiIcon";
 import { currencyFormatUI } from "@/functions/helpers";
+import { useRouter } from "next/navigation";
+import { Props } from "./types";
 
-type Props = {
-  data: Array<{
-    walletId: number;
-    saldo: number;
-    name: string;
-  }>;
-};
-
-const WalletSection = ({ data }: Props) => {
+const WalletSection = ({ data, router }: Props) => {
+  const { push } = useRouter();
+  function goView(): void {
+    push(router);
+  }
   return (
     <CardStyle>
       <h3 className="text-md text-base-secondary  flex gap-3 items-center  font-bold">
@@ -23,8 +22,9 @@ const WalletSection = ({ data }: Props) => {
           {data.map((wallet) => {
             return (
               <li
+                onClick={goView}
                 key={wallet.walletId}
-                className="mb-2 flex gap-2 bg-base-white dark:bg-base-black-200 items-center py-3 px-3 rounded-lg"
+                className="mb-2 flex gap-2 bg-base-white dark:bg-base-black-200 items-center py-3 px-3 rounded-lg cursor-pointer"
               >
                 <WalletDashUiIcon />
                 <div className="w-full flex justify-between items-center ">
