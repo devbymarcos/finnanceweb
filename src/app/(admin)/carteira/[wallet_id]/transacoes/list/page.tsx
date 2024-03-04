@@ -3,14 +3,9 @@ import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
 import { currencyFormatUI, formattedDateView } from "@/functions/helpers";
 import Search from "../search/Search";
+import { typePropsListTransaction, paramsGetInvoiceList } from "./types";
 
-type params =
-  | {
-      dateone?: string;
-      datetwo?: string;
-    }
-  | undefined;
-async function getInvoiceList(data: params) {
+async function getInvoiceList(data: paramsGetInvoiceList) {
   const token: string | undefined = cookies().get("token")?.value;
   const { url, options } = getInvoiceApi(token, data);
   const response = await fetch(url, options);
@@ -25,19 +20,21 @@ async function getWallet() {
 
   return await response.json();
 }
-type Props = {
-  searchParams?: {
-    dateone?: string;
-    datetwo?: string;
-    walletId?: string;
-  };
-};
 
-const ListTransaction = async ({ searchParams }: Props) => {
+const ListTransaction = async ({
+  searchParams,
+  params,
+}: typePropsListTransaction) => {
   let invoice, wallet;
 
+  const pararametersGetInvoice = {
+    dateone: searchParams?.dateone,
+    datetwo: searchParams?.datetwo,
+    walletId: params.wallet_id,
+  };
+
   if (searchParams) {
-    invoice = await getInvoiceList(searchParams);
+    invoice = await getInvoiceList(pararametersGetInvoice);
     wallet = await getWallet();
   }
 
