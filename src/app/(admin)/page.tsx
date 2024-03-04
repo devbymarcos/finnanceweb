@@ -40,7 +40,7 @@ async function Index() {
   return (
     <>
       <section className="mb-5">
-        <WalletSection router={`/carteira/1`} data={data.data.balanceSum} />
+        <WalletSection router={`/carteira/8`} data={data.data.balanceSum} />
       </section>
     </>
   );

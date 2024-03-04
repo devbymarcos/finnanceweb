@@ -30,9 +30,12 @@ export const postLoginApi = (dataForm: string): ApiRequest => {
   };
 };
 
-export const getDashApi = (token: string | undefined): ApiRequest => {
+export const getDashApi = (
+  token: string | undefined,
+  wallet_id: string
+): ApiRequest => {
   return {
-    url: `${URL}/dash`,
+    url: `${URL}/dash?wallet_id=${wallet_id}`,
     options: {
       method: "GET",
       headers: {

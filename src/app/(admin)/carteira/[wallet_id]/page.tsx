@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import FlowSectionMonth from "./dash/FlowSectionMonth";
+import { ApiReturn, PropsIndex } from "./types";
 
 const ChartPieDash = dynamic(
   () => import("@/app/(admin)/carteira/[wallet_id]/dash/ChartPieDash"),
@@ -21,27 +22,9 @@ const ChartAreaDash = dynamic(
   }
 );
 
-type ApiReturn = {
-  data: {
-    result: {
-      months: string[];
-      values: number[];
-    };
-    paidMonth: number;
-    receivedMonth: number;
-    balanceSum: Array<{
-      walletId: number;
-      saldo: number;
-      name: string;
-    }>;
-    invoiceOpen: any;
-  };
-  message: string;
-  request: string;
-};
-const getDataDash = async (): Promise<ApiReturn> => {
+const getDataDash = async (wallet_id: string): Promise<ApiReturn> => {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getDashApi(token);
+  const { url, options } = getDashApi(token, wallet_id);
   const response = await fetch(url, options);
 
   if (response.status == 401) {
@@ -51,8 +34,8 @@ const getDataDash = async (): Promise<ApiReturn> => {
   return await response.json();
 };
 
-async function Index() {
-  const data = await getDataDash();
+async function Index({ params }: PropsIndex) {
+  const data = await getDataDash(params.wallet_id);
 
   return (
     <>
