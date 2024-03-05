@@ -26,17 +26,17 @@ const MenuSideBar = () => {
   }
   const menuData: MenuData[] = [
     {
-      title: "Home",
+      title: "Minhas Carteiras",
       icon: <DashIcon colors="#fff" />,
       path: "/",
     },
     {
-      title: "Carterias",
+      title: "Criar Carteira",
       icon: <WalletIcon colors="#fff" />,
       path: "/carteiras/list",
     },
     {
-      title: "Categorias",
+      title: "Criar Categoria",
       icon: <CategoryIcon colors="#fff" />,
       path: "/categorias/list",
     },

@@ -1,5 +1,6 @@
 import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
 import CreateIcon from "@/components/icons/CreateIcon";
+import DashIcon from "@/components/icons/DashIcon";
 import ListIcon from "@/components/icons/ListIcon";
 import TransfIcon from "@/components/icons/TransfIcon";
 type PropslayoutWallet = {
@@ -14,6 +15,11 @@ const layoutWallet = ({ children, params }: PropslayoutWallet) => {
     <>
       <nav className=" mb-12">
         <ul className="flex gap-4">
+          <li>
+            <BtnLinkSubMenu href={`/carteira/${params.wallet_id}`}>
+              <DashIcon />
+            </BtnLinkSubMenu>
+          </li>
           <li>
             <BtnLinkSubMenu
               href={`/carteira/${params.wallet_id}/transacoes/list`}
