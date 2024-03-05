@@ -1,46 +1,24 @@
 "use server";
-import { getDashApi } from "@/http/api";
+import { getWalletApi } from "@/http/api";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import WalletSection from "./wallet-home-section/WalletSection";
 
-type ApiReturn = {
-  data: {
-    result: {
-      months: string[];
-      values: number[];
-    };
-    paidMonth: number;
-    receivedMonth: number;
-    balanceSum: Array<{
-      walletId: number;
-      saldo: number;
-      name: string;
-    }>;
-    invoiceOpen: any;
-  };
-  message: string;
-  request: string;
-};
-const getDataDash = async (): Promise<ApiReturn> => {
+const getListWallet = async () => {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getDashApi(token);
+  const { url, options } = getWalletApi(token);
   const response = await fetch(url, options);
-
-  if (response.status == 401) {
-    redirect("/login");
-  }
 
   return await response.json();
 };
 
 async function Index() {
-  const data = await getDataDash();
+  const data = await getListWallet();
 
   return (
     <>
       <section className="mb-5">
-        <WalletSection router={`/carteira/8`} data={data.data.balanceSum} />
+        <WalletSection data={data.data} />
       </section>
     </>
   );

@@ -3,14 +3,13 @@ import CardStyle from "@/components/cards/CardStyle";
 import WalletIcon from "@/components/icons/WalletIcons";
 import WalletDashUiIcon from "@/components/icons/WalletDashUiIcon";
 import { currencyFormatUI } from "@/functions/helpers";
-import { useRouter } from "next/navigation";
-import { Props } from "./types";
 
-const WalletSection = ({ data, router }: Props) => {
-  const { push } = useRouter();
-  function goView(): void {
-    push(router);
-  }
+import { Props } from "./types";
+import Link from "next/link";
+
+const WalletSection = ({ data }: any) => {
+  console.log("TCL: WalletSection -> data", data);
+
   return (
     <CardStyle>
       <h3 className="text-md text-base-secondary  flex gap-3 items-center  font-bold">
@@ -19,24 +18,21 @@ const WalletSection = ({ data, router }: Props) => {
       </h3>
       <div className="text-base-black dark:text-base-white">
         <ul className="w-full">
-          {data.map((wallet) => {
+          {data.map((wallet: any) => {
             return (
               <li
-                onClick={goView}
-                key={wallet.walletId}
-                className="mb-2 flex gap-2 bg-base-white dark:bg-base-black-200 items-center py-3 px-3 rounded-lg cursor-pointer"
+                key={wallet.id}
+                className="mb-2  bg-base-white dark:bg-base-black-200   rounded-lg"
               >
-                <WalletDashUiIcon />
-                <div className="w-full flex justify-between items-center ">
-                  <p>{wallet.name}</p>
-                  <span
-                    className={`${
-                      wallet.saldo < 0 ? "text-red-500" : "text-blue-500"
-                    } font-bold text-lg`}
-                  >
-                    {currencyFormatUI(wallet.saldo)}
-                  </span>
-                </div>
+                <Link
+                  className="flex gap-2 px-3 py-6 items-center"
+                  href={`carteira/${wallet.id}`}
+                >
+                  <WalletDashUiIcon />
+                  <div className="w-full flex justify-between items-center ">
+                    <p>{wallet.name}</p>
+                  </div>
+                </Link>
               </li>
             );
           })}

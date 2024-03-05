@@ -4,5 +4,4 @@ export type Props = {
     saldo: number;
     name: string;
   }>;
-  router: string;
 };
