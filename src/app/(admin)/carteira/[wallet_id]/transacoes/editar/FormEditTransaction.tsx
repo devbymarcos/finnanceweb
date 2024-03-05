@@ -105,6 +105,7 @@ const FormEditTransaction = ({
       <Alert {...alert} />
       <form action={formAction}>
         <input type="hidden" value={invoice.data[0].id} name="id" />
+        <input type="hidden" value={wallet.wallet_id} name="wallet_id" />
         <div className="grid grid-cols-1 ">
           <div className="mb-3 ">
             <Label>Descrição</Label>
@@ -179,22 +180,6 @@ const FormEditTransaction = ({
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="mb-3">
-            <Label>Carteira</Label>
-            <Select name="wallet_id" defaultValue={invoice.data[0].wallet_id}>
-              <option>Escolha...</option>
-              {wallet.data.map((item: any) => {
-                return (
-                  <option value={item.id} key={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.wallet_id}
-            </p>
-          </div>
           <div className="mb-3">
             <Label>Categoria</Label>
             <Select

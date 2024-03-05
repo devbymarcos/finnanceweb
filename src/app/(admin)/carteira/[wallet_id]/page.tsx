@@ -68,7 +68,7 @@ async function Index({ params }: PropsIndex) {
             {data.data.invoiceOpen.map((invoice: any) => {
               return (
                 <OpenTransaction
-                  href={`/transacoes/editar?invoiceId=${invoice.id}`}
+                  href={`/carteira/${params.wallet_id}/transacoes/editar?invoiceId=${invoice.id}`}
                   description={invoice.description}
                   value={invoice.price}
                   key={invoice.id}

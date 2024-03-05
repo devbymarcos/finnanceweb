@@ -1,14 +1,6 @@
 export interface Formtransaction {
   wallet: {
-    data: Array<{
-      id: number;
-      user_id: number;
-      name: string;
-      description: string;
-      option_wallet: number;
-      created_at: string;
-      updated_at: string;
-    }>;
+    wallet_id: string;
   };
   category: {
     data: Array<{
@@ -48,3 +40,12 @@ export interface InitialState {
     type: string;
   };
 }
+
+export type typeEditTransactionProps = {
+  searchParams?: {
+    invoiceId?: string;
+  };
+  params: {
+    wallet_id: string;
+  };
+};
