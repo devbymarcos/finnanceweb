@@ -39,11 +39,12 @@ async function Index({ params }: PropsIndex) {
 
   return (
     <>
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
         <FlowSectionMonth
           currencyUI={{
             receveidMonth: data.data.receivedMonth,
             paidMonth: data.data.paidMonth,
+            balance: data.data.balanceSum,
           }}
         />
       </section>

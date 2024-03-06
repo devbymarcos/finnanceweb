@@ -8,8 +8,6 @@ import { Props } from "./types";
 import Link from "next/link";
 
 const WalletSection = ({ data }: any) => {
-  console.log("TCL: WalletSection -> data", data);
-
   return (
     <CardStyle>
       <h3 className="text-md text-base-secondary  flex gap-3 items-center  font-bold">

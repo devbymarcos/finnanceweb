@@ -6,11 +6,7 @@ export type ApiReturn = {
     };
     paidMonth: number;
     receivedMonth: number;
-    balanceSum: Array<{
-      walletId: number;
-      saldo: number;
-      name: string;
-    }>;
+    balanceSum: number;
     invoiceOpen: any;
   };
   message: string;
