@@ -1,12 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "@/components/form/Input";
 import { useRouter, usePathname } from "next/navigation";
 
-const Search = ({ wallet, params }: any) => {
+const Search = ({ date }: any) => {
   const [dateOne, setDateOne] = useState("");
   const [dateTwo, setDateTwo] = useState("");
-  const [walletId, setwalletId] = useState("");
 
   const { replace } = useRouter();
   const pathName = usePathname();
@@ -14,6 +13,11 @@ const Search = ({ wallet, params }: any) => {
   function search() {
     replace(`${pathName}?dateone=${dateOne}&datetwo=${dateTwo}`);
   }
+
+  useEffect(() => {
+    setDateOne(date.dateone);
+    setDateTwo(date.datetwo);
+  }, []);
 
   return (
     <>
@@ -25,6 +29,7 @@ const Search = ({ wallet, params }: any) => {
             }}
             name="data_one"
             type="date"
+            defaultValue={dateOne}
           />
         </div>
         <div className="w-full">
@@ -34,6 +39,7 @@ const Search = ({ wallet, params }: any) => {
             }}
             name="data_two"
             type="date"
+            defaultValue={dateTwo}
           />
         </div>
         <div className="w-full">

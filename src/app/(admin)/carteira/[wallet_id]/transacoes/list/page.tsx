@@ -27,20 +27,29 @@ const ListTransaction = async ({
 }: typePropsListTransaction) => {
   let invoice, wallet;
 
+  const date = new Date();
+
+  //conseguir o ultimo dia do mes
+  function monthLength(month: number, year: number) {
+    return new Date(year, month + 1, 0).getDate();
+  }
+  const dateOneDefault = `${date.getFullYear()}-${
+    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
+  }-01`;
+  const dateTwoDefault = `${date.getFullYear()}-${
+    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
+  }-${monthLength(date.getFullYear(), date.getMonth() + 1)}`;
   const pararametersGetInvoice = {
-    dateone: searchParams?.dateone,
-    datetwo: searchParams?.datetwo,
+    dateone: searchParams?.dateone ? searchParams?.dateone : dateOneDefault,
+    datetwo: searchParams?.datetwo ? searchParams?.datetwo : dateTwoDefault,
     walletId: params.wallet_id,
   };
 
-  if (searchParams) {
-    invoice = await getInvoiceList(pararametersGetInvoice);
-    wallet = await getWallet();
-  }
+  invoice = await getInvoiceList(pararametersGetInvoice);
 
   return (
     <div className="relative overflow-x-auto rounded-md">
-      <Search wallet={wallet} />
+      <Search date={pararametersGetInvoice} />
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
