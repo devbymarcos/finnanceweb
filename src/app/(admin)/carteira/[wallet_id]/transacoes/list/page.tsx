@@ -3,14 +3,9 @@ import { cookies } from "next/headers";
 import TrLink from "@/components/table/TrLink";
 import { currencyFormatUI, formattedDateView } from "@/functions/helpers";
 import Search from "../search/Search";
+import { typePropsListTransaction, paramsGetInvoiceList } from "./types";
 
-type params =
-  | {
-      dateone?: string;
-      datetwo?: string;
-    }
-  | undefined;
-async function getInvoiceList(data: params) {
+async function getInvoiceList(data: paramsGetInvoiceList) {
   const token: string | undefined = cookies().get("token")?.value;
   const { url, options } = getInvoiceApi(token, data);
   const response = await fetch(url, options);
@@ -25,25 +20,36 @@ async function getWallet() {
 
   return await response.json();
 }
-type Props = {
-  searchParams?: {
-    dateone?: string;
-    datetwo?: string;
-    walletId?: string;
-  };
-};
 
-const ListTransaction = async ({ searchParams }: Props) => {
+const ListTransaction = async ({
+  searchParams,
+  params,
+}: typePropsListTransaction) => {
   let invoice, wallet;
 
-  if (searchParams) {
-    invoice = await getInvoiceList(searchParams);
-    wallet = await getWallet();
+  const date = new Date();
+
+  //conseguir o ultimo dia do mes
+  function monthLength(month: number, year: number) {
+    return new Date(year, month + 1, 0).getDate();
   }
+  const dateOneDefault = `${date.getFullYear()}-${
+    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
+  }-01`;
+  const dateTwoDefault = `${date.getFullYear()}-${
+    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
+  }-${monthLength(date.getFullYear(), date.getMonth() + 1)}`;
+  const pararametersGetInvoice = {
+    dateone: searchParams?.dateone ? searchParams?.dateone : dateOneDefault,
+    datetwo: searchParams?.datetwo ? searchParams?.datetwo : dateTwoDefault,
+    walletId: params.wallet_id,
+  };
+
+  invoice = await getInvoiceList(pararametersGetInvoice);
 
   return (
     <div className="relative overflow-x-auto rounded-md">
-      <Search wallet={wallet} />
+      <Search date={pararametersGetInvoice} />
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
@@ -57,7 +63,7 @@ const ListTransaction = async ({ searchParams }: Props) => {
             invoice.data.map((invoice: any) => {
               return (
                 <TrLink
-                  router={`/transacoes/editar?invoiceId=${invoice.id}`}
+                  router={`/carteira/${params.wallet_id}/transacoes/editar?invoiceId=${invoice.id}`}
                   key={invoice.id}
                 >
                   <th

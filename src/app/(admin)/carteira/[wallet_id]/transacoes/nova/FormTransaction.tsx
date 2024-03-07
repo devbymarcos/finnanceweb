@@ -6,7 +6,7 @@ import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
 import { postTransaction } from "./actions";
-import { typesTransaction } from "./types";
+import { typesTransaction, typeFormTransactionProps } from "./types";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
@@ -28,28 +28,6 @@ const initialState: typesTransaction = {
     status: false,
     type: "error",
   },
-};
-type Props = {
-  wallet: {
-    data: Array<{
-      id: number;
-      user_id: number;
-      name: string;
-      description: string;
-      option_wallet: number;
-      created_at: string;
-      updated_at: string;
-    }>;
-  };
-  category: {
-    data: Array<{
-      id: number;
-      user_id: number;
-      name: string;
-      created_at: string;
-      updated_at: string;
-    }>;
-  };
 };
 
 interface InputMask {
@@ -75,7 +53,8 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
   );
 };
 
-const FormTransaction = ({ wallet, category }: Props) => {
+const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
+  console.log("TCL: FormTransaction -> wallet", wallet);
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
   const [priceMask, setPriceMask] = useState("0");
@@ -112,6 +91,7 @@ const FormTransaction = ({ wallet, category }: Props) => {
     <>
       <Alert {...alert} />
       <form ref={formRef} action={formAction}>
+        <input type="hidden" name="wallet_id" value={wallet.wallet_id} />
         <div className="mb-3 md:col-span-3">
           <Label>Descrição</Label>
           <Input type="text" name="description" />
@@ -174,22 +154,6 @@ const FormTransaction = ({ wallet, category }: Props) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="mb-3">
-            <Label>Carteira</Label>
-            <Select name="wallet_id">
-              <option value="">Escolha...</option>
-              {wallet.data.map((item: any) => {
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.wallet_id}
-            </p>
-          </div>
           <div className="mb-3">
             <Label>Categoria</Label>
             <Select name="category_id">

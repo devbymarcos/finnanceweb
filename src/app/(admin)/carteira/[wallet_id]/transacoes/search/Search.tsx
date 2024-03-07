@@ -1,31 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "@/components/form/Input";
-import SearchIcon from "@/components/icons/SearchIcon";
 import { useRouter, usePathname } from "next/navigation";
-import Select from "@/components/form/Select";
 
-// const date = new Date();
-// const year = date.getFullYear();
-// const day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-// const month =
-//   date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-
-// const dateNow = `${year}-${month}-${day}`;
-
-const Search = ({ wallet }: any) => {
+const Search = ({ date }: any) => {
   const [dateOne, setDateOne] = useState("");
   const [dateTwo, setDateTwo] = useState("");
-  const [walletId, setwalletId] = useState("");
 
   const { replace } = useRouter();
   const pathName = usePathname();
 
   function search() {
-    replace(
-      `${pathName}?dateone=${dateOne}&datetwo=${dateTwo}&walletId=${walletId}`
-    );
+    replace(`${pathName}?dateone=${dateOne}&datetwo=${dateTwo}`);
   }
+
+  useEffect(() => {
+    setDateOne(date.dateone);
+    setDateTwo(date.datetwo);
+  }, []);
 
   return (
     <>
@@ -37,6 +29,7 @@ const Search = ({ wallet }: any) => {
             }}
             name="data_one"
             type="date"
+            defaultValue={dateOne}
           />
         </div>
         <div className="w-full">
@@ -46,24 +39,8 @@ const Search = ({ wallet }: any) => {
             }}
             name="data_two"
             type="date"
+            defaultValue={dateTwo}
           />
-        </div>
-        <div className="w-full">
-          <Select
-            name="wallet"
-            onChange={(e) => {
-              setwalletId(e.target.value);
-            }}
-          >
-            <option value="">Escolha...</option>
-            {wallet.data.map((item: any) => {
-              return (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              );
-            })}
-          </Select>
         </div>
         <div className="w-full">
           <button

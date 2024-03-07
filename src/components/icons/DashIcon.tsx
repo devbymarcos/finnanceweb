@@ -1,8 +1,6 @@
-interface DashIcon {
-  colors: string;
-}
+"use client";
 
-const DashIcon = ({ colors }: DashIcon) => {
+const DashIcon = () => {
   return (
     <>
       <svg
@@ -18,7 +16,7 @@ const DashIcon = ({ colors }: DashIcon) => {
           width="6"
           height="6"
           rx="1"
-          stroke={colors}
+          stroke={`#fff`}
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -28,7 +26,7 @@ const DashIcon = ({ colors }: DashIcon) => {
           width="6"
           height="6"
           rx="1"
-          stroke={colors}
+          stroke={`#fff`}
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -38,7 +36,7 @@ const DashIcon = ({ colors }: DashIcon) => {
           width="6"
           height="6"
           rx="1"
-          stroke={colors}
+          stroke={`#fff`}
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -48,7 +46,7 @@ const DashIcon = ({ colors }: DashIcon) => {
           width="6"
           height="6"
           rx="1"
-          stroke={colors}
+          stroke={`#fff`}
           strokeWidth="2"
           strokeLinejoin="round"
         />
