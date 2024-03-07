@@ -6,6 +6,7 @@ import TransfIcon from "@/components/icons/TransfIcon";
 import CardStyle from "@/components/cards/CardStyle";
 import { getWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
+import WalletIcon from "@/components/icons/WalletIcons";
 
 type PropslayoutWallet = {
   params: {
@@ -59,6 +60,11 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 href={`/carteira/${params.wallet_id}/transacoes/transferencia`}
               >
                 <TransfIcon />
+              </BtnLinkSubMenu>
+            </li>
+            <li>
+              <BtnLinkSubMenu href={`/`}>
+                <WalletIcon />
               </BtnLinkSubMenu>
             </li>
           </ul>
