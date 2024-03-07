@@ -68,7 +68,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
           <div className="flex gap-4 items-center">
             <div>
               <h3 className="text-sm text-base-secondary uppercase font-bold">
-                carteira Ativa
+                Carteira Selecionada
               </h3>
               <p className="text-2xl text-base-black dark:text-base-white font-bold">
                 {walletActivate}
