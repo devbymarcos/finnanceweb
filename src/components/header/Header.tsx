@@ -1,7 +1,7 @@
 import BtnMenuMobile from "@/components/btn-menu-mobile/BtnMenumobile";
 import Image from "next/image";
-import LogoutIcon from "@/components/icons/LogoutIcon";
-import Link from "next/link";
+import BtnChangeModeTheme from "@/components/btn-dark-mode/BtnChangeModeTheme";
+
 const Header = () => {
   return (
     <header className="flex justify-between bg-base-white dark:bg-base-black-200 items-center mb-12 fixed z-30 header-w-custom w-full md:pl-[270px] pl-6 pr-6 pt-2 pb-4">
@@ -12,6 +12,7 @@ const Header = () => {
         </p>
       </div>
       <div className="flex gap-6 items-center">
+        <BtnChangeModeTheme />
         <Image
           className="rounded-full"
           src="/user.jpg"
@@ -24,7 +25,6 @@ const Header = () => {
           <p>Admin</p>
         </div>
       </div>
-
       <BtnMenuMobile />
     </header>
   );

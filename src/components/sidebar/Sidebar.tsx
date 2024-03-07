@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import MenuSideBar from "../menu/MenuSidebar";
-import BtnDark from "@/components/btn-dark-mode/BtnDark";
-import BtnLight from "../btn-dark-mode/BtnLight";
+
 import { useStore } from "@/hooks/useStore";
 const Sidebar = () => {
   const openSideBar: boolean = useStore((state) => state.openSideBar);
@@ -24,10 +23,7 @@ const Sidebar = () => {
           />
           <MenuSideBar />
         </div>
-        <div className="flex justify-evenly mb-12">
-          <BtnDark />
-          <BtnLight />
-        </div>
+        <div className="flex justify-evenly mb-12"></div>
       </aside>
     </>
   );
