@@ -5,11 +5,12 @@ import Label from "@/components/form/Label";
 import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
-import { postTransaction } from "./actions";
+import { postTranfer } from "./actions";
 import { typesTransaction } from "./types";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
+import { typeFormTransactionProps } from "./types";
 
 const initialState: typesTransaction = {
   data: {
@@ -17,39 +18,14 @@ const initialState: typesTransaction = {
       description: "",
       price: "",
       due_at: "",
-      type: "",
-      wallet_id: "",
+      wallet_entry: "",
+      wallet_exit: "",
       category_id: "",
-      pay: "",
-      repeat_when: "",
-      installments: "",
     },
     message: "",
     status: false,
     type: "error",
   },
-};
-type Props = {
-  wallet: {
-    data: Array<{
-      id: number;
-      user_id: number;
-      name: string;
-      description: string;
-      option_wallet: number;
-      created_at: string;
-      updated_at: string;
-    }>;
-  };
-  category: {
-    data: Array<{
-      id: number;
-      user_id: number;
-      name: string;
-      created_at: string;
-      updated_at: string;
-    }>;
-  };
 };
 
 interface InputMask {
@@ -75,8 +51,12 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
   );
 };
 
-const FormTransaction = ({ wallet, category }: Props) => {
-  const [state, formAction] = useFormState(postTransaction, initialState);
+const FormTransaction = ({
+  wallet,
+  category,
+  walletCurrent,
+}: typeFormTransactionProps) => {
+  const [state, formAction] = useFormState(postTranfer, initialState);
   const { alert, setAlert } = useAlert();
   const [priceMask, setPriceMask] = useState("0");
   const formRef = useRef<HTMLFormElement>(null);
@@ -112,6 +92,7 @@ const FormTransaction = ({ wallet, category }: Props) => {
     <>
       <Alert {...alert} />
       <form ref={formRef} action={formAction}>
+        <input type="hidden" name="wallet_exit" value={walletCurrent} />
         <div className="mb-3 md:col-span-3">
           <Label>Descrição</Label>
           <Input type="text" name="description" />
@@ -141,42 +122,11 @@ const FormTransaction = ({ wallet, category }: Props) => {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
-          <div className="flex items-center mb-4">
-            <input
-              id="income"
-              type="radio"
-              value="income"
-              name="type"
-              className="w-5 h-5 cursor-pointer "
-            />
-            <label
-              htmlFor="income"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Receitas
-            </label>
-          </div>
-          <div className="flex items-center mb-4">
-            <input
-              id="expense"
-              type="radio"
-              value="expense"
-              name="type"
-              className="w-5 h-5 cursor-pointer"
-            />
-            <label
-              htmlFor="expense"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Despesas
-            </label>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-3">
-            <Label>Carteira</Label>
-            <Select name="wallet_id">
+            <Label>Carteira para receber o pagamento</Label>
+            <Select name="wallet_entry">
               <option value="">Escolha...</option>
               {wallet.data.map((item: any) => {
                 return (
@@ -187,7 +137,7 @@ const FormTransaction = ({ wallet, category }: Props) => {
               })}
             </Select>
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.wallet_id}
+              {state?.data.errors.wallet_entry}
             </p>
           </div>
           <div className="mb-3">
@@ -206,42 +156,9 @@ const FormTransaction = ({ wallet, category }: Props) => {
               {state?.data.errors.category_id}
             </p>
           </div>
-          <div className="mb-3">
-            <Label>Pagamento status</Label>
-            <Select name="pay">
-              <option value="">Escolha...</option>
-              <option value="paid">Pago</option>
-              <option value="unpaid">Não pago</option>
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.pay}
-            </p>
-          </div>
         </div>
 
-        <div className="mb-3">
-          <Label>Repetir ? </Label>
-          <Select name="repeat_when">
-            <option value="">Escolha...</option>
-            <option value="single">Única</option>
-            <option value="month">Mês</option>
-          </Select>
-          <p className="text-red-500 text-[11px] ">
-            {state?.data.errors.repeat_when}
-          </p>
-        </div>
-        <div className="mb-3">
-          <Label>Repetições</Label>
-          <Input
-            type="number"
-            placeholder="Insira a quantidade de repetições ex: 1"
-            name="installments"
-          />
-          <p className="text-red-500 text-[11px] ">
-            {state?.data.errors.installments}
-          </p>
-        </div>
-        <div className="mb-3">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
           <Submit text="Salvar" />
         </div>
       </form>

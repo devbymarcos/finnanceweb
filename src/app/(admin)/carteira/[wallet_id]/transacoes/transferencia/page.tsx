@@ -2,6 +2,7 @@ import CardStyle from "@/components/cards/CardStyle";
 import FormTransaction from "./FormTransaction";
 import { getWalletApi, getCategoryApi } from "@/http/api";
 import { cookies } from "next/headers";
+import { typeCreateTransactionProps } from "./types";
 
 async function getWallet() {
   const token = cookies().get("token")?.value;
@@ -18,13 +19,17 @@ async function getCategory() {
   return await response.json();
 }
 
-const CreateTransaction = async () => {
+const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
   const [wallets, category] = await Promise.all([getWallet(), getCategory()]);
 
   return (
     <section className="mb-12">
       <CardStyle>
-        <FormTransaction wallet={wallets} category={category} />
+        <FormTransaction
+          wallet={wallets}
+          category={category}
+          walletCurrent={params.wallet_id}
+        />
       </CardStyle>
     </section>
   );

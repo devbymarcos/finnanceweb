@@ -1,6 +1,6 @@
 "use server";
 import { z } from "zod";
-import { postInvoiceApi } from "@/http/api";
+import { postTransferInvoiceApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";
 import { currency } from "remask";
@@ -10,25 +10,19 @@ const schema = z.object({
   description: z.string().min(8, "A descriçao deve ter no mínimo 8 caracteres"),
   price: z.string().min(1, "Prencha um valor"),
   due_at: z.string().min(10, "Preencha a Data"),
-  type: z.string().min(6, "Escolha o tipo"),
-  wallet_id: z.string().min(1, "Selecione a cateira"),
+  wallet_entry: z.string().min(1, "Selecione a cateira"),
+  wallet_exit: z.string().min(1, "Selecione a cateira"),
   category_id: z.string().min(1, "Selecione a categoria"),
-  pay: z.string().min(4, "Escolha o status de pagamento"),
-  repeat_when: z.string().min(3, "Escolha a repetição se 'Única' ou 'Mês'"),
-  installments: z.string().min(1, "informe a quantidade de repetições"),
 });
 
-export async function postTransaction(prevState: any, formData: FormData) {
+export async function postTranfer(prevState: any, formData: FormData) {
   const validatedFields = schema.safeParse({
     description: formData.get("description"),
     price: formData.get("price"),
     due_at: formData.get("due_at"),
-    type: formData.get("type"),
-    wallet_id: formData.get("wallet_id"),
+    wallet_entry: formData.get("wallet_entry"),
+    wallet_exit: formData.get("wallet_exit"),
     category_id: formData.get("category_id"),
-    pay: formData.get("pay"),
-    repeat_when: formData.get("repeat_when"),
-    installments: formData.get("installments"),
   });
 
   if (!validatedFields.success) {
@@ -50,7 +44,7 @@ export async function postTransaction(prevState: any, formData: FormData) {
   });
   //adicionado valor de volta ao objeto FormData
   formData.set("price", String(priceDb));
-  const { url, options } = postInvoiceApi(
+  const { url, options } = postTransferInvoiceApi(
     token,
     jsonFormatterFormData(formData)
   );
@@ -64,12 +58,9 @@ export async function postTransaction(prevState: any, formData: FormData) {
           description: "",
           price: "",
           due_at: "",
-          type: "",
-          wallet_id: "",
+          wallet_entry: "",
+          wallet_exit: "",
           category_id: "",
-          pay: "",
-          repeat_when: "",
-          installments: "",
         },
         message: "Registro salvo com sucesso",
         status: true,
@@ -84,12 +75,9 @@ export async function postTransaction(prevState: any, formData: FormData) {
         description: "",
         price: "",
         due_at: "",
-        type: "",
-        wallet_id: "",
+        wallet_entry: "",
+        wallet_exit: "",
         category_id: "",
-        pay: "",
-        repeat_when: "",
-        installments: "",
       },
       message: "Nào foi possivel salvar contate o admin",
       status: false,

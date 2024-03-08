@@ -270,6 +270,24 @@ export const postInvoiceApi = (
   };
 };
 
+export const postTransferInvoiceApi = (
+  token: string | undefined,
+  dataForm: string
+): ApiRequest => {
+  return {
+    url: `${URL}/transfer`,
+    options: {
+      method: "POST",
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: dataForm,
+    },
+  };
+};
+
 export const putInvoiceApi = (
   token: string | undefined,
   dataForm: string
