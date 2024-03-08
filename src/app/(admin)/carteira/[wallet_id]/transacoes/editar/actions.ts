@@ -25,9 +25,9 @@ export async function UpdateTransaction(prevState: any, formData: FormData) {
 
     const response = await fetch(url, options);
     const json = await response.json();
-
-    revalidatePath("/transacoes/list");
-    redirect("/transacoes/list");
+    const wallet_id = formData.get("wallet_id");
+    revalidatePath(`/carteira/${wallet_id}/transacoes/list`);
+    redirect(`/carteira/${wallet_id}/transacoes/list`);
   }
 
   const validatedFields = schema.safeParse({
