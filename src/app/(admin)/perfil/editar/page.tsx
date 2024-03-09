@@ -16,8 +16,11 @@ const CreateCategory = async () => {
 
   return (
     <section>
+      <h1 className="text-base-black text-xl mb-4 font-bold dark:text-base-white">
+        Perfil
+      </h1>
       <CardStyle>
-        <FormPerfil user={user} />
+        <FormPerfil user={user.data} />
       </CardStyle>
     </section>
   );

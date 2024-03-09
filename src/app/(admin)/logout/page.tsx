@@ -12,7 +12,9 @@ const Logout = () => {
 
   return (
     <div>
-      <h1 className="font-bold text-lg">Tem certeza que deseja sair?</h1>
+      <h1 className="font-bold text-lg dark:text-base-white">
+        Tem certeza que deseja sair?
+      </h1>
       <div className="flex gap-3">
         <BackPage>Continuar no app</BackPage>
         <form action={logoutForm}>

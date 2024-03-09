@@ -3,15 +3,18 @@ import { z } from "zod";
 import { putUserApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { jsonFormatterFormData } from "@/functions/helpers";
+import { revalidatePath } from "next/cache";
 
 const schema = z.object({
-  name: z.string().min(3, "Este campo não pode fica vazio"),
+  first_name: z.string().min(3, "Este campo não pode fica vazio"),
+  last_name: z.string().min(3, "Este campo não pode fica vazio"),
   email: z.string().email("Digite um email válido"),
 });
 
 export async function updateUser(prevState: any, formData: FormData) {
   const validatedFields = schema.safeParse({
-    name: formData.get("name"),
+    first_name: formData.get("first_name"),
+    last_name: formData.get("last_name"),
     email: formData.get("email"),
   });
 
@@ -31,13 +34,15 @@ export async function updateUser(prevState: any, formData: FormData) {
 
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log("TCL: updateCategory -> json", json);
+
+  revalidatePath("/perfil/editar");
 
   if (json.data && json.data[0].id) {
     return {
       data: {
         errors: {
-          name: "",
+          first_name: "",
+          last_name: "",
           email: "",
         },
         message: "Registro Atualizado com sucesso",
@@ -50,7 +55,8 @@ export async function updateUser(prevState: any, formData: FormData) {
   return {
     data: {
       errors: {
-        name: "",
+        first_name: "",
+        last_name: "",
         email: "",
       },
       message: "Nào foi possivel atualizar contate o admin",

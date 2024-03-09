@@ -11,8 +11,10 @@ import { updateUser } from "./actions";
 const initialState: InitialState = {
   data: {
     errors: {
-      name: "",
+      first_name: "",
+      last_name: "",
       email: "",
+      photo: "",
     },
     message: "",
     status: false,
@@ -24,17 +26,7 @@ const FormPerfil = ({ user }: typeUserProps) => {
   const [state, formAction] = useFormState(updateUser, initialState);
   const { alert, setAlert } = useAlert();
 
-  const deleteAlert = () => {
-    const confirmed = confirm(
-      "Você marcou este registro para ser removido. Tem Certeza?"
-    );
-    if (!confirmed) {
-      const inputElem: HTMLElement | null = document.getElementById("delete");
-      if (inputElem instanceof HTMLInputElement) {
-        inputElem.checked = false;
-      }
-    }
-  };
+  console.log(user);
 
   useEffect(() => {
     if (state.data.status) {
@@ -51,12 +43,21 @@ const FormPerfil = ({ user }: typeUserProps) => {
       <form action={formAction}>
         <div className="mb-12">
           <Label>Nome</Label>
-          <Input type="text" name="name" defaultValue={`2`} />
-          <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
+          <Input type="text" name="first_name" defaultValue={user.first_name} />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.first_name}
+          </p>
+        </div>
+        <div className="mb-12">
+          <Label>Sobrenome</Label>
+          <Input type="text" name="last_name" defaultValue={user.last_name} />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.first_name}
+          </p>
         </div>
         <div className="mb-12">
           <Label>Email</Label>
-          <Input type="text" name="description" defaultValue={`2`} />
+          <Input type="text" name="email" defaultValue={user.email} />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.email}
           </p>

@@ -1,8 +1,10 @@
 export interface InitialState {
   data: {
     errors: {
-      name: string;
+      first_name: string;
+      last_name: string;
       email: string;
+      photo: string;
     };
     message: string;
     status: boolean;
@@ -11,9 +13,9 @@ export interface InitialState {
 }
 export interface typeUserProps {
   user: {
-    data: Array<{
-      name: number;
-      emial: number;
-    }>;
+    first_name: string;
+    last_name: string;
+    email: string;
+    photo: string;
   };
 }
