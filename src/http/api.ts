@@ -16,6 +16,35 @@ interface ApiRequest {
   options: ApiRequestOptions;
 }
 
+export const getUserApi = (token: string | undefined): ApiRequest => {
+  return {
+    url: `${URL}/user`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+};
+export const putUserApi = (
+  token: string | undefined,
+  formData: string
+): ApiRequest => {
+  return {
+    url: `${URL}/user`,
+    options: {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    },
+  };
+};
+
 export const postLoginApi = (dataForm: string): ApiRequest => {
   return {
     url: `${URL}/login`,
@@ -61,7 +90,7 @@ export const getCategoryApi = (token: string | undefined): ApiRequest => {
 
 export const postCategoryApi = (
   token: string | undefined,
-  formData: string
+  dataForm: string
 ): ApiRequest => {
   return {
     url: `${URL}/category`,
@@ -71,14 +100,14 @@ export const postCategoryApi = (
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: formData,
+      body: dataForm,
     },
   };
 };
 
 export const putCategoryApi = (
   token: string | undefined,
-  formData: string
+  dataform: string
 ): ApiRequest => {
   return {
     url: `${URL}/category`,
@@ -88,7 +117,7 @@ export const putCategoryApi = (
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: formData,
+      body: dataform,
     },
   };
 };
@@ -159,7 +188,7 @@ export const getWalletIdApi = (
 
 export const postWalletApi = (
   token: string | undefined,
-  formData: string
+  dateForm: string
 ): ApiRequest => {
   return {
     url: `${URL}/wallet`,
@@ -170,14 +199,14 @@ export const postWalletApi = (
         Authorization: `Bearer ${token}`,
       },
       cache: "no-cache",
-      body: formData,
+      body: dateForm,
     },
   };
 };
 
 export const putWalletApi = (
   token: string | undefined,
-  formData: string
+  dataform: string
 ): ApiRequest => {
   return {
     url: `${URL}/wallet`,
@@ -188,7 +217,7 @@ export const putWalletApi = (
         Authorization: `Bearer ${token}`,
       },
       cache: "no-cache",
-      body: formData,
+      body: dataform,
     },
   };
 };

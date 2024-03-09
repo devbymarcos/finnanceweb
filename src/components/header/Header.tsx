@@ -1,6 +1,7 @@
 import BtnMenuMobile from "@/components/btn-menu-mobile/BtnMenumobile";
 import Image from "next/image";
 import BtnChangeModeTheme from "@/components/btn-dark-mode/BtnChangeModeTheme";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -22,7 +23,7 @@ const Header = () => {
         />
         <div className="text-base-black dark:text-base-white font-bold">
           <p className="text-base-secondary font-bold">Marcos</p>
-          <p>Admin</p>
+          <Link href="/perfil/editar">Perfil</Link>
         </div>
       </div>
       <BtnMenuMobile />
