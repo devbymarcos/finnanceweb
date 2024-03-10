@@ -9,10 +9,13 @@ const Login = () => {
     <>
       <section className="grid md:grid-cols-2   ">
         <div className="self-center">
-          <div className="mb-3 w-full max-w-[300px] mx-auto">
-            <h1 className="mb-2 text-lg font-bold  dark:text-base-white text-base-black">
-              Insira os dados e acesse
-            </h1>
+          <div className="mb-6 w-full block  md:hidden text-center max-w-[120px] mx-auto">
+            <Image
+              src="/images/logo/wc-logo.png"
+              width={120}
+              height={120}
+              alt="Logo do aplicativo"
+            />
           </div>
           <div className="w-full max-w-[300px] mx-auto bg-base-white dark:bg-base-black  p-8 rounded-lg">
             <FormLogin remember={remember} />

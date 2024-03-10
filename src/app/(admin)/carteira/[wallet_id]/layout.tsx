@@ -39,13 +39,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
             <li>
               <BtnLinkSubMenu href={`/carteira/${params.wallet_id}`}>
                 <DashIcon />
-              </BtnLinkSubMenu>
-            </li>
-            <li>
-              <BtnLinkSubMenu
-                href={`/carteira/${params.wallet_id}/transacoes/list`}
-              >
-                <ListIcon />
+                <p className="hidden md:block">Painel</p>
               </BtnLinkSubMenu>
             </li>
             <li>
@@ -53,6 +47,15 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 href={`/carteira/${params.wallet_id}/transacoes/nova`}
               >
                 <CreateIcon />
+                <p className="hidden md:block">Adicionar</p>
+              </BtnLinkSubMenu>
+            </li>
+            <li>
+              <BtnLinkSubMenu
+                href={`/carteira/${params.wallet_id}/transacoes/list`}
+              >
+                <ListIcon />
+                <p className="hidden md:block">Transações</p>
               </BtnLinkSubMenu>
             </li>
             <li>
@@ -60,11 +63,13 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 href={`/carteira/${params.wallet_id}/transacoes/transferencia`}
               >
                 <TransfIcon />
+                <p className="hidden md:block">Transferir</p>
               </BtnLinkSubMenu>
             </li>
             <li>
               <BtnLinkSubMenu href={`/`}>
                 <WalletIcon />
+                <p className="hidden md:block">Carteiras</p>
               </BtnLinkSubMenu>
             </li>
           </ul>

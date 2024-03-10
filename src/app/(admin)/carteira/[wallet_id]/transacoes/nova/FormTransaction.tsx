@@ -44,7 +44,7 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
   return (
     <input
       type={type}
-      className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
+      className="rounded-2xl w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
       value={value}
       name={name}
       required={required}
