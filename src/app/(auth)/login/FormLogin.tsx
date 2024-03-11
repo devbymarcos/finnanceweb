@@ -53,7 +53,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
           </p>
         </div>
         <div className="mb-5">
-          <label className="flex gap-2">
+          <label className="flex gap-2 dark:text-base-white">
             <input
               type="checkbox"
               name="remember"
