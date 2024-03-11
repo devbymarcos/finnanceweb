@@ -54,11 +54,19 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
 };
 
 const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
-  console.log("TCL: FormTransaction -> wallet", wallet);
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
+  const [categoryInput, setCategoryIntpu] = useState("income");
   const [priceMask, setPriceMask] = useState("0");
   const formRef = useRef<HTMLFormElement>(null);
+
+  function changeSelectTypeCategory(e: any) {
+    if (e.target.id === "income") {
+      setCategoryIntpu("income");
+    } else {
+      setCategoryIntpu("expense");
+    }
+  }
 
   const onChange = (event: Event) => {
     const inputElement = event.target as HTMLInputElement;
@@ -122,43 +130,47 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
-          <div className="flex items-center mb-4">
-            <input
-              id="income"
-              type="radio"
-              value="income"
-              name="type"
-              className="w-5 h-5 cursor-pointer "
-            />
-            <label
-              htmlFor="income"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Receitas
-            </label>
+          <div>
+            <div className="flex items-center mb-4">
+              <input
+                id="income"
+                type="radio"
+                value="income"
+                name="type"
+                className="w-5 h-5 cursor-pointer "
+                onClick={changeSelectTypeCategory}
+              />
+              <label
+                htmlFor="income"
+                className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+              >
+                Receitas
+              </label>
+            </div>
+            <div className="flex items-center mb-4">
+              <input
+                id="expense"
+                type="radio"
+                value="expense"
+                name="type"
+                className="w-5 h-5 cursor-pointer"
+                onClick={changeSelectTypeCategory}
+              />
+              <label
+                htmlFor="expense"
+                className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
+              >
+                Despesas
+              </label>
+            </div>
           </div>
-          <div className="flex items-center mb-4">
-            <input
-              id="expense"
-              type="radio"
-              value="expense"
-              name="type"
-              className="w-5 h-5 cursor-pointer"
-            />
-            <label
-              htmlFor="expense"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Despesas
-            </label>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
           <div className="mb-3">
             <Label>Categoria</Label>
             <Select name="category_id">
               <option value="">Escolha...</option>
               {category.data.map((item: any) => {
+                if (item.type != categoryInput) return null;
                 return (
                   <option key={item.id} value={item.id}>
                     {item.name}
@@ -170,6 +182,8 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
               {state?.data.errors.category_id}
             </p>
           </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="mb-3">
             <Label>Pagamento status</Label>
             <Select name="pay">
@@ -181,30 +195,30 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
               {state?.data.errors.pay}
             </p>
           </div>
+          <div className="mb-3">
+            <Label>Repetir ? </Label>
+            <Select name="repeat_when">
+              <option value="">Escolha...</option>
+              <option value="single">Única</option>
+              <option value="month">Mês</option>
+            </Select>
+            <p className="text-red-500 text-[11px] ">
+              {state?.data.errors.repeat_when}
+            </p>
+          </div>
+          <div className="mb-3">
+            <Label>Repetições</Label>
+            <Input
+              type="number"
+              placeholder="Insira a quantidade de repetições ex: 1"
+              name="installments"
+            />
+            <p className="text-red-500 text-[11px] ">
+              {state?.data.errors.installments}
+            </p>
+          </div>
         </div>
 
-        <div className="mb-3">
-          <Label>Repetir ? </Label>
-          <Select name="repeat_when">
-            <option value="">Escolha...</option>
-            <option value="single">Única</option>
-            <option value="month">Mês</option>
-          </Select>
-          <p className="text-red-500 text-[11px] ">
-            {state?.data.errors.repeat_when}
-          </p>
-        </div>
-        <div className="mb-3">
-          <Label>Repetições</Label>
-          <Input
-            type="number"
-            placeholder="Insira a quantidade de repetições ex: 1"
-            name="installments"
-          />
-          <p className="text-red-500 text-[11px] ">
-            {state?.data.errors.installments}
-          </p>
-        </div>
         <div className="mb-3">
           <Submit text="Salvar" />
         </div>
