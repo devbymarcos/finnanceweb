@@ -157,7 +157,7 @@ export const getCategoryIdApi = (
 
 export const getWalletApi = (token: string | undefined): ApiRequest => {
   return {
-    url: `${URL}/wallets`,
+    url: `${URL}/wallet`,
     options: {
       method: "GET",
       headers: {
