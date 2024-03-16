@@ -13,7 +13,7 @@ const OpenTransaction = ({ description, value, href }: Props) => {
   return (
     <Link
       href={href}
-      className=" p-1 flex gap-4 items-center -mb-3 bg-base-white px-2 py-2 rounded-lg"
+      className=" p-1 flex gap-4 items-center -mb-3 bg-base-white dark:bg-base-black-200 px-2 py-2 rounded-lg"
     >
       <div className="w-full">
         <p
