@@ -26,7 +26,7 @@ const MenuSideBar = () => {
   }
   const menuData: MenuData[] = [
     {
-      title: "Home",
+      title: "Carteiras",
       icon: <DashIcon />,
       path: "/",
     },
