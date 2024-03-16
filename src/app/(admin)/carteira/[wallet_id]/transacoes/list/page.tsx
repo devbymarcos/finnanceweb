@@ -48,12 +48,12 @@ const ListTransaction = async ({
   invoice = await getInvoiceList(pararametersGetInvoice);
 
   return (
-    <div className="relative overflow-x-auto rounded-md">
+    <div className="relative overflow-x-auto ">
       <Search date={pararametersGetInvoice} />
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-3 ">
               Itens
             </th>
           </tr>
@@ -76,9 +76,7 @@ const ListTransaction = async ({
                         {formattedDateView(invoice.due_at)}
                       </p>
                       {invoice.pay == "paid" && (
-                        <p
-                          className={`inline-block text-green-500   font-bold text-[12px] `}
-                        >
+                        <p className="text-[11px] bg-green-400 inline-block text-white px-2 rounded">
                           Pago
                         </p>
                       )}
