@@ -350,3 +350,17 @@ export const deleteInvoiceApi = (
     },
   };
 };
+
+export const getCategoryFlowApi = (token: string | undefined): ApiRequest => {
+  return {
+    url: `${URL}/category-flow`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-cache",
+    },
+  };
+};
