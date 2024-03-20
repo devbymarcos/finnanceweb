@@ -36,7 +36,7 @@ const categoryFlow = async () => {
             </th>
             {months.map((item) => {
               return (
-                <th scope="col" className="px-6 py-3 ">
+                <th key={item} scope="col" className="px-6 py-3 ">
                   {item}
                 </th>
               );
@@ -46,7 +46,10 @@ const categoryFlow = async () => {
         <tbody>
           {data.data.income.map((item: any) => {
             return (
-              <tr className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700">
+              <tr
+                key={item.id}
+                className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
+              >
                 <td className="py-3 px-3">{item.name}</td>
                 <td className="py-3">{currencyFormatUI(item.janeiro)}</td>
                 <td className="py-3">{currencyFormatUI(item.fevereiro)}</td>
@@ -70,7 +73,10 @@ const categoryFlow = async () => {
           </tr>
           {data.data.expense.map((item: any) => {
             return (
-              <tr className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700">
+              <tr
+                key={item.id}
+                className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
+              >
                 <td className="py-3 px-3">{item.name}</td>
                 <td className="py-3">{currencyFormatUI(item.janeiro)}</td>
                 <td className="py-3">{currencyFormatUI(item.fevereiro)}</td>
