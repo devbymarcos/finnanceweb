@@ -193,7 +193,23 @@ const FormEditTransaction = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
-            <Select name="category_id">
+            {/* <Select
+              name="category_id"
+              defaultValue={invoice.data[0].category_id}
+            >
+              <option>Escolha...</option>
+              {category.data.map((item: any) => {
+                return (
+                  <option value={item.id} key={item.id}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </Select> */}
+            <Select
+              name="category_id"
+              defaultValue={invoice.data[0].category_id}
+            >
               <option value="">Escolha...</option>
               {category.data.map((item: any) => {
                 if (item.type != categoryInput) return null;
