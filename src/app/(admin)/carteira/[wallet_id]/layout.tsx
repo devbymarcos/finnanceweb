@@ -74,9 +74,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
               </BtnLinkSubMenu>
             </li>
             <li>
-              <BtnLinkSubMenu
-                href={`/carteira/${params.wallet_id}/cf/transferencia`}
-              >
+              <BtnLinkSubMenu href={`/carteira/${params.wallet_id}/cf`}>
                 <CategoryFlowIcon />
                 <p className="hidden md:block">CF</p>
               </BtnLinkSubMenu>
