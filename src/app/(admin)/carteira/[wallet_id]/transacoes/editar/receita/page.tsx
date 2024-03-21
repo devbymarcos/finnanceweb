@@ -1,8 +1,8 @@
 import CardStyle from "@/components/cards/CardStyle";
-import { typeEditTransactionProps } from "./types";
+import { typeEditTransactionProps } from "../types";
 import { getInvoiceIdApi, getCategoryApi } from "@/http/api";
 import { cookies } from "next/headers";
-import FormEditTransaction from "./FormEditTransaction";
+import FormEditIncome from "./FormEditIncome";
 
 async function getInvoiceId(invoiceId?: string) {
   const token: string | undefined = cookies().get("token")?.value;
@@ -30,11 +30,7 @@ const EditTransaction = async ({
   return (
     <section>
       <CardStyle>
-        <FormEditTransaction
-          wallet={params}
-          category={category}
-          invoice={invoice}
-        />
+        <FormEditIncome wallet={params} category={category} invoice={invoice} />
       </CardStyle>
     </section>
   );

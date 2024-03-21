@@ -63,7 +63,9 @@ const ListTransaction = async ({
             invoice.data.map((invoice: any) => {
               return (
                 <TrLink
-                  router={`/carteira/${params.wallet_id}/transacoes/editar?invoiceId=${invoice.id}`}
+                  router={`/carteira/${params.wallet_id}/transacoes/editar/${
+                    invoice.type === "income" ? "receita" : "despesa"
+                  }?invoiceId=${invoice.id}`}
                   key={invoice.id}
                 >
                   <th

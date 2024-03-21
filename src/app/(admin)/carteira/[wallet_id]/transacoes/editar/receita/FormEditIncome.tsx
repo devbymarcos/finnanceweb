@@ -5,8 +5,8 @@ import Label from "@/components/form/Label";
 import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
-import { UpdateTransaction } from "./actions";
-import { InputMask, Formtransaction, InitialState } from "./types";
+import { UpdateTransaction } from "../actions";
+import { InputMask, Formtransaction, InitialState } from "../types";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
@@ -42,11 +42,7 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
   );
 };
 
-const FormEditTransaction = ({
-  wallet,
-  category,
-  invoice,
-}: Formtransaction) => {
+const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
   const [state, formAction] = useFormState(UpdateTransaction, initialState);
   const { alert, setAlert } = useAlert();
   const [priceMask, setPriceMask] = useState("0,00");
@@ -103,9 +99,12 @@ const FormEditTransaction = ({
   return (
     <>
       <Alert {...alert} />
+      <h1 className="text-2xl font-bold">Receita</h1>
       <form action={formAction}>
         <input type="hidden" value={invoice.data[0].id} name="id" />
         <input type="hidden" value={wallet.wallet_id} name="wallet_id" />
+        <input type="hidden" value="income" name="type" />
+
         <div className="grid grid-cols-1 ">
           <div className="mb-3 ">
             <Label>Descrição</Label>
@@ -145,40 +144,6 @@ const FormEditTransaction = ({
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
-          <div className="flex items-center mb-4">
-            <input
-              id="income"
-              type="radio"
-              value="income"
-              name="type"
-              className="w-5 h-5 cursor-pointer "
-              defaultChecked={invoice.data[0].type === "income" && true}
-            />
-            <label
-              htmlFor="income"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Receitas
-            </label>
-          </div>
-          <div className="flex items-center mb-4">
-            <input
-              id="expense"
-              type="radio"
-              value="expense"
-              name="type"
-              className="w-5 h-5 cursor-pointer"
-              defaultChecked={invoice.data[0].type === "expense" && true}
-            />
-            <label
-              htmlFor="expense"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Despesas
-            </label>
-          </div>
-        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
@@ -189,6 +154,7 @@ const FormEditTransaction = ({
             >
               <option value="">Escolha...</option>
               {category.data.map((item: any) => {
+                if (item.type === "expense") return null;
                 return (
                   <option key={item.id} value={item.id}>
                     {item.name}
@@ -236,4 +202,4 @@ const FormEditTransaction = ({
   );
 };
 
-export default FormEditTransaction;
+export default FormEditIncome;
