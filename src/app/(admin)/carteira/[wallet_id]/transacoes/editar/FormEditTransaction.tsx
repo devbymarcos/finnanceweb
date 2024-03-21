@@ -33,7 +33,7 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
   return (
     <input
       type={type}
-      className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
+      className="w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
       value={value}
       name={name}
       required={required}
@@ -50,15 +50,6 @@ const FormEditTransaction = ({
   const [state, formAction] = useFormState(UpdateTransaction, initialState);
   const { alert, setAlert } = useAlert();
   const [priceMask, setPriceMask] = useState("0,00");
-  const [categoryInput, setCategoryIntpu] = useState("income");
-
-  function changeSelectTypeCategory(e: any) {
-    if (e.target.id === "income") {
-      setCategoryIntpu("income");
-    } else {
-      setCategoryIntpu("expense");
-    }
-  }
 
   const onChange = (event: Event) => {
     const inputElement = event.target as HTMLInputElement;
@@ -163,7 +154,6 @@ const FormEditTransaction = ({
               name="type"
               className="w-5 h-5 cursor-pointer "
               defaultChecked={invoice.data[0].type === "income" && true}
-              onClick={changeSelectTypeCategory}
             />
             <label
               htmlFor="income"
@@ -180,7 +170,6 @@ const FormEditTransaction = ({
               name="type"
               className="w-5 h-5 cursor-pointer"
               defaultChecked={invoice.data[0].type === "expense" && true}
-              onClick={changeSelectTypeCategory}
             />
             <label
               htmlFor="expense"
@@ -193,26 +182,13 @@ const FormEditTransaction = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
-            {/* <Select
-              name="category_id"
-              defaultValue={invoice.data[0].category_id}
-            >
-              <option>Escolha...</option>
-              {category.data.map((item: any) => {
-                return (
-                  <option value={item.id} key={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-            </Select> */}
+
             <Select
               name="category_id"
               defaultValue={invoice.data[0].category_id}
             >
               <option value="">Escolha...</option>
               {category.data.map((item: any) => {
-                if (item.type != categoryInput) return null;
                 return (
                   <option key={item.id} value={item.id}>
                     {item.name}
