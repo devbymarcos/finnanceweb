@@ -9,7 +9,7 @@ const BtnLinkSubMenu = ({ children, href }: Props) => {
   return (
     <Link
       href={href}
-      className="bg-base-secondary px-5 py-3  text-base-white flex gap-3 rounded-sm"
+      className="bg-base-secondary px-5 py-3  text-base-white flex gap-3 rounded-full mb:rounded-sm"
     >
       {children}
     </Link>
