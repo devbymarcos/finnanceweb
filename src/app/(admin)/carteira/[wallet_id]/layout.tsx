@@ -35,8 +35,14 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
   return (
     <>
       <div className="flex flex-col md:flex-row justify-between md:gap-12 items-center mb-5">
-        <nav className="mb-12">
+        <nav className="mb-5">
           <ul className="flex gap-4">
+            <li>
+              <BtnLinkSubMenu href={`/`}>
+                <WalletIcon />
+                <p className="hidden md:block">Carteiras</p>
+              </BtnLinkSubMenu>
+            </li>
             <li>
               <BtnLinkSubMenu href={`/carteira/${params.wallet_id}`}>
                 <DashIcon />
@@ -68,27 +74,22 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
               </BtnLinkSubMenu>
             </li>
             <li>
-              <BtnLinkSubMenu href={`/`}>
-                <WalletIcon />
-                <p className="hidden md:block">Carteiras</p>
-              </BtnLinkSubMenu>
-            </li>
-            <li>
               <BtnLinkSubMenu href={`/carteira/${params.wallet_id}/cf`}>
                 <CategoryFlowIcon />
-                <p className="hidden md:block">CF</p>
+                <p className="hidden md:block">Fluxo categoria</p>
               </BtnLinkSubMenu>
             </li>
           </ul>
         </nav>
-
+      </div>
+      <div className="mb-3">
         <CardStyle>
           <div className="flex gap-4 items-center">
             <div>
               <h3 className="text-sm text-base-secondary uppercase font-bold">
                 Carteira Selecionada
               </h3>
-              <p className="text-2xl text-base-black dark:text-base-white font-bold">
+              <p className="text-xl text-base-black dark:text-base-white font-bold">
                 {walletActivate}
               </p>
             </div>
