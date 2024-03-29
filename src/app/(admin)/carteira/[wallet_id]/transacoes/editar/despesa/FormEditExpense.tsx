@@ -99,7 +99,7 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
   return (
     <>
       <Alert {...alert} />
-      <h1 className="text-2xl font-bold">Despesa</h1>
+      <h1 className="text-2xl font-bold dark:text-base-white">Despesa</h1>
       <form action={formAction}>
         <input type="hidden" value={invoice.data[0].id} name="id" />
         <input type="hidden" value={wallet.wallet_id} name="wallet_id" />
