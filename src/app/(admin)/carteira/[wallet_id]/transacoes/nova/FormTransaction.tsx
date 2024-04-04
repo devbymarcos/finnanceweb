@@ -184,7 +184,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="mb-3">
+          {/* <div className="mb-3">
             <Label>Pagamento status</Label>
             <Select name="pay">
               <option value="">Escolha...</option>
@@ -194,7 +194,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.pay}
             </p>
-          </div>
+          </div> */}
           <div className="mb-3">
             <Label>Repetir ? </Label>
             <Select name="repeat_when">
