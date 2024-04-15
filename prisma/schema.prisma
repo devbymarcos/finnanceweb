@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model app_categories {
+  id          Int           @id @default(autoincrement())
+  user_id     Int?
+  name        String        @db.VarChar(255)
+  description String        @db.Text
+  type        String        @db.VarChar(255)
+  created_at  DateTime?     @default(now()) @db.Timestamp(0)
+  updated_at  DateTime?     @db.Timestamp(0)
+  app_invoice app_invoice[]
+}
+
+model app_cliente {
+  id         Int       @id @default(autoincrement())
+  user_id    Int
+  name       String    @db.VarChar(255)
+  email      String?   @db.VarChar(255)
+  phone      String?   @db.VarChar(255)
+  mobile     String?   @db.VarChar(255)
+  street     String?   @db.VarChar(255)
+  created_at DateTime  @default(now()) @db.Timestamp(0)
+  updated_at DateTime? @db.Timestamp(0)
+}
+
+model app_invoice {
+  id                Int            @id @default(autoincrement())
+  user_id           Int
+  wallet_id         Int
+  category_id       Int
+  invoice_of        Int?
+  name              String         @db.VarChar(255)
+  description       String         @db.VarChar(255)
+  price             Float          @db.Float
+  due_at            DateTime       @db.Date
+  type              String         @db.VarChar(255)
+  pay               String         @default("unpaid") @db.VarChar(255)
+  repeat_when       String?        @db.VarChar(255)
+  period            String?        @default("month") @db.VarChar(255)
+  group_quota       String?        @db.VarChar(255)
+  created_at        DateTime?      @default(now()) @db.Timestamp(0)
+  updated_at        DateTime?      @db.Timestamp(0)
+  app_categories    app_categories @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "category_id_fk")
+  app_invoice       app_invoice?   @relation("app_invoiceToapp_invoice", fields: [invoice_of], references: [id], onDelete: Cascade, map: "invoice_of")
+  other_app_invoice app_invoice[]  @relation("app_invoiceToapp_invoice")
+  app_wallet        app_wallet     @relation(fields: [wallet_id], references: [id], onDelete: Cascade, map: "wallet_id_fk")
+
+  @@index([invoice_of], map: "app_invoice")
+  @@index([category_id], map: "category_id_fk")
+  @@index([wallet_id], map: "wallet_id_fk")
+}
+
+model app_provider {
+  id         Int       @id @default(autoincrement())
+  user_id    Int
+  name       String    @db.VarChar(255)
+  email      String?   @db.VarChar(255)
+  phone      String?   @db.VarChar(255)
+  mobile     String?   @db.VarChar(255)
+  street     String?   @db.VarChar(255)
+  created_at DateTime  @default(now()) @db.Timestamp(0)
+  updated_at DateTime? @db.Timestamp(0)
+}
+
+model app_wallet {
+  id            Int           @id @default(autoincrement())
+  user_id       Int
+  name          String        @db.VarChar(255)
+  description   String        @db.VarChar(255)
+  option_wallet Int
+  created_at    DateTime?     @default(now()) @db.Timestamp(0)
+  updated_at    DateTime?     @db.Timestamp(0)
+  app_invoice   app_invoice[]
+}
+
+model users {
+  id           Int       @id @default(autoincrement()) @db.UnsignedInt
+  first_name   String    @default("") @db.VarChar(255)
+  last_name    String    @default("") @db.VarChar(255)
+  email        String    @unique(map: "email") @default("") @db.VarChar(255)
+  password     String    @default("") @db.VarChar(255)
+  token_forget String?   @db.VarChar(255)
+  photo        String    @default("default") @db.VarChar(255)
+  created_at   DateTime  @default(now()) @db.Timestamp(0)
+  updated_at   DateTime? @db.Timestamp(0)
+
+  @@index([first_name, last_name, email], map: "full_text")
+}
