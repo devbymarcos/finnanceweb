@@ -1,6 +1,7 @@
 import { getCategoryFlowApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { currencyFormatUI } from "@/functions/helpers";
+import { typePropscategoryFlow } from "./types";
 const months: string[] = [
   "Jan",
   "Fev",
@@ -16,16 +17,16 @@ const months: string[] = [
   "Dez",
 ];
 
-async function getCategoryFlow() {
+async function getCategoryFlow(wallet_id: string) {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getCategoryFlowApi(token);
+  const { url, options } = getCategoryFlowApi(token, wallet_id);
   const response = await fetch(url, options);
   return await response.json();
 }
 
-const categoryFlow = async () => {
-  const data = await getCategoryFlow();
-  console.log("TCL: categoryFlow -> data", data);
+const categoryFlow = async ({ params }: typePropscategoryFlow) => {
+  const data = await getCategoryFlow(params.wallet_id);
+
   return (
     <div className="relative overflow-x-auto ">
       <table className="w-full table-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">

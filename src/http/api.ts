@@ -351,9 +351,12 @@ export const deleteInvoiceApi = (
   };
 };
 
-export const getCategoryFlowApi = (token: string | undefined): ApiRequest => {
+export const getCategoryFlowApi = (
+  token: string | undefined,
+  wallet_id: string
+): ApiRequest => {
   return {
-    url: `${URL}/category-flow`,
+    url: `${URL}/category-flow?walletId=${wallet_id}`,
     options: {
       method: "GET",
       headers: {
