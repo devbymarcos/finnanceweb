@@ -14,16 +14,6 @@ export interface Formtransaction {
   invoice: any;
 }
 
-export interface InputMaskTypes {
-  type: string;
-  value?: string;
-  placeholder?: string;
-  name: string;
-  required?: boolean;
-  onChange?: (e: any) => void;
-  defaultValue?: string;
-}
-
 export interface InitialState {
   data: {
     errors: {

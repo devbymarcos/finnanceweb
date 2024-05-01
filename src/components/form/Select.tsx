@@ -17,7 +17,7 @@ const Select = ({
 }: Props) => {
   return (
     <select
-      className=" w-full  py-[0.9rem] px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary rounded-xl"
+      className=" w-full  py-[0.9rem] px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary rounded-md"
       defaultValue={defaultValue}
       placeholder={placeholder}
       name={name}

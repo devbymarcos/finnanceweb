@@ -6,11 +6,12 @@ import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
 import { UpdateTransaction } from "../actions";
-import { InputMask, Formtransaction, InitialState } from "../types";
+import { Formtransaction, InitialState } from "../types";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
 import { formattedDateInput } from "@/functions/helpers";
+import InputMask from "@/components/form/InputMask";
 
 const initialState: InitialState = {
   data: {
@@ -27,19 +28,6 @@ const initialState: InitialState = {
     status: false,
     type: "error",
   },
-};
-
-const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
-  return (
-    <input
-      type={type}
-      className="w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
-      value={value}
-      name={name}
-      required={required}
-      onChange={onChange}
-    />
-  );
 };
 
 const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
