@@ -6,7 +6,7 @@ import Select from "@/components/form/Select";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
 import { UpdateTransaction } from "../actions";
-import { InputMask, Formtransaction, InitialState } from "../types";
+import { InputMaskTypes, Formtransaction, InitialState } from "../types";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
@@ -29,11 +29,17 @@ const initialState: InitialState = {
   },
 };
 
-const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
+const InputMask = ({
+  type,
+  value,
+  name,
+  required,
+  onChange,
+}: InputMaskTypes) => {
   return (
     <input
       type={type}
-      className="w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
+      className="w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary rounded-xl"
       value={value}
       name={name}
       required={required}

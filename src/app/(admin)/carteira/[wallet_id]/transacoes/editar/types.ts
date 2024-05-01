@@ -14,7 +14,7 @@ export interface Formtransaction {
   invoice: any;
 }
 
-export interface InputMask {
+export interface InputMaskTypes {
   type: string;
   value?: string;
   placeholder?: string;
