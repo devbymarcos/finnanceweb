@@ -1,6 +1,6 @@
 import BtnMenuMobile from "@/components/btn-menu-mobile/BtnMenumobile";
 import Image from "next/image";
-import BtnChangeModeTheme from "@/components/btn-dark-mode/BtnChangeModeTheme";
+
 import Link from "next/link";
 
 const Header = () => {
@@ -13,7 +13,6 @@ const Header = () => {
         </p>
       </div>
       <div className="flex gap-6 items-center">
-        <BtnChangeModeTheme />
         <Image
           className="rounded-full"
           src="/user.jpg"

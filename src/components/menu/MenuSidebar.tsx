@@ -10,7 +10,7 @@ import { useStore } from "@/hooks/useStore";
 
 interface MenuData {
   title: string;
-  icon: React.ReactElement;
+  icon?: React.ReactElement;
   path: string;
 }
 
@@ -27,35 +27,40 @@ const MenuSideBar = () => {
   const menuData: MenuData[] = [
     {
       title: "Carteiras",
-      icon: <DashIcon />,
+      // icon: <DashIcon />,
       path: "/",
     },
     {
       title: "Adiciona Carteira",
-      icon: <WalletIcon colors="#fff" />,
+      // icon: <WalletIcon colors="#fff" />,
       path: "/carteiras/list",
     },
     {
       title: "Cria Categoria",
-      icon: <CategoryIcon colors="#fff" />,
+      // icon: <CategoryIcon colors="#fff" />,
       path: "/categorias/list",
     },
     {
+      title: "Perfil",
+      // icon: <LogoutIcon />,
+      path: "/perfil",
+    },
+    {
       title: "Logout",
-      icon: <LogoutIcon />,
+      // icon: <LogoutIcon />,
       path: "/logout",
     },
   ];
   return (
     <>
-      <nav className="mt-12 pb-12  ">
-        <ul>
+      <nav className="h-full  ">
+        <ul className="flex items-center gap-11 h-full ">
           {menuData.map((item: MenuData) => {
             return (
-              <li key={item.title} className="px-2 py-2" onClick={open}>
+              <li key={item.title} className=" py-2" onClick={open}>
                 <Link
                   href={item.path}
-                  className="flex gap-4 pl-8 text-font-color-dark  font-bold hover:bg-slate-500 dark:hover:bg-base-black-200 py-3 rounded-xl"
+                  className="flex gap-4  text-font-color-light  font-bold  dark:hover:bg-base-black-200 py-3 rounded-xl"
                 >
                   {item.icon}
                   {item.title}
@@ -66,7 +71,6 @@ const MenuSideBar = () => {
           <li className="pl-8 py-2"></li>
         </ul>
       </nav>
-      <span className="border-b border-base-gray-200 w-1/2 h-1 block mx-auto"></span>
     </>
   );
 };

@@ -1,6 +1,5 @@
 import "../globals.css";
-import Sidebar from "@/components/sidebar/Sidebar";
-import Header from "../../components/header/Header";
+import NavigationTop from "@/components/navigation/NavigationTop";
 import PrivateRouter from "./PrivateRouter";
 
 export default function RootLayout({
@@ -11,9 +10,9 @@ export default function RootLayout({
   return (
     <>
       <PrivateRouter>
-        <Sidebar />
-        <Header />
-        <main className="absolute bg-base-white dark:bg-base-black-200 md:left-[250px] w-full md:w-full-custom min-h-screen    p-6 mt-24">
+        <NavigationTop />
+
+        <main className="    container-custom min-h-screen mx-auto   p-6 mt-6">
           {children}
         </main>
       </PrivateRouter>

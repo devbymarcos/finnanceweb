@@ -38,45 +38,54 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
         <nav className="mb-5">
           <ul className="flex gap-4">
             <li>
-              <BtnLinkSubMenu href={`/`}>
+              <BtnLinkSubMenu title="Lista de carteiras" href={`/`}>
                 <WalletIcon />
-                <p className="hidden md:block">Carteiras</p>
-              </BtnLinkSubMenu>
-            </li>
-            <li>
-              <BtnLinkSubMenu href={`/carteira/${params.wallet_id}`}>
-                <DashIcon />
-                <p className="hidden md:block">Painel</p>
+                {/* <p className="hidden md:block">Carteiras</p> */}
               </BtnLinkSubMenu>
             </li>
             <li>
               <BtnLinkSubMenu
+                title="Painel"
+                href={`/carteira/${params.wallet_id}`}
+              >
+                <DashIcon />
+                {/* <p className="hidden md:block">Painel</p> */}
+              </BtnLinkSubMenu>
+            </li>
+            <li>
+              <BtnLinkSubMenu
+                title="Adicionar transação"
                 href={`/carteira/${params.wallet_id}/transacoes/nova`}
               >
                 <CreateIcon />
-                <p className="hidden md:block">Adicionar</p>
+                {/* <p className="hidden md:block">Adicionar</p> */}
               </BtnLinkSubMenu>
             </li>
             <li>
               <BtnLinkSubMenu
+                title="Listar Transações"
                 href={`/carteira/${params.wallet_id}/transacoes/list`}
               >
                 <ListIcon />
-                <p className="hidden md:block">Transações</p>
+                {/* <p className="hidden md:block">Transações</p> */}
               </BtnLinkSubMenu>
             </li>
             <li>
               <BtnLinkSubMenu
+                title="Tranferencia"
                 href={`/carteira/${params.wallet_id}/transacoes/transferencia`}
               >
                 <TransfIcon />
-                <p className="hidden md:block">Transferir</p>
+                {/* <p className="hidden md:block">Transferir</p> */}
               </BtnLinkSubMenu>
             </li>
             <li>
-              <BtnLinkSubMenu href={`/carteira/${params.wallet_id}/cf`}>
+              <BtnLinkSubMenu
+                title="Gerar Fluxo"
+                href={`/carteira/${params.wallet_id}/cf`}
+              >
                 <CategoryFlowIcon />
-                <p className="hidden md:block">Fluxo categoria</p>
+                {/* <p className="hidden md:block">Fluxo categoria</p> */}
               </BtnLinkSubMenu>
             </li>
           </ul>
