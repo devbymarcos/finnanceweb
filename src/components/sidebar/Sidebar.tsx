@@ -1,30 +1,30 @@
 "use client";
 import Image from "next/image";
 import MenuSideBar from "../menu/MenuSidebar";
-
+import BtnChangeModeTheme from "@/components/btn-dark-mode/BtnChangeModeTheme";
 import { useStore } from "@/hooks/useStore";
 const Sidebar = () => {
   const openSideBar: boolean = useStore((state) => state.openSideBar);
 
   return (
     <>
-      <aside
-        className={`w-[250px] ${
-          openSideBar ? "left-0" : " -left-[250px]"
-        } md:left-0 transition-all bg-slate-600 h-screen fixed flex flex-col justify-between dark:bg-base-black overflow-y-auto z-40  `}
+      <header
+        className={` w-full bg-slate-600 h-24 justify-between px-4  flex items-center  gap-6 dark:bg-base-black  z-40  `}
       >
-        <div className="w-full mt-6">
-          <Image
-            src="/images/logo/wc-logo-white.png"
-            width={100}
-            height={100}
-            alt="logo wcapp"
-            className="mx-auto"
-          />
+        <div className="flex items-center">
+          <div className="">
+            <Image
+              src="/images/logo/wc-logo-white.png"
+              width={100}
+              height={100}
+              alt="logo wcapp"
+              className="mx-auto"
+            />
+          </div>
           <MenuSideBar />
         </div>
-        <div className="flex justify-evenly mb-12"></div>
-      </aside>
+        <BtnChangeModeTheme />
+      </header>
     </>
   );
 };

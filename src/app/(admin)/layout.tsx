@@ -12,8 +12,8 @@ export default function RootLayout({
     <>
       <PrivateRouter>
         <Sidebar />
-        <Header />
-        <main className="absolute bg-base-white dark:bg-base-black-200 md:left-[250px] w-full md:w-full-custom min-h-screen    p-6 mt-24">
+        {/* <Header /> */}
+        <main className=" bg-base-white dark:bg-base-black-200  container-custom min-h-screen mx-auto   p-6 mt-6">
           {children}
         </main>
       </PrivateRouter>
