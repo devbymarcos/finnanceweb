@@ -9,18 +9,18 @@ const Sidebar = () => {
   return (
     <>
       <header
-        className={` w-full bg-slate-600 h-24 justify-between px-4  flex items-center  gap-6 dark:bg-base-black  z-40  `}
+        className={` w-full  h-20 justify-between px-4  flex items-center  gap-6 dark:bg-base-black bg-base-white z-40  `}
       >
-        <div className="flex items-center">
-          <div className="">
-            <Image
-              src="/images/logo/wc-logo-white.png"
-              width={100}
-              height={100}
-              alt="logo wcapp"
-              className="mx-auto"
-            />
-          </div>
+        <div className="">
+          <Image
+            src="/images/logo/wc-logo.png"
+            width={100}
+            height={100}
+            alt="logo wcapp"
+            className="mx-auto"
+          />
+        </div>
+        <div className="flex items-center  container-custom h-full">
           <MenuSideBar />
         </div>
         <BtnChangeModeTheme />
