@@ -43,7 +43,7 @@ const MenuSideBar = () => {
     {
       title: "Perfil",
       // icon: <LogoutIcon />,
-      path: "/perfil",
+      path: "/perfil/editar",
     },
     {
       title: "Logout",
