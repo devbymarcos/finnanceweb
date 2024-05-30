@@ -3,7 +3,7 @@ import Link from "next/link";
 type Props = {
   children: React.ReactNode;
   href: string;
-  title: string;
+  title?: string;
 };
 
 const BtnLinkSubMenu = ({ children, href, title }: Props) => {
