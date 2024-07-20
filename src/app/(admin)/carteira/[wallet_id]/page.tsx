@@ -64,7 +64,7 @@ async function Index({ params }: PropsIndex) {
         <div className="">
           <CardStyle>
             <h3 className="text-base-secondary first-line:font-bold text-lg">
-              Transações Em aberto
+              Transações Pendentes
             </h3>
             {data.data.invoiceOpen.map((invoice: any) => {
               return (
