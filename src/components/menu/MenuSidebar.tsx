@@ -60,7 +60,7 @@ const MenuSideBar = () => {
               <li key={item.title} className=" py-2" onClick={open}>
                 <Link
                   href={item.path}
-                  className="flex gap-4  text-font-color-light  font-bold  dark:hover:bg-base-black-200 py-3 rounded-xl"
+                  className="flex gap-4  text-font-color-light dark:text-font-color-dark  font-bold  py-3 rounded-xl"
                 >
                   {item.icon}
                   {item.title}
