@@ -36,7 +36,7 @@ const getDataDash = async (wallet_id: string): Promise<ApiReturn> => {
 
 async function Index({ params }: PropsIndex) {
   const data = await getDataDash(params.wallet_id);
-
+  console.log(data);
   return (
     <>
       <section className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
@@ -66,18 +66,19 @@ async function Index({ params }: PropsIndex) {
             <h3 className="text-base-secondary first-line:font-bold text-lg">
               Transações Pendentes
             </h3>
-            {data.data.invoiceOpen.map((invoice: any) => {
-              return (
-                <OpenTransaction
-                  href={`/carteira/${params.wallet_id}/transacoes/editar/${
-                    invoice.type === "income" ? "receita" : "despesa"
-                  }?invoiceId=${invoice.id}`}
-                  description={invoice.description}
-                  value={invoice.price}
-                  key={invoice.id}
-                />
-              );
-            })}
+            {data.data.invoiceOpen != null &&
+              data.data.invoiceOpen.map((invoice: any) => {
+                return (
+                  <OpenTransaction
+                    href={`/carteira/${params.wallet_id}/transacoes/editar/${
+                      invoice.type === "income" ? "receita" : "despesa"
+                    }?invoiceId=${invoice.id}`}
+                    description={invoice.description}
+                    value={invoice.price}
+                    key={invoice.id}
+                  />
+                );
+              })}
           </CardStyle>
         </div>
       </section>
