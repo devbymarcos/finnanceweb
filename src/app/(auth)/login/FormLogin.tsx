@@ -8,6 +8,8 @@ import { userLogin } from "./actions";
 import { useEffect, useState } from "react";
 import { StateTypes, PropsFormLogin } from "./types";
 import Submit from "@/components/form/Submit";
+import EyeOff from "@/components/icons/EyeOff";
+import EyeOn from "@/components/icons/EyeOn";
 
 const initialState: StateTypes = {
   data: {
@@ -22,8 +24,12 @@ const initialState: StateTypes = {
 const FormLogin = ({ remember }: PropsFormLogin) => {
   const [state, formAction] = useFormState(userLogin, initialState);
   const { alert, setAlert } = useAlert();
+  const [look, setLook] = useState(false);
 
-  console.log(remember);
+  function passLook(e: any) {
+    e.preventDefault();
+    setLook(!look);
+  }
 
   useEffect(() => {
     if (state.data.message) {
@@ -45,9 +51,26 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
             {state?.data.errors.email}
           </p>
         </div>
-        <div className="mb-5">
+        <div className="mb-5 relative">
           <Label>Password</Label>
-          <Input type="password" name="password" />
+          <Input type={look == false ? "password" : "text"} name="password" />
+          {look == false && (
+            <button
+              className="flex items-center absolute right-2 top-9 gap-2 text-sm dark:text-base-white text-base-black"
+              onClick={passLook}
+            >
+              <EyeOff />
+            </button>
+          )}
+          {look == true && (
+            <button
+              className="flex items-center absolute right-2 top-9 gap-2  text-sm dark:text-base-white text-base-black"
+              onClick={passLook}
+            >
+              <EyeOn />
+            </button>
+          )}
+
           <p className="text-red-500 text-[11px]">
             {state?.data.errors.password}
           </p>
