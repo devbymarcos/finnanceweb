@@ -8,6 +8,7 @@ import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
 import { useStore } from "@/hooks/useStore";
 import { montserrat, oswald } from "@/fonts";
+import UserIcon from "../icons/UserIcon";
 
 interface MenuData {
   title: string;
@@ -43,11 +44,11 @@ const MenuSideBar = () => {
     },
     {
       title: "Perfil",
-      icon: <LogoutIcon colors={dark == true ? "#fff" : "#000"} />,
+      icon: <UserIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/perfil/editar",
     },
     {
-      title: "Logout",
+      title: "Sair",
       icon: <LogoutIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/logout",
     },
