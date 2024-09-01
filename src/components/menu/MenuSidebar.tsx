@@ -3,11 +3,10 @@ import Link from "next/link";
 import DashIcon from "../icons/DashIcon";
 import CategoryIcon from "../icons/CategoryIcon";
 import WalletIcon from "../icons/WalletIcons";
-import TransactionIcon from "../icons/TransactionIcon";
 import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
 import { useStore } from "@/hooks/useStore";
-import { montserrat, oswald } from "@/fonts";
+import { montserrat } from "@/fonts";
 import UserIcon from "../icons/UserIcon";
 
 interface MenuData {
@@ -26,6 +25,7 @@ const MenuSideBar = () => {
   function open() {
     updateOpenSideBar(!openSideBar);
   }
+
   const menuData: MenuData[] = [
     {
       title: "Inicio",
@@ -55,8 +55,12 @@ const MenuSideBar = () => {
   ];
   return (
     <>
-      <nav className="h-full  ">
-        <ul className="flex items-center gap-11 h-full ">
+      <nav
+        className={`h-screen w-[250px] fixed bg-base-gray dark:bg-base-black top-0 ${
+          openSideBar == true ? "left-0" : "-left-[250px]"
+        }   p-4 transition-all z-10`}
+      >
+        <ul className="">
           {menuData.map((item: MenuData) => {
             return (
               <li key={item.title} className=" py-2" onClick={open}>

@@ -1,7 +1,8 @@
 import "../globals.css";
-import NavigationTop from "@/components/navigation/NavigationTop";
 import PrivateRouter from "./PrivateRouter";
 import { montserrat } from "@/fonts";
+import Header from "@/components/header/Header";
+import MenuSideBar from "@/components/menu/MenuSidebar";
 
 export default function RootLayout({
   children,
@@ -11,7 +12,8 @@ export default function RootLayout({
   return (
     <>
       <PrivateRouter>
-        <NavigationTop />
+        <Header />
+        <MenuSideBar />
 
         <main
           className={`container-custom min-h-screen mx-auto    mt-6 ${montserrat.className}`}

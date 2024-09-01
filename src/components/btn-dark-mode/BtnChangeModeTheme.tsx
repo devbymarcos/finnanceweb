@@ -46,7 +46,7 @@ export const BtnChangeModeTheme = () => {
       <button
         id="dark"
         onClick={modeChange}
-        className={`scale-75 w-12 h-12  bg-base-black flex items-center justify-center rounded-2xl shadow shadow-base-yellow`}
+        className={`scale-75 w-12 h-12  bg-base-black  dark:bg-base-secondary flex items-center justify-center rounded-2xl shadow shadow-base-yellow`}
       >
         {dark == true && <SunIcon colors={"#fff"} />}
         {dark == false && <MoonIcon colors={"#f8f8f8"} />}
