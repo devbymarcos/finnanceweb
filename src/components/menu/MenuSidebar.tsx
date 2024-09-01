@@ -7,6 +7,7 @@ import TransactionIcon from "../icons/TransactionIcon";
 import LogoutIcon from "../icons/LogoutIcon";
 import React from "react";
 import { useStore } from "@/hooks/useStore";
+import { montserrat, oswald } from "@/fonts";
 
 interface MenuData {
   title: string;
@@ -26,28 +27,28 @@ const MenuSideBar = () => {
   }
   const menuData: MenuData[] = [
     {
-      title: "Carteiras",
-      // icon: <DashIcon />,
+      title: "Inicio",
+      icon: <DashIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/",
     },
     {
       title: "Adiciona Carteira",
-      // icon: <WalletIcon colors="#fff" />,
+      icon: <WalletIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/carteiras/list",
     },
     {
       title: "Cria Categoria",
-      // icon: <CategoryIcon colors="#fff" />,
+      icon: <CategoryIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/categorias/list",
     },
     {
       title: "Perfil",
-      // icon: <LogoutIcon />,
+      icon: <LogoutIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/perfil/editar",
     },
     {
       title: "Logout",
-      // icon: <LogoutIcon />,
+      icon: <LogoutIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/logout",
     },
   ];
@@ -60,7 +61,7 @@ const MenuSideBar = () => {
               <li key={item.title} className=" py-2" onClick={open}>
                 <Link
                   href={item.path}
-                  className="flex gap-4  text-font-color-light dark:text-font-color-dark  font-bold  py-3 rounded-xl"
+                  className={`flex gap-4  text-font-color-light dark:text-font-color-dark  font-bold  py-3 rounded-xl ${montserrat.className}`}
                 >
                   {item.icon}
                   {item.title}

@@ -20,10 +20,10 @@ const WalletSection = ({ data }: any) => {
             return (
               <li
                 key={wallet.id}
-                className="mb-2  bg-base-white dark:bg-base-black-200   rounded-lg"
+                className="mb-2  bg-base-gray dark:bg-base-black-200   rounded-lg"
               >
                 <Link
-                  className="flex gap-2 px-3 py-6 items-center"
+                  className="flex gap-4 px-3 py-6  rounded-lg items-center"
                   href={`carteira/${wallet.id}`}
                 >
                   <WalletDashUiIcon />

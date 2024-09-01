@@ -1,12 +1,10 @@
 "use client";
-import { useStore } from "@/hooks/useStore";
 
 type Props = {
   colors?: string;
 };
 
 const WalletIcon = ({ colors }: Props) => {
-  const dark = useStore((state) => state.dark);
   return (
     <>
       <svg

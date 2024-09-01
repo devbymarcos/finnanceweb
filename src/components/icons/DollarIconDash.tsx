@@ -1,8 +1,9 @@
 "use client";
-import { useStore } from "@/hooks/useStore";
 
-const DollarDashIcon = () => {
-  const dark = useStore((state) => state.dark);
+interface iconType {
+  colors: string;
+}
+const DollarDashIcon = ({ colors }: iconType) => {
   return (
     <>
       <svg

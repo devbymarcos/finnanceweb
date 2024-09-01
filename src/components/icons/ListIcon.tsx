@@ -1,8 +1,10 @@
 "use client";
-import { useStore } from "@/hooks/useStore";
 
-const ListIcon = () => {
-  const dark = useStore((state) => state.dark);
+interface iconType {
+  colors: string;
+}
+
+const ListIcon = ({ colors }: iconType) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +16,7 @@ const ListIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      color="#fff"
+      color={colors}
     >
       <line x1="8" x2="21" y1="6" y2="6" />
       <line x1="8" x2="21" y1="12" y2="12" />

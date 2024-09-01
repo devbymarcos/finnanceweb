@@ -1,4 +1,8 @@
-const SearchIcon = () => {
+interface icontype {
+  colors: string;
+}
+
+const SearchIcon = ({ colors }: icontype) => {
   return (
     <>
       <svg
@@ -11,7 +15,7 @@ const SearchIcon = () => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        color="#fff"
+        color={colors}
       >
         <circle cx="11" cy="11" r="8" />
         <path d="m21 21-4.3-4.3" />

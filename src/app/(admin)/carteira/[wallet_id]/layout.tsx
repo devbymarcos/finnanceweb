@@ -39,7 +39,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
           <ul className="flex gap-4">
             <li>
               <BtnLinkSubMenu title="Lista de carteiras" href={`/`}>
-                <WalletIcon />
+                <WalletIcon colors="#fff" />
                 {/* <p className="hidden md:block">Carteiras</p> */}
               </BtnLinkSubMenu>
             </li>
@@ -48,7 +48,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Painel"
                 href={`/carteira/${params.wallet_id}`}
               >
-                <DashIcon />
+                <DashIcon colors="#fff" />
                 {/* <p className="hidden md:block">Painel</p> */}
               </BtnLinkSubMenu>
             </li>
@@ -57,7 +57,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Adicionar transação"
                 href={`/carteira/${params.wallet_id}/transacoes/nova`}
               >
-                <CreateIcon />
+                <CreateIcon colors="#fff" />
                 {/* <p className="hidden md:block">Adicionar</p> */}
               </BtnLinkSubMenu>
             </li>
@@ -66,7 +66,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Listar Transações"
                 href={`/carteira/${params.wallet_id}/transacoes/list`}
               >
-                <ListIcon />
+                <ListIcon colors="#fff" />
                 {/* <p className="hidden md:block">Transações</p> */}
               </BtnLinkSubMenu>
             </li>
@@ -75,7 +75,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Tranferencia"
                 href={`/carteira/${params.wallet_id}/transacoes/transferencia`}
               >
-                <TransfIcon />
+                <TransfIcon colors="#fff" />
                 {/* <p className="hidden md:block">Transferir</p> */}
               </BtnLinkSubMenu>
             </li>
@@ -84,7 +84,7 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Gerar Fluxo"
                 href={`/carteira/${params.wallet_id}/cf`}
               >
-                <CategoryFlowIcon />
+                <CategoryFlowIcon colors="#fff" />
                 {/* <p className="hidden md:block">Fluxo categoria</p> */}
               </BtnLinkSubMenu>
             </li>

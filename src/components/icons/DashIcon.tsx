@@ -1,6 +1,9 @@
 "use client";
 
-const DashIcon = () => {
+type Props = {
+  colors: string;
+};
+const DashIcon = ({ colors }: Props) => {
   return (
     <>
       <svg
@@ -16,7 +19,7 @@ const DashIcon = () => {
           width="6"
           height="6"
           rx="1"
-          stroke={`#fff`}
+          stroke={colors}
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -26,7 +29,7 @@ const DashIcon = () => {
           width="6"
           height="6"
           rx="1"
-          stroke={`#fff`}
+          stroke={colors}
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -36,7 +39,7 @@ const DashIcon = () => {
           width="6"
           height="6"
           rx="1"
-          stroke={`#fff`}
+          stroke={colors}
           strokeWidth="2"
           strokeLinejoin="round"
         />
@@ -46,7 +49,7 @@ const DashIcon = () => {
           width="6"
           height="6"
           rx="1"
-          stroke={`#fff`}
+          stroke={colors}
           strokeWidth="2"
           strokeLinejoin="round"
         />

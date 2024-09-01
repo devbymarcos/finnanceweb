@@ -1,8 +1,9 @@
 "use client";
-import { useStore } from "@/hooks/useStore";
 
-const LoginIcon = () => {
-  const dark = useStore((state) => state.dark);
+interface iconType {
+  colors: string;
+}
+const LoginIcon = ({ colors }: iconType) => {
   return (
     <>
       <svg
@@ -15,7 +16,7 @@ const LoginIcon = () => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        color="#fff"
+        color={colors}
       >
         <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
         <polyline points="10 17 15 12 10 7" />

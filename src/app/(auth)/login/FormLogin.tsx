@@ -59,7 +59,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
               className="flex items-center absolute right-2 top-9 gap-2 text-sm dark:text-base-white text-base-black"
               onClick={passLook}
             >
-              <EyeOff />
+              <EyeOff colors="#1c1d21" />
             </button>
           )}
           {look == true && (
@@ -67,7 +67,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
               className="flex items-center absolute right-2 top-9 gap-2  text-sm dark:text-base-white text-base-black"
               onClick={passLook}
             >
-              <EyeOn />
+              <EyeOn colors="#1c1d21" />
             </button>
           )}
 

@@ -1,5 +1,5 @@
 interface CategoryIcon {
-  colors?: string;
+  colors: string;
 }
 
 const BalanceIcon = ({ colors }: CategoryIcon) => {

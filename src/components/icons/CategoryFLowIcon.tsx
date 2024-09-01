@@ -1,5 +1,5 @@
 interface CategoryIcon {
-  colors?: string;
+  colors: string;
 }
 
 const CategoryFlowIcon = ({ colors }: CategoryIcon) => {
