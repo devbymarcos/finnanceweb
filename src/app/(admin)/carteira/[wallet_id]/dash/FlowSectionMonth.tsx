@@ -48,7 +48,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
       <CardStyle>
         <div className="flex gap-4 items-center">
           <span className="bg-red-300 px-2 py-2 rounded-lg">
-            <BalanceIcon />
+            <BalanceIcon colors="#1c1d21" />
           </span>
           <div>
             <h3 className="text-sm text-base-secondary uppercase font-bold">
