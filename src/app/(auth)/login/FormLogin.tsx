@@ -55,20 +55,20 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
           <Label>Password</Label>
           <Input type={look == false ? "password" : "text"} name="password" />
           {look == false && (
-            <button
+            <span
               className="flex items-center absolute right-2 top-9 gap-2 text-sm dark:text-base-white text-base-black"
               onClick={passLook}
             >
               <EyeOff colors="#1c1d21" />
-            </button>
+            </span>
           )}
           {look == true && (
-            <button
+            <span
               className="flex items-center absolute right-2 top-9 gap-2  text-sm dark:text-base-white text-base-black"
               onClick={passLook}
             >
               <EyeOn colors="#1c1d21" />
-            </button>
+            </span>
           )}
 
           <p className="text-red-500 text-[11px]">

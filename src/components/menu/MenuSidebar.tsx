@@ -8,6 +8,7 @@ import React from "react";
 import { useStore } from "@/hooks/useStore";
 import { montserrat } from "@/fonts";
 import UserIcon from "../icons/UserIcon";
+import { ChevronLeft } from "lucide-react";
 
 interface MenuData {
   title: string;
@@ -60,6 +61,12 @@ const MenuSideBar = () => {
           openSideBar == true ? "left-0" : "-left-[250px]"
         }   p-4 transition-all z-10`}
       >
+        <button
+          onClick={open}
+          className="scale-75 w-12 h-12  bg-base-white  dark:bg-base-black-200 flex items-center justify-center rounded-2xl shadow shadow-base-yellow"
+        >
+          <ChevronLeft color={dark == true ? "#fff" : "#000"} />
+        </button>
         <ul className="">
           {menuData.map((item: MenuData) => {
             return (
