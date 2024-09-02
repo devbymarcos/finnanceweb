@@ -2,7 +2,7 @@
 import BtnChangeModeTheme from "@/components/btn-dark-mode/BtnChangeModeTheme";
 import { useStore } from "@/hooks/useStore";
 import { oswald } from "@/fonts";
-import OpenMenu from "../icons/OpenMenu";
+import { ChevronRight } from "lucide-react";
 
 const Header = () => {
   const [dark, updateOpenSideBar, openSideBar] = useStore((state) => [
@@ -31,7 +31,7 @@ const Header = () => {
               onClick={open}
               className="scale-75 w-12 h-12  bg-base-gray  dark:bg-base-black-200 flex items-center justify-center rounded-2xl shadow shadow-base-yellow"
             >
-              <OpenMenu colors={dark == true ? "#fff" : "#000"} />
+              <ChevronRight color={dark == true ? "#fff" : "#000"} />
             </button>
           </div>
           <BtnChangeModeTheme />
