@@ -14,12 +14,12 @@ const layoutCategory = ({ children }: { children: React.ReactNode }) => {
         <ul className="flex gap-4">
           <li>
             <BtnLinkSubMenu href="/categorias/list">
-              <ListIcon />
+              <ListIcon colors="#fff" />
             </BtnLinkSubMenu>
           </li>
           <li>
             <BtnLinkSubMenu href="/categorias/nova">
-              <CreateIcon />
+              <CreateIcon colors="#fff" />
             </BtnLinkSubMenu>
           </li>
         </ul>
