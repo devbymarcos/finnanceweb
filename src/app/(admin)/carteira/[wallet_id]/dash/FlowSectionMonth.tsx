@@ -1,8 +1,8 @@
 import React from "react";
 import CardStyle from "@/components/cards/CardStyle";
 import { currencyFormatUI } from "@/functions/helpers";
-import DollarDashIcon from "@/components/icons/DollarIconDash";
-import BalanceIcon from "@/components/icons/BalanceIcon";
+
+import { DollarSign, Scale } from "lucide-react";
 
 type Props = {
   currencyUI: {
@@ -18,7 +18,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
       <CardStyle>
         <div className="flex gap-4 items-center">
           <span className="bg-green-200 px-2 py-2 rounded-lg">
-            <DollarDashIcon colors="#1c1d21" />
+            <DollarSign color="#1c1d21" />
           </span>
           <div>
             <h3 className="text-sm text-base-secondary uppercase font-bold">
@@ -33,7 +33,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
       <CardStyle>
         <div className="flex gap-4 items-center">
           <span className="bg-red-300 px-2 py-2 rounded-lg">
-            <DollarDashIcon colors="#1c1d21" />
+            <DollarSign color="#1c1d21" />
           </span>
           <div>
             <h3 className="text-sm text-base-secondary uppercase font-bold">
@@ -48,7 +48,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
       <CardStyle>
         <div className="flex gap-4 items-center">
           <span className="bg-red-300 px-2 py-2 rounded-lg">
-            <BalanceIcon colors="#1c1d21" />
+            <Scale color="#1c1d21" />
           </span>
           <div>
             <h3 className="text-sm text-base-secondary uppercase font-bold">

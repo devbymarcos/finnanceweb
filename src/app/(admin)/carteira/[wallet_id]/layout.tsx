@@ -1,14 +1,15 @@
 import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
-import CreateIcon from "@/components/icons/CreateIcon";
-import DashIcon from "@/components/icons/DashIcon";
-import ListIcon from "@/components/icons/ListIcon";
-import TransfIcon from "@/components/icons/TransfIcon";
 import CardStyle from "@/components/cards/CardStyle";
 import { getWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
-import WalletIcon from "@/components/icons/WalletIcons";
 import CategoryFlowIcon from "@/components/icons/CategoryFLowIcon";
-
+import {
+  WalletMinimal,
+  LayoutDashboard,
+  Plus,
+  List,
+  ArrowLeftRight,
+} from "lucide-react";
 type PropslayoutWallet = {
   params: {
     wallet_id: string;
@@ -39,8 +40,8 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
           <ul className="flex gap-4">
             <li>
               <BtnLinkSubMenu title="Lista de carteiras" href={`/`}>
-                <WalletIcon colors="#fff" />
-                {/* <p className="hidden md:block">Carteiras</p> */}
+                <WalletMinimal color="#fff" size={16} />
+                <p className="hidden md:block text-sm">Carteiras</p>
               </BtnLinkSubMenu>
             </li>
             <li>
@@ -48,8 +49,8 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Painel"
                 href={`/carteira/${params.wallet_id}`}
               >
-                <DashIcon colors="#fff" />
-                {/* <p className="hidden md:block">Painel</p> */}
+                <LayoutDashboard color="#fff" size={16} />
+                <p className="hidden md:block text-sm">Painel</p>
               </BtnLinkSubMenu>
             </li>
             <li>
@@ -57,8 +58,8 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Adicionar transação"
                 href={`/carteira/${params.wallet_id}/transacoes/nova`}
               >
-                <CreateIcon colors="#fff" />
-                {/* <p className="hidden md:block">Adicionar</p> */}
+                <Plus color="#fff" size={15} />
+                <p className="hidden md:block text-sm">Adicionar</p>
               </BtnLinkSubMenu>
             </li>
             <li>
@@ -66,8 +67,8 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Listar Transações"
                 href={`/carteira/${params.wallet_id}/transacoes/list`}
               >
-                <ListIcon colors="#fff" />
-                {/* <p className="hidden md:block">Transações</p> */}
+                <List color="#fff" size={16} />
+                <p className="hidden md:block text-sm">Transações</p>
               </BtnLinkSubMenu>
             </li>
             <li>
@@ -75,19 +76,19 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
                 title="Tranferencia"
                 href={`/carteira/${params.wallet_id}/transacoes/transferencia`}
               >
-                <TransfIcon colors="#fff" />
-                {/* <p className="hidden md:block">Transferir</p> */}
+                <ArrowLeftRight color="#fff" size={16} />
+                <p className="hidden md:block text-sm">Transferir</p>
               </BtnLinkSubMenu>
             </li>
-            <li>
+            {/* <li>
               <BtnLinkSubMenu
                 title="Gerar Fluxo"
                 href={`/carteira/${params.wallet_id}/cf`}
               >
                 <CategoryFlowIcon colors="#fff" />
-                {/* <p className="hidden md:block">Fluxo categoria</p> */}
+                <p className="hidden md:block">Fluxo categoria</p>
               </BtnLinkSubMenu>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
