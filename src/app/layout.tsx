@@ -1,4 +1,3 @@
-"use client";
 import { roboto } from "@/fonts";
 import "./globals.css";
 

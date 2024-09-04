@@ -10,6 +10,7 @@ import { typesTransaction, typeFormTransactionProps } from "./types";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
+import InputMask from "@/components/form/InputMask";
 
 const initialState: typesTransaction = {
   data: {
@@ -28,29 +29,6 @@ const initialState: typesTransaction = {
     status: false,
     type: "error",
   },
-};
-
-interface InputMask {
-  type: string;
-  value?: string;
-  placeholder?: string;
-  name: string;
-  required?: boolean;
-  onChange?: (e: any) => void;
-  defaultValue?: string;
-}
-
-const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
-  return (
-    <input
-      type={type}
-      className=" w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
-      value={value}
-      name={name}
-      required={required}
-      onChange={onChange}
-    />
-  );
 };
 
 const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
