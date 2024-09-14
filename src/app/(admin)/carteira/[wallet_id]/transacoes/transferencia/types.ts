@@ -6,7 +6,8 @@ export type typesTransaction = {
       due_at: string;
       wallet_entry: string;
       wallet_exit: string;
-      category_id: string;
+      category_idIn: string;
+      category_idOut: string;
     };
     message: string;
     status: boolean;

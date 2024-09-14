@@ -25,6 +25,9 @@ const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
   return (
     <section className="mb-12">
       <CardStyle>
+        <h2 className="font-bold dark:text-font-color-dark">
+          Aqui vamos criar um pagamento entre carteiras
+        </h2>
         <FormTransaction
           wallet={wallets}
           category={category}

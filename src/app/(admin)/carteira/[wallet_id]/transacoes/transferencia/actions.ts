@@ -12,7 +12,8 @@ const schema = z.object({
   due_at: z.string().min(10, "Preencha a Data"),
   wallet_entry: z.string().min(1, "Selecione a cateira"),
   wallet_exit: z.string().min(1, "Selecione a cateira"),
-  category_id: z.string().min(1, "Selecione a categoria"),
+  category_idOut: z.string().min(1, "Selecione a categoria"),
+  category_idIn: z.string().min(1, "Selecione a categoria"),
 });
 
 export async function postTranfer(prevState: any, formData: FormData) {
@@ -22,7 +23,8 @@ export async function postTranfer(prevState: any, formData: FormData) {
     due_at: formData.get("due_at"),
     wallet_entry: formData.get("wallet_entry"),
     wallet_exit: formData.get("wallet_exit"),
-    category_id: formData.get("category_id"),
+    category_idOut: formData.get("category_idOut"),
+    category_idIn: formData.get("category_idIn"),
   });
 
   if (!validatedFields.success) {
@@ -60,7 +62,8 @@ export async function postTranfer(prevState: any, formData: FormData) {
           due_at: "",
           wallet_entry: "",
           wallet_exit: "",
-          category_id: "",
+          category_idIn: "",
+          category_idOut: "",
         },
         message: "Registro salvo com sucesso",
         status: true,
@@ -77,7 +80,8 @@ export async function postTranfer(prevState: any, formData: FormData) {
         due_at: "",
         wallet_entry: "",
         wallet_exit: "",
-        category_id: "",
+        category_idIn: "",
+        category_idOut: "",
       },
       message: "Nào foi possivel salvar contate o admin",
       status: false,

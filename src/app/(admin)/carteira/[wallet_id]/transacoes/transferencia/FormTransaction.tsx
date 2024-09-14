@@ -20,7 +20,8 @@ const initialState: typesTransaction = {
       due_at: "",
       wallet_entry: "",
       wallet_exit: "",
-      category_id: "",
+      category_idIn: "",
+      category_idOut: "",
     },
     message: "",
     status: false,
@@ -122,7 +123,24 @@ const FormTransaction = ({
             </p>
           </div>
         </div>
-
+        <div className="mb-3">
+          <Label>Escolha a categoria de despesa da carteira atual</Label>
+          <Select name="category_idOut">
+            <option value="">Escolha...</option>
+            {category.data
+              .filter((item: any) => item.type === "expense")
+              .map((item: any) => {
+                return (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                );
+              })}
+          </Select>
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.category_idOut}
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-3">
             <Label>Carteira para receber o pagamento</Label>
@@ -141,19 +159,21 @@ const FormTransaction = ({
             </p>
           </div>
           <div className="mb-3">
-            <Label>Categoria</Label>
-            <Select name="category_id">
+            <Label>Categoria da carteira que vai receber o valor</Label>
+            <Select name="category_idIn">
               <option value="">Escolha...</option>
-              {category.data.map((item: any) => {
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
+              {category.data
+                .filter((item: any) => item.type === "income")
+                .map((item: any) => {
+                  return (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
             </Select>
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.category_id}
+              {state?.data.errors.category_idIn}
             </p>
           </div>
         </div>
