@@ -169,6 +169,20 @@ export const getWalletApi = (token: string | undefined): ApiRequest => {
   };
 };
 
+export const getWalletBalanceApi = (token: string | undefined): ApiRequest => {
+  return {
+    url: `${URL}/wallet-balance`,
+    options: {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      cache: "no-cache",
+    },
+  };
+};
+
 export const getWalletIdApi = (
   token: string | undefined,
   walletId: string | undefined

@@ -4,10 +4,10 @@ import WalletIcon from "@/components/icons/WalletIcons";
 import WalletDashUiIcon from "@/components/icons/WalletDashUiIcon";
 import { currencyFormatUI } from "@/functions/helpers";
 
-import { Props } from "./types";
 import Link from "next/link";
 
 const WalletSection = ({ data }: any) => {
+  console.log(data);
   return (
     <CardStyle>
       <h3 className="text-md text-base-secondary  flex gap-3 items-center  font-bold">
@@ -29,6 +29,7 @@ const WalletSection = ({ data }: any) => {
                   <WalletDashUiIcon />
                   <div className="w-full flex justify-between items-center ">
                     <p>{wallet.name}</p>
+                    <p>{currencyFormatUI(wallet.balance)}</p>
                   </div>
                 </Link>
               </li>

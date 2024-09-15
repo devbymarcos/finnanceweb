@@ -1,12 +1,11 @@
 "use server";
-import { getWalletApi } from "@/http/api";
-import { redirect } from "next/navigation";
+import { getWalletBalanceApi } from "@/http/api";
 import { cookies } from "next/headers";
 import WalletSection from "./wallet-home-section/WalletSection";
 
 const getListWallet = async () => {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getWalletApi(token);
+  const { url, options } = getWalletBalanceApi(token);
   const response = await fetch(url, options);
 
   return await response.json();
