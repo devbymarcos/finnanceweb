@@ -52,7 +52,6 @@ export async function updateCategory(prevState: any, formData: FormData) {
 
   const response = await fetch(url, options);
   const json = await response.json();
-  console.log("TCL: updateCategory -> json", json);
 
   revalidatePath("/categorias/list");
 
