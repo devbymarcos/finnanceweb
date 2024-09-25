@@ -35,8 +35,8 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between md:gap-12 items-center mb-5">
-        <nav className="mb-5">
+      <div className="fixed md:static bottom-0 z-10 bg-white md:bg-inherit w-full flex flex-col md:flex-row justify-between md:gap-12 items-center md:mb-5 py-6 ">
+        <nav className="md:mb-5">
           <ul className="flex gap-4">
             <li>
               <BtnLinkSubMenu title="Lista de carteiras" href={`/`}>
