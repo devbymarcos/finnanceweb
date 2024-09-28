@@ -18,10 +18,10 @@ const initialState: typesTransaction = {
       description: "",
       price: "",
       due_at: "",
-      wallet_entry: "",
-      wallet_exit: "",
-      category_idIn: "",
-      category_idOut: "",
+      walletIdIn: "",
+      walletIdOut: "",
+      categoryIdIn: "",
+      categoryIdOut: "",
     },
     message: "",
     status: false,
@@ -43,7 +43,7 @@ const InputMask = ({ type, value, name, required, onChange }: InputMask) => {
   return (
     <input
       type={type}
-      className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary"
+      className="rounded-md w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black  font-bold text-4xl"
       value={value}
       name={name}
       required={required}
@@ -59,7 +59,7 @@ const FormTransaction = ({
 }: typeFormTransactionProps) => {
   const [state, formAction] = useFormState(postTranfer, initialState);
   const { alert, setAlert } = useAlert();
-  const [priceMask, setPriceMask] = useState("0");
+  const [priceMask, setPriceMask] = useState("R$ 0,00");
   const formRef = useRef<HTMLFormElement>(null);
 
   const onChange = (event: Event) => {
@@ -93,7 +93,19 @@ const FormTransaction = ({
     <>
       <Alert {...alert} />
       <form ref={formRef} action={formAction}>
-        <input type="hidden" name="wallet_exit" value={walletCurrent} />
+        <input type="hidden" name="walletIdOut" value={walletCurrent} />
+        <div className="mb-3">
+          <Label>Valor</Label>
+          <InputMask
+            type="text"
+            name="price"
+            value={priceMask}
+            onChange={onChange}
+          />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.price}
+          </p>
+        </div>
         <div className="mb-3 md:col-span-3">
           <Label>Descrição</Label>
           <Input type="text" name="description" />
@@ -111,40 +123,32 @@ const FormTransaction = ({
             </p>
           </div>
           <div className="mb-3">
-            <Label>Valor</Label>
-            <InputMask
-              type="text"
-              name="price"
-              value={priceMask}
-              onChange={onChange}
-            />
+            <Label>Qual categoria para despesa</Label>
+            <Select name="categoryIdOut">
+              <option value="">Escolha...</option>
+              {category.data
+                .filter((item: any) => item.type === "expense")
+                .map((item: any) => {
+                  return (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
+                    </option>
+                  );
+                })}
+            </Select>
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.price}
+              {state?.data.errors.categoryIdOut}
             </p>
           </div>
         </div>
-        <div className="mb-3">
-          <Label>Escolha a categoria de despesa da carteira atual</Label>
-          <Select name="category_idOut">
-            <option value="">Escolha...</option>
-            {category.data
-              .filter((item: any) => item.type === "expense")
-              .map((item: any) => {
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-          </Select>
-          <p className="text-red-500 text-[11px] ">
-            {state?.data.errors.category_idOut}
-          </p>
-        </div>
+
+        <h2 className="font-bold my-10">
+          Dados para a carteira que vai receber o pagamento
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-3">
-            <Label>Carteira para receber o pagamento</Label>
-            <Select name="wallet_entry">
+            <Label>Carteira para receber</Label>
+            <Select name="walletIdIn">
               <option value="">Escolha...</option>
               {wallet.data.map((item: any) => {
                 return (
@@ -155,12 +159,12 @@ const FormTransaction = ({
               })}
             </Select>
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.wallet_entry}
+              {state?.data.errors.walletIdIn}
             </p>
           </div>
           <div className="mb-3">
-            <Label>Categoria da carteira que vai receber o valor</Label>
-            <Select name="category_idIn">
+            <Label>Qual categoria para receita</Label>
+            <Select name="categoryIdIn">
               <option value="">Escolha...</option>
               {category.data
                 .filter((item: any) => item.type === "income")
@@ -173,12 +177,12 @@ const FormTransaction = ({
                 })}
             </Select>
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.category_idIn}
+              {state?.data.errors.categoryIdIn}
             </p>
           </div>
         </div>
 
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+        <div className=" my-10 grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
           <Submit text="Salvar" />
         </div>
       </form>

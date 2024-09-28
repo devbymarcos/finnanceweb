@@ -4,10 +4,10 @@ export type typesTransaction = {
       description: string;
       price: string;
       due_at: string;
-      wallet_entry: string;
-      wallet_exit: string;
-      category_idIn: string;
-      category_idOut: string;
+      walletIdIn: string;
+      walletIdOut: string;
+      categoryIdIn: string;
+      categoryIdOut: string;
     };
     message: string;
     status: boolean;
