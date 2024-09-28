@@ -18,6 +18,7 @@ const schema = z.object({
 });
 
 export async function UpdateTransaction(prevState: any, formData: FormData) {
+  console.log(formData.get("delete"));
   if (formData.get("delete") === "true") {
     const id = String(formData.get("id"));
     const token: string | undefined = cookies().get("token")?.value;

@@ -33,7 +33,7 @@ const initialState: InitialState = {
 const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
   const [state, formAction] = useFormState(UpdateTransaction, initialState);
   const { alert, setAlert } = useAlert();
-  const [priceMask, setPriceMask] = useState("0,00");
+  const [priceMask, setPriceMask] = useState("R$ 0,00");
 
   const onChange = (event: Event) => {
     const inputElement = event.target as HTMLInputElement;
@@ -54,7 +54,7 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
 
   const deleteAlert = () => {
     const confirmed = confirm(
-      "Você marcou este registro para ser removido. Tem Certeza?"
+      "Você marcou ou desmarcou 'Apagar registro', Tem Certeza?"
     );
     if (!confirmed) {
       const inputElem: HTMLElement | null = document.getElementById("delete");
@@ -93,7 +93,19 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
         <input type="hidden" value={wallet.wallet_id} name="wallet_id" />
         <input type="hidden" value="expense" name="type" />
 
-        <div className="grid grid-cols-1 ">
+        <div className="mb-3">
+          <Label>Valor</Label>
+          <InputMask
+            type="text"
+            name="price"
+            onChange={onChange}
+            value={priceMask}
+          />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.price}
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-4 ">
           <div className="mb-3 ">
             <Label>Descrição</Label>
             <Input
@@ -105,9 +117,6 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
               {state?.data.errors.description}
             </p>
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-3">
             <Label>Data</Label>
             <Input
@@ -119,20 +128,9 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
               {state?.data.errors.due_at}
             </p>
           </div>
-          <div className="mb-3">
-            <Label>Valor</Label>
-            <InputMask
-              type="text"
-              name="price"
-              onChange={onChange}
-              value={priceMask}
-            />
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.price}
-            </p>
-          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
 

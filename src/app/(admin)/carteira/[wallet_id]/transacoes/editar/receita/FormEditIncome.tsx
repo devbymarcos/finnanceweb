@@ -92,8 +92,19 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
         <input type="hidden" value={invoice.data[0].id} name="id" />
         <input type="hidden" value={wallet.wallet_id} name="wallet_id" />
         <input type="hidden" value="income" name="type" />
-
-        <div className="grid grid-cols-1 ">
+        <div className="mb-3">
+          <Label>Valor</Label>
+          <InputMask
+            type="text"
+            name="price"
+            onChange={onChange}
+            value={priceMask}
+          />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.price}
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-4 ">
           <div className="mb-3 ">
             <Label>Descrição</Label>
             <Input
@@ -105,9 +116,6 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
               {state?.data.errors.description}
             </p>
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-3">
             <Label>Data</Label>
             <Input
@@ -119,20 +127,8 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
               {state?.data.errors.due_at}
             </p>
           </div>
-          <div className="mb-3">
-            <Label>Valor</Label>
-            <InputMask
-              type="text"
-              name="price"
-              onChange={onChange}
-              value={priceMask}
-            />
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.price}
-            </p>
-          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1  gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
 

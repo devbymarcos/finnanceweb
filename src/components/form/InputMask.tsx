@@ -18,7 +18,7 @@ const InputMask = ({
   return (
     <input
       type={type}
-      className="w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black border border-base-secondary rounded-md"
+      className="w-full py-3 px-2 outline-none  bg-base-white dark:text-base-white text-base-black dark:bg-base-black rounded-md font-bold text-4xl"
       value={value}
       name={name}
       required={required}

@@ -35,7 +35,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
   const [categoryInput, setCategoryIntpu] = useState("income");
-  const [priceMask, setPriceMask] = useState("0");
+  const [priceMask, setPriceMask] = useState("R$ 0,00");
   const formRef = useRef<HTMLFormElement>(null);
 
   function changeSelectTypeCategory(e: any) {
@@ -78,6 +78,18 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
       <Alert {...alert} />
       <form ref={formRef} action={formAction}>
         <input type="hidden" name="wallet_id" value={wallet.wallet_id} />
+        <div className="mb-3">
+          <Label>Valor</Label>
+          <InputMask
+            type="text"
+            name="price"
+            value={priceMask}
+            onChange={onChange}
+          />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.price}
+          </p>
+        </div>
         <div className="mb-3 md:col-span-3">
           <Label>Descrição</Label>
           <Input type="text" name="description" />
@@ -95,15 +107,20 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
             </p>
           </div>
           <div className="mb-3">
-            <Label>Valor</Label>
-            <InputMask
-              type="text"
-              name="price"
-              value={priceMask}
-              onChange={onChange}
-            />
+            <Label>Categoria</Label>
+            <Select name="category_id">
+              <option value="">Escolha...</option>
+              {category.data.map((item: any) => {
+                if (item.type != categoryInput) return null;
+                return (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                );
+              })}
+            </Select>
             <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.price}
+              {state?.data.errors.category_id}
             </p>
           </div>
         </div>
@@ -142,24 +159,6 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
               </label>
             </div>
           </div>
-
-          <div className="mb-3">
-            <Label>Categoria</Label>
-            <Select name="category_id">
-              <option value="">Escolha...</option>
-              {category.data.map((item: any) => {
-                if (item.type != categoryInput) return null;
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.category_id}
-            </p>
-          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* <div className="mb-3">
@@ -197,7 +196,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
           </div>
         </div>
 
-        <div className="mb-3 grid grid-col-1 md:grid-cols-3">
+        <div className="my-10 grid grid-col-1 md:grid-cols-3">
           <Submit text="Salvar" />
         </div>
       </form>
