@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.8",
     "apexcharts": "^3.44.2",
     "lucide-react": "^0.438.0",
     "next": "14.0.3",

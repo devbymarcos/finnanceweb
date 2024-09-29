@@ -28,7 +28,7 @@ const FlowSectionMonth = ({ currencyUI }: Props) => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2  gap-4">
         <div className="flex gap-4 items-center p-2 md:p-4 rounded-lg bg-base-white dark:bg-base-black">
           <span className="bg-green-200 px-2 py-2 rounded-lg">
             <DollarSign color="#1c1d21" />
