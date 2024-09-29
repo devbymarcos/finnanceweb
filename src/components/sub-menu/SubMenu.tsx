@@ -56,15 +56,6 @@ const SubMenu = ({ walletId }: SubMenuProps) => {
                 <p className="hidden md:block text-sm">Transações</p>
               </BtnLinkSubMenu>
             </li>
-            <li>
-              <BtnLinkSubMenu
-                title="Tranferencia"
-                href={`/carteira/${walletId}/transacoes/transferencia`}
-              >
-                <ArrowLeftRight color="#fff" size={16} />
-                <p className="hidden md:block text-sm">Transferir</p>
-              </BtnLinkSubMenu>
-            </li>
           </ul>
         </nav>
       </div>
