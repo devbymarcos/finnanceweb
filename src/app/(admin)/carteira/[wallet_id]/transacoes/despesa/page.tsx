@@ -13,9 +13,8 @@ async function getCategory() {
 }
 
 const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
-  const categoryFull = await getCategory();
-  console.log(categoryFull);
-  const category = categoryFull.data.filter(
+  const categoryAll = await getCategory();
+  const category = categoryAll.data.filter(
     (item: any) => item.type === "expense"
   );
 

@@ -58,7 +58,7 @@ export const ModalChooseTransaction = ({
                 onClick={() => {
                   setIsOpen(false);
                 }}
-                href={`/carteira/${walletId}/transacoes/nova`}
+                href={`/carteira/${walletId}/transacoes/receita`}
                 className="border border-green-400 px-4 py-4 text-center   font-bols rounded-lg flex justify-between items-center font-bold text-green-800 mb-3"
               >
                 Recebimento

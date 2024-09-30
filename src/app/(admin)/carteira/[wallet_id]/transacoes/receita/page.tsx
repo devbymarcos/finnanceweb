@@ -13,7 +13,10 @@ async function getCategory() {
 }
 
 const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
-  const category = await getCategory();
+  const categoryAll = await getCategory();
+  const category = categoryAll.data.filter(
+    (item: any) => item.type === "income"
+  );
 
   return (
     <section className="mb-12">

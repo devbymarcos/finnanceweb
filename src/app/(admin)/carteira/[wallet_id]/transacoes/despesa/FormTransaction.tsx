@@ -32,7 +32,6 @@ const initialState: typesTransaction = {
 };
 
 const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
-  console.log(category);
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
   const [priceMask, setPriceMask] = useState("R$ 0,00");
