@@ -62,6 +62,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
         type: state.data.type,
       });
       formRef.current?.reset();
+      setPriceMask("R$ 0,00");
     }
   }, [state]);
 
