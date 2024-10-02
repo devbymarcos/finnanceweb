@@ -11,9 +11,9 @@ async function getInvoiceId(invoiceId?: string) {
   return await response.json();
 }
 
-async function getCategory() {
+async function getCategory(wallet_id: string) {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getCategoryApi(token);
+  const { url, options } = getCategoryApi(token, wallet_id);
   const response = await fetch(url, options);
 
   return await response.json();
@@ -24,8 +24,7 @@ const EditTransaction = async ({
   params,
 }: typeEditTransactionProps) => {
   const invoice = await getInvoiceId(searchParams?.invoiceId);
-
-  const category = await getCategory();
+  const category = await getCategory(params.wallet_id);
 
   return (
     <section>

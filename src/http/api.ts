@@ -75,9 +75,12 @@ export const getDashApi = (
     },
   };
 };
-export const getCategoryApi = (token: string | undefined): ApiRequest => {
+export const getCategoryApi = (
+  token: string | undefined,
+  wallet_id: string
+): ApiRequest => {
   return {
-    url: `${URL}/categories`,
+    url: `${URL}/categories?wallet_id=${wallet_id}`,
     options: {
       method: "GET",
       headers: {

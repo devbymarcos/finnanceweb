@@ -11,16 +11,19 @@ async function getWallet() {
   return await response.json();
 }
 
-async function getCategory() {
+async function getCategory(wallet_id: string) {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getCategoryApi(token);
+  const { url, options } = getCategoryApi(token, wallet_id);
   const response = await fetch(url, options);
 
   return await response.json();
 }
 
 const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
-  const [wallets, category] = await Promise.all([getWallet(), getCategory()]);
+  const [wallets, category] = await Promise.all([
+    getWallet(),
+    getCategory(params.wallet_id),
+  ]);
 
   return (
     <section className="mb-12">

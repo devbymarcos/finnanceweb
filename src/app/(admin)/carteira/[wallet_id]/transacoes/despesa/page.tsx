@@ -4,16 +4,16 @@ import { getWalletApi, getCategoryApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { typeCreateTransactionProps } from "./types";
 
-async function getCategory() {
+async function getCategory(wallet_id: string) {
   const token: string | undefined = cookies().get("token")?.value;
-  const { url, options } = getCategoryApi(token);
+  const { url, options } = getCategoryApi(token, wallet_id);
   const response = await fetch(url, options);
 
   return await response.json();
 }
 
 const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
-  const categoryAll = await getCategory();
+  const categoryAll = await getCategory(params.wallet_id);
   const category = categoryAll.data.filter(
     (item: any) => item.type === "expense"
   );
