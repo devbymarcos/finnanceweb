@@ -38,11 +38,7 @@ const MenuSideBar = () => {
       icon: <WalletIcon colors={dark == true ? "#fff" : "#000"} />,
       path: "/carteiras/list",
     },
-    {
-      title: "Cria Categoria",
-      icon: <CategoryIcon colors={dark == true ? "#fff" : "#000"} />,
-      path: "/categorias/list",
-    },
+
     {
       title: "Perfil",
       icon: <UserIcon colors={dark == true ? "#fff" : "#000"} />,

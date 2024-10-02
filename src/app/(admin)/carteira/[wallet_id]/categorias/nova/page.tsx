@@ -2,17 +2,16 @@ import CardStyle from "@/components/cards/CardStyle";
 import React from "react";
 import FormCreateCategory from "./FormCreateCategory";
 
-type Params = {
-  searchParams?: {
-    categoryId?: string;
+interface formCagegoryPropsType {
+  params: {
+    wallet_id: string;
   };
-};
-
-const CreateCategory = async () => {
+}
+const CreateCategory = async ({ params }: formCagegoryPropsType) => {
   return (
     <section>
       <CardStyle>
-        <FormCreateCategory />
+        <FormCreateCategory walletId={params.wallet_id} />
       </CardStyle>
     </section>
   );

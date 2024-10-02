@@ -60,7 +60,7 @@ const SubMenu = ({ walletId }: SubMenuProps) => {
             <li>
               <BtnLinkSubMenu
                 title="Nova categoria"
-                href={`/carteira/${walletId}/categorias/nova`}
+                href={`/carteira/${walletId}/categorias/list`}
               >
                 <Tag color="#fff" size={16} />
                 <p className="hidden md:block text-sm">Categorias</p>

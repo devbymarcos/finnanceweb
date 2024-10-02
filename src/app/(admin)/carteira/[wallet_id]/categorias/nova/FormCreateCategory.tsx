@@ -8,6 +8,8 @@ import Submit from "@/components/form/Submit";
 import { InitialState } from "./types";
 import { useFormState } from "react-dom";
 import { saveCategory } from "./actions";
+import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
+import { ArrowLeft } from "lucide-react";
 
 const initialState: InitialState = {
   data: {
@@ -22,7 +24,10 @@ const initialState: InitialState = {
   },
 };
 
-const FormCreateCategory = () => {
+interface formCagegoryPropsType {
+  walletId: string;
+}
+const FormCreateCategory = ({ walletId }: formCagegoryPropsType) => {
   const [state, formAction] = useFormState(saveCategory, initialState);
   const { alert, setAlert } = useAlert();
 
@@ -38,20 +43,27 @@ const FormCreateCategory = () => {
   return (
     <>
       <Alert {...alert} />
+      <div className="flex mb-2 justify-between gap-3">
+        <h1>Crie uma nova categoria</h1>
+        <BtnLinkSubMenu href={`/carteira/${walletId}/categorias/list`}>
+          <ArrowLeft size={16} />
+        </BtnLinkSubMenu>
+      </div>
       <form action={formAction}>
-        <div className="mb-12">
+        <input type="hidden" name="wallet_id" value={walletId} />
+        <div className="mb-7">
           <Label>Nome</Label>
           <Input type="text" name="name" />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
-        <div className="mb-12">
+        <div className="mb-7">
           <Label>Descrição</Label>
           <Input type="text" name="description" />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.description}
           </p>
         </div>
-        <div className="mb-12">
+        <div className="mb-7">
           <Label>Tipo</Label>
           <Select name="type">
             <option value="">Escolha...</option>
