@@ -5,6 +5,7 @@ import {
   Plus,
   List,
   ArrowLeftRight,
+  Tag,
 } from "lucide-react";
 import BtnLinkSubMenu from "../btn/BtnLinkSubMenu";
 import BtnActionSubMenu from "../btn/BtnActionSubMenu";
@@ -54,6 +55,15 @@ const SubMenu = ({ walletId }: SubMenuProps) => {
               >
                 <List color="#fff" size={16} />
                 <p className="hidden md:block text-sm">Transações</p>
+              </BtnLinkSubMenu>
+            </li>
+            <li>
+              <BtnLinkSubMenu
+                title="Nova categoria"
+                href={`/carteira/${walletId}/categorias/nova`}
+              >
+                <Tag color="#fff" size={16} />
+                <p className="hidden md:block text-sm">Categorias</p>
               </BtnLinkSubMenu>
             </li>
           </ul>
