@@ -31,7 +31,6 @@ interface listCategoryType {
 }
 const ListCategory = async ({ params }: listCategoryType) => {
   const data = await getCategory(params.wallet_id);
-  console.log(data);
 
   return (
     <>
