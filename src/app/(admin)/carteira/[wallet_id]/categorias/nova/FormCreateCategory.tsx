@@ -43,12 +43,7 @@ const FormCreateCategory = ({ walletId }: formCagegoryPropsType) => {
   return (
     <>
       <Alert {...alert} />
-      <div className="flex mb-2 justify-between gap-3">
-        <h1>Crie uma nova categoria</h1>
-        <BtnLinkSubMenu href={`/carteira/${walletId}/categorias/list`}>
-          <ArrowLeft size={16} />
-        </BtnLinkSubMenu>
-      </div>
+
       <form action={formAction}>
         <input type="hidden" name="wallet_id" value={walletId} />
         <div className="mb-7">
