@@ -8,6 +8,8 @@ import Submit from "@/components/form/Submit";
 import { PropsCategoryType, InitialState } from "./types";
 import { useFormState } from "react-dom";
 import { updateCategory } from "./actions";
+import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
+import { Plus } from "lucide-react";
 
 const initialState: InitialState = {
   data: {
@@ -50,6 +52,7 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
   return (
     <>
       <Alert {...alert} />
+
       <form action={formAction}>
         <input type="hidden" value={category.data[0].id} name="id" />
         <div className="mb-12">
