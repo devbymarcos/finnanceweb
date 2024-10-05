@@ -7,20 +7,14 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import FlowSectionMonth from "./dash/FlowSectionMonth";
 import { ApiReturn, PropsIndex } from "./types";
+import { ChartAreaDash } from "./dash/ChartAreaDash";
 
-const ChartPieDash = dynamic(
-  () => import("@/app/(admin)/carteira/[wallet_id]/dash/ChartPieDash"),
-  {
-    ssr: false,
-  }
-);
-
-const ChartAreaDash = dynamic(
-  () => import("@/app/(admin)/carteira/[wallet_id]/dash/ChartAreaDash"),
-  {
-    ssr: false,
-  }
-);
+// const ChartAreaDash = dynamic(
+//   () => import("@/app/(admin)/carteira/[wallet_id]/dash/ChartAreaDash"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 const getDataDash = async (wallet_id: string): Promise<ApiReturn> => {
   const token: string | undefined = cookies().get("token")?.value;

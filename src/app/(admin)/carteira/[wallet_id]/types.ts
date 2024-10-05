@@ -6,7 +6,7 @@ export type ApiReturn = {
       due_date: string;
       income: number;
       expense: number;
-    };
+    }[];
     paidMonth: number;
     receivedMonth: number;
     balanceSum: number;
