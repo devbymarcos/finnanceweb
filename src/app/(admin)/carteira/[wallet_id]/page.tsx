@@ -62,7 +62,7 @@ async function Index({ params }: PropsIndex) {
               <span className="bg-green-200 px-2 py-2 rounded-lg">
                 <DollarSign color="#1c1d21" size={16} />
               </span>
-              <p className="text-[12px] md:text-2xl text-base-black dark:text-base-white font-bold">
+              <p className="text-[14px] md:text-2xl text-base-black dark:text-base-white font-bold">
                 {currencyFormatUI(data.data.receivedMonth)}
               </p>
             </CardContent>
