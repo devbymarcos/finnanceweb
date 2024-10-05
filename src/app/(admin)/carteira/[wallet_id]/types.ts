@@ -1,8 +1,11 @@
 export type ApiReturn = {
   data: {
-    result: {
-      months: string[];
-      values: number[];
+    chart: {
+      due_year: string;
+      due_month: string;
+      due_date: string;
+      income: number;
+      expense: number;
     };
     paidMonth: number;
     receivedMonth: number;

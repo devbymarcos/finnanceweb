@@ -51,15 +51,7 @@ async function Index({ params }: PropsIndex) {
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <div className="">
-          <CardStyle>
-            <h3 className="text-base-secondary first-line:font-bold text-lg">
-              Resultado
-            </h3>
-            <ChartAreaDash
-              dataMonths={data.data.result.months}
-              dataValues={data.data.result.values}
-            />
-          </CardStyle>
+          <ChartAreaDash dataChart={data.data.chart} />
         </div>
         <div className="">
           <CardStyle>
