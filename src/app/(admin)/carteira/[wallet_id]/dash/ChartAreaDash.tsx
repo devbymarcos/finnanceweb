@@ -56,7 +56,7 @@ export function ChartAreaDash({ dataChart }: ChartPropsType) {
           <BarChart accessibilityLayer data={dataChart}>
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="due_at"
+              dataKey="months"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
@@ -74,12 +74,7 @@ export function ChartAreaDash({ dataChart }: ChartPropsType) {
               ]}
             />
             <ChartLegend content={<ChartLegendContent />} />
-            <Bar
-              format={6}
-              dataKey="income"
-              fill="var(--color-income)"
-              radius={4}
-            />
+            <Bar dataKey="income" fill="var(--color-income)" radius={4} />
             <Bar dataKey="expense" fill="var(--color-expense)" radius={4} />
           </BarChart>
         </ChartContainer>
