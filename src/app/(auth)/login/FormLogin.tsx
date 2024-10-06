@@ -47,14 +47,24 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
       <form action={formAction}>
         <div className="mb-6">
           <Label>Email</Label>
-          <Input id="email" type="text" name="email" defaultValue={remember} />
+          <Input
+            className="border-base-secondary"
+            id="email"
+            type="text"
+            name="email"
+            defaultValue={remember}
+          />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.email}
           </p>
         </div>
         <div className="mb-5 relative">
           <Label>Password</Label>
-          <Input type={look == false ? "password" : "text"} name="password" />
+          <Input
+            className="border-base-secondary"
+            type={look == false ? "password" : "text"}
+            name="password"
+          />
           {look == false && (
             <span
               className="flex items-center absolute right-2 top-9 gap-2 text-sm dark:text-base-white text-base-black"
@@ -85,7 +95,6 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
             Lembrar-me
           </label>
         </div>
-
         <div className="mb-12">
           <Submit text="Logar" />
         </div>

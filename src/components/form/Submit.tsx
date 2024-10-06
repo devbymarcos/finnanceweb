@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const Submit = ({ text }: { text: string }) => {
   const { pending } = useFormStatus();
   return (
-    <Button variant="default" className="bg-base-secondary font-bold ">
+    <Button variant="default" className="bg-base-secondary font-bold w-full ">
       {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : text}
     </Button>
   );
