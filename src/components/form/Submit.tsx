@@ -1,12 +1,13 @@
 "use client";
 import { useFormStatus } from "react-dom";
-
+import { Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 const Submit = ({ text }: { text: string }) => {
   const { pending } = useFormStatus();
   return (
-    <button className="bg-base-secondary px-2 py-3 font-bold text-base-white w-full rounded-lg ">
-      {pending ? "Processando..." : text}
-    </button>
+    <Button variant="default" className="bg-base-secondary font-bold ">
+      {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : text}
+    </Button>
   );
 };
 

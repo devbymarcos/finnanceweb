@@ -26,7 +26,7 @@ export async function postTransaction(prevState: any, formData: FormData) {
     type: formData.get("type"),
     wallet_id: formData.get("wallet_id"),
     category_id: formData.get("category_id"),
-    pay: "unpaid", //formData.get("pay"),
+    pay: formData.get("pay"),
     repeat_when: formData.get("repeat_when"),
     installments: formData.get("installments"),
   });

@@ -141,9 +141,20 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
               {state?.data.errors.installments}
             </p>
           </div>
+          <div className="mb-3">
+            <Label>Pagamento status</Label>
+            <Select name="pay">
+              <option value="">Escolha...</option>
+              <option value="paid">Pago</option>
+              <option value="unpaid">Não pago</option>
+            </Select>
+            <p className="text-red-500 text-[11px] ">
+              {state?.data.errors.pay}
+            </p>
+          </div>
         </div>
 
-        <div className="my-10 grid grid-col-1 md:grid-cols-3">
+        <div className="my-10 ">
           <Submit text="Salvar" />
         </div>
       </form>

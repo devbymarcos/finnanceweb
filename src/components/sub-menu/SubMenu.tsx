@@ -7,12 +7,13 @@ import {
   ArrowLeftRight,
   Tag,
 } from "lucide-react";
-import BtnLinkSubMenu from "../btn/BtnLinkSubMenu";
+import { Button } from "@/components/ui/button";
 import BtnActionSubMenu from "../btn/BtnActionSubMenu";
 import {
   ModalChooseTransaction,
   useModalChooseTransaction,
 } from "@/components/modal/Modalchoosetransaction";
+import Link from "next/link";
 
 interface SubMenuProps {
   walletId: string;
@@ -22,49 +23,70 @@ const SubMenu = ({ walletId }: SubMenuProps) => {
   const { isOpen, setIsOpen } = useModalChooseTransaction();
   return (
     <>
-      <div className="fixed md:static bottom-0 z-10 bg-white dark:bg-base-black md:bg-inherit w-full flex flex-col md:flex-row justify-between md:gap-12 items-center md:mb-5 py-6 ">
+      <div className="fixed md:static bottom-0 z-10 bg-white   md:bg-inherit w-full flex flex-col md:flex-row justify-between md:gap-12 items-center md:mb-5 py-6 ">
         <nav className="md:mb-5">
           <ul className="flex gap-4">
             <li>
-              <BtnLinkSubMenu title="Lista de carteiras" href={`/`}>
-                <WalletMinimal color="#fff" size={16} />
-                <p className="hidden md:block text-sm">Carteiras</p>
-              </BtnLinkSubMenu>
+              <Button
+                asChild
+                className="gap-2 bg-base-secondary dark:text-base-white"
+              >
+                <Link title="Lista de carteiras" href="/">
+                  <WalletMinimal color="#fff" size={16} />
+                  <p className="hidden md:block text-sm">Carteiras</p>
+                </Link>
+              </Button>
             </li>
             <li>
-              <BtnLinkSubMenu title="Painel" href={`/carteira/${walletId}`}>
-                <LayoutDashboard color="#fff" size={16} />
-                <p className="hidden md:block text-sm">Painel</p>
-              </BtnLinkSubMenu>
+              <Button
+                asChild
+                className="gap-2 bg-base-secondary dark:text-base-white"
+              >
+                <Link title="Lista de carteiras" href={`/carteira/${walletId}`}>
+                  <LayoutDashboard color="#fff" size={16} />
+                  <p className="hidden md:block text-sm">Painel</p>
+                </Link>
+              </Button>
             </li>
             <li>
               {/*  */}
-              <BtnActionSubMenu
+              <Button
                 onClick={() => {
                   setIsOpen(true);
                 }}
+                className="gap-2 bg-base-secondary dark:text-base-white"
               >
                 <Plus color="#fff" size={15} />
                 <p className="hidden md:block text-sm">Adicionar</p>
-              </BtnActionSubMenu>
+              </Button>
             </li>
             <li>
-              <BtnLinkSubMenu
-                title="Listar Transações"
-                href={`/carteira/${walletId}/transacoes/list`}
+              <Button
+                asChild
+                className="gap-2 bg-base-secondary dark:text-base-white"
               >
-                <List color="#fff" size={16} />
-                <p className="hidden md:block text-sm">Transações</p>
-              </BtnLinkSubMenu>
+                <Link
+                  title="transacoes"
+                  href={`/carteira/${walletId}/transacoes/list`}
+                >
+                  <List color="#fff" size={16} />
+                  <p className="hidden md:block text-sm">Transações</p>
+                </Link>
+              </Button>
             </li>
             <li>
-              <BtnLinkSubMenu
-                title="Nova categoria"
-                href={`/carteira/${walletId}/categorias/list`}
+              <Button
+                asChild
+                className="gap-2 bg-base-secondary dark:text-base-white"
               >
-                <Tag color="#fff" size={16} />
-                <p className="hidden md:block text-sm">Categorias</p>
-              </BtnLinkSubMenu>
+                <Link
+                  title="Nova categoria"
+                  href={`/carteira/${walletId}/categorias/list`}
+                >
+                  <Tag color="#fff" size={16} />
+                  <p className="hidden md:block text-sm">Categorias</p>
+                </Link>
+              </Button>
             </li>
           </ul>
         </nav>

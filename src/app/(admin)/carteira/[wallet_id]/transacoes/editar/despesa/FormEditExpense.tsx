@@ -164,7 +164,7 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
             </p>
           </div>
         </div>
-        <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
+        <div className="my-3 flex justify-between">
           <Submit text="Salvar" />
           <div className="flex items-center mb-4 col-start-4">
             <input
