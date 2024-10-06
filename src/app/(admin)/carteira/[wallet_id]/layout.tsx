@@ -1,6 +1,7 @@
 import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
 import CardStyle from "@/components/cards/CardStyle";
 import SubMenu from "@/components/sub-menu/SubMenu";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getWalletApi } from "@/http/api";
 import { cookies } from "next/headers";
 
@@ -31,18 +32,16 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
     <>
       <div className="mb-3">
         <SubMenu walletId={params.wallet_id} />
-        <CardStyle>
-          <div className="flex gap-4 items-center">
-            <div>
-              <h3 className="text-sm text-base-secondary uppercase font-bold">
-                Carteira Selecionada
-              </h3>
-              <p className="text-xl text-base-black dark:text-base-white font-bold">
-                {walletActivate}
-              </p>
-            </div>
-          </div>
-        </CardStyle>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base-secondary">
+              Carteira Selecionada
+            </CardTitle>
+            <p className="text-xl text-base-black dark:text-base-white font-bold">
+              {walletActivate}
+            </p>
+          </CardHeader>
+        </Card>
       </div>
       {children}
     </>

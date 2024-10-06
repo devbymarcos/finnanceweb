@@ -23,7 +23,7 @@ const SubMenu = ({ walletId }: SubMenuProps) => {
   const { isOpen, setIsOpen } = useModalChooseTransaction();
   return (
     <>
-      <div className="fixed md:static bottom-0 z-10 bg-white   md:bg-inherit w-full flex flex-col md:flex-row justify-between md:gap-12 items-center md:mb-5 py-6 ">
+      <div className="fixed md:static bottom-0 z-10 bg-white dark:bg-black   md:bg-inherit w-full flex flex-col md:flex-row justify-between md:gap-12 items-center md:mb-5 py-6 ">
         <nav className="md:mb-5">
           <ul className="flex gap-4">
             <li>

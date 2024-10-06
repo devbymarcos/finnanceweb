@@ -1,15 +1,15 @@
 "use client";
 import Link from "next/link";
-import Input from "@/components/form/Input";
-import Label from "@/components/form/Label";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { useFormState } from "react-dom";
 import { userLogin } from "./actions";
 import { useEffect, useState } from "react";
 import { StateTypes, PropsFormLogin } from "./types";
 import Submit from "@/components/form/Submit";
-import EyeOff from "@/components/icons/EyeOff";
-import EyeOn from "@/components/icons/EyeOn";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { EyeOff, Eye } from "lucide-react";
 
 const initialState: StateTypes = {
   data: {
@@ -43,6 +43,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
   return (
     <>
       <Alert {...alert} />
+
       <form action={formAction}>
         <div className="mb-6">
           <Label>Email</Label>
@@ -59,7 +60,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
               className="flex items-center absolute right-2 top-9 gap-2 text-sm dark:text-base-white text-base-black"
               onClick={passLook}
             >
-              <EyeOff colors="#1c1d21" />
+              <EyeOff color="#1c1d21" size="16" />
             </span>
           )}
           {look == true && (
@@ -67,7 +68,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
               className="flex items-center absolute right-2 top-9 gap-2  text-sm dark:text-base-white text-base-black"
               onClick={passLook}
             >
-              <EyeOn colors="#1c1d21" />
+              <Eye color="#1c1d21" size="16" />
             </span>
           )}
 
@@ -77,8 +78,7 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
         </div>
         <div className="mb-5">
           <label className="flex gap-2 dark:text-base-white">
-            <input
-              type="checkbox"
+            <Checkbox
               name="remember"
               defaultChecked={remember ? true : false}
             />
@@ -89,12 +89,6 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
         <div className="mb-12">
           <Submit text="Logar" />
         </div>
-        <Link
-          className="my-4 text-sm dark:text-base-white text-base-black"
-          href="conta"
-        >
-          Ainda não tem conta ? Crie aqui
-        </Link>
       </form>
     </>
   );
