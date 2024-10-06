@@ -4,17 +4,9 @@ import CardStyle from "@/components/cards/CardStyle";
 import { getDashApi } from "@/http/api";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import FlowSectionMonth from "./dash/FlowSectionMonth";
 import { ApiReturn, PropsIndex } from "./types";
 import { ChartAreaDash } from "./dash/ChartAreaDash";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DollarSign, Scale } from "lucide-react";
 import { currencyFormatUI } from "@/functions/helpers";
 
@@ -84,7 +76,6 @@ async function Index({ params }: PropsIndex) {
           </Card>
         </div>
       </section>
-
       <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <div className="">
           <ChartAreaDash dataChart={data.data.chart} />
