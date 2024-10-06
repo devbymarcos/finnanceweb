@@ -14,9 +14,8 @@ export default function RootLayout({
       <PrivateRouter>
         <Header />
         <MenuSideBar />
-
         <main
-          className={`container-custom min-h-screen mx-auto pb-40 md:pb-0 px-2  mt-6 ${montserrat.className}`}
+          className={`container-custom min-h-screen mx-auto pb-40 md:pb-0   mt-6 ${montserrat.className}`}
         >
           {children}
         </main>
