@@ -1,8 +1,9 @@
 "use client";
 import { useEffect } from "react";
 import Input from "@/components/form/Input";
-import Label from "@/components/form/Label";
+import { Label } from "@/components/ui/label";
 import Select from "@/components/form/Select";
+import { Switch } from "@/components/ui/switch";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
 import { UpdateTransaction } from "../actions";
@@ -164,23 +165,19 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
             </p>
           </div>
         </div>
-        <div className="my-3 flex justify-between">
+        <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
           <Submit text="Salvar" />
           <div className="flex items-center mb-4 col-start-4">
-            <input
-              id="delete"
-              type="checkbox"
-              name="delete"
-              className="w-5 h-5 cursor-pointer "
-              defaultValue="true"
-              onChange={deleteAlert}
-            />
-            <label
-              htmlFor="delete"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Apagar este registro
-            </label>
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="rmove"
+                name="delete"
+                value="true"
+                onCheckedChange={deleteAlert}
+                className="data-[state=checked]:bg-base-secondary "
+              />
+              <Label htmlFor="rmove">Remover </Label>
+            </div>
           </div>
         </div>
       </form>

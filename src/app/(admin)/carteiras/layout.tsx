@@ -1,29 +1,38 @@
-import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
+import { Button } from "@/components/ui/button";
 import CreateIcon from "@/components/icons/CreateIcon";
-import ListIcon from "@/components/icons/ListIcon";
+import { ArrowLeft, List, Plus } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
 const layoutCategory = ({ children }: { children: React.ReactNode }) => {
   return (
     <section>
-      <h1 className="text-base-black text-xl mb-4 font-bold dark:text-base-white">
-        Carteiras
-      </h1>
-      <nav className="mb-12">
-        <ul className="flex gap-4">
-          <li>
-            <BtnLinkSubMenu href="/carteiras/list">
-              <ListIcon colors="#fff" />
-            </BtnLinkSubMenu>
-          </li>
-          <li>
-            <BtnLinkSubMenu href="/carteiras/nova">
-              <CreateIcon colors="#fff" />
-            </BtnLinkSubMenu>
-          </li>
-        </ul>
-      </nav>
+      <div className="flex justify-between items-center">
+        <h1 className="text-base-black text-xl mb-4 font-bold dark:text-base-white">
+          Carteiras
+        </h1>
+        <nav
+          className="mb-12 flex justify-end
+      "
+        >
+          <ul className="flex gap-4">
+            <li>
+              <Button asChild className="bg-base-secondary">
+                <Link href="/carteiras/list">
+                  <ArrowLeft color="#fff" size="16" />
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button asChild className="bg-base-secondary">
+                <Link href="/carteiras/nova">
+                  <Plus color="#fff" size="16" />
+                </Link>
+              </Button>
+            </li>
+          </ul>
+        </nav>
+      </div>
       {children}
     </section>
   );

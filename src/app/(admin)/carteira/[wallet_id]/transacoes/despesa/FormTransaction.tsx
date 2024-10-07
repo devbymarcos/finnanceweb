@@ -154,7 +154,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
           </div>
         </div>
 
-        <div className="my-10 ">
+        <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
           <Submit text="Salvar" />
         </div>
       </form>

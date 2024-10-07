@@ -1,6 +1,6 @@
 "use client";
-import Label from "@/components/form/Label";
-import Input from "@/components/form/Input";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { useEffect, useRef } from "react";
 import Submit from "@/components/form/Submit";
@@ -39,14 +39,24 @@ const FormCreateCarteira = () => {
     <>
       <Alert {...alert} />
       <form ref={formRef} action={formAction}>
-        <div className="mb-12">
+        <div className="mb-4">
           <Label>Nome</Label>
-          <Input type="text" name="name" defaultValue="" />
+          <Input
+            type="text"
+            name="name"
+            defaultValue=""
+            className="border-base-secondary"
+          />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
-        <div className="mb-12">
+        <div className="mb-4">
           <Label>Descrição</Label>
-          <Input type="text" name="description" defaultValue="" />
+          <Input
+            type="text"
+            name="description"
+            defaultValue=""
+            className="border-base-secondary"
+          />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.description}
           </p>
