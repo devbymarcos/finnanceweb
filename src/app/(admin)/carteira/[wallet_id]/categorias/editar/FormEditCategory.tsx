@@ -1,5 +1,5 @@
 "use client";
-import Label from "@/components/form/Label";
+import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -14,6 +14,7 @@ import Submit from "@/components/form/Submit";
 import { PropsCategoryType, InitialState } from "./types";
 import { useFormState } from "react-dom";
 import { updateCategory } from "./actions";
+import { Switch } from "@/components/ui/switch";
 
 const initialState: InitialState = {
   data: {
@@ -61,7 +62,12 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
         <input type="hidden" value={category.data[0].id} name="id" />
         <div className="mb-4">
           <Label>Nome</Label>
-          <Input type="text" name="name" defaultValue={category.data[0].name} />
+          <Input
+            type="text"
+            name="name"
+            defaultValue={category.data[0].name}
+            className="border-base-secondary"
+          />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
         <div className="mb-4">
@@ -69,6 +75,7 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
           <Input
             type="text"
             name="description"
+            className="border-base-secondary"
             defaultValue={category.data[0].description}
           />
           <p className="text-red-500 text-[11px] ">
@@ -76,6 +83,7 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
           </p>
         </div>
         <div className="mb-4">
+          <Label>Tipo</Label>
           <Select name="type" defaultValue={category.data[0].type}>
             <SelectTrigger className=" border-base-secondary ">
               <SelectValue placeholder="Escolhar.." />
@@ -90,21 +98,16 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
         <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
           <Submit text="Salvar" />
           <div className="flex items-center mb-4 col-start-4">
-            <input
-              id="delete"
-              type="checkbox"
-              name="delete"
-              className="w-5 h-5 cursor-pointer "
-              defaultValue="true"
-              onChange={deleteAlert}
-            />
-
-            <label
-              htmlFor="delete"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Apagar este registro
-            </label>
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="rmove"
+                name="delete"
+                value="true"
+                onCheckedChange={deleteAlert}
+                className="data-[state=checked]:bg-base-secondary "
+              />
+              <Label htmlFor="rmove">Remover </Label>
+            </div>
           </div>
         </div>
       </form>
