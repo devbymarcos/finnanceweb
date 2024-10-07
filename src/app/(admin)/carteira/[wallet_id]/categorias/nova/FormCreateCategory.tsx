@@ -50,12 +50,12 @@ const FormCreateCategory = ({ walletId }: formCagegoryPropsType) => {
 
       <form action={formAction}>
         <input type="hidden" name="wallet_id" value={walletId} />
-        <div className="mb-7">
+        <div className="mb-4">
           <Label>Nome</Label>
           <Input type="text" name="name" className="border-base-secondary" />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
-        <div className="mb-7">
+        <div className="mb-4">
           <Label>Descrição</Label>
           <Input
             type="text"
@@ -66,10 +66,10 @@ const FormCreateCategory = ({ walletId }: formCagegoryPropsType) => {
             {state?.data.errors.description}
           </p>
         </div>
-        <div className="mb-7">
+        <div className="mb-4">
           <Select name="type">
             <SelectTrigger className=" border-base-secondary ">
-              <SelectValue placeholder="Tipo" />
+              <SelectValue placeholder="Escolha..." />
             </SelectTrigger>
             <SelectContent className="border-base-secondary">
               <SelectItem value="expense">Despesas</SelectItem>

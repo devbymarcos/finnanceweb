@@ -1,7 +1,13 @@
 "use client";
 import Label from "@/components/form/Label";
 import { Input } from "@/components/ui/input";
-import Select from "@/components/form/Select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { useEffect } from "react";
 import Submit from "@/components/form/Submit";
@@ -53,12 +59,12 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
 
       <form action={formAction}>
         <input type="hidden" value={category.data[0].id} name="id" />
-        <div className="mb-12">
+        <div className="mb-4">
           <Label>Nome</Label>
           <Input type="text" name="name" defaultValue={category.data[0].name} />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
-        <div className="mb-12">
+        <div className="mb-4">
           <Label>Descrição</Label>
           <Input
             type="text"
@@ -69,12 +75,15 @@ const FormEditCategory = ({ category }: PropsCategoryType) => {
             {state?.data.errors.description}
           </p>
         </div>
-        <div className="mb-12">
-          <Label>Tipo</Label>
+        <div className="mb-4">
           <Select name="type" defaultValue={category.data[0].type}>
-            <option value="">Escolha...</option>
-            <option value="expense">Despesas</option>
-            <option value="income">Receitas</option>
+            <SelectTrigger className=" border-base-secondary ">
+              <SelectValue placeholder="Escolhar.." />
+            </SelectTrigger>
+            <SelectContent className="border-base-secondary">
+              <SelectItem value="expense">Despesas</SelectItem>
+              <SelectItem value="income">Receitas</SelectItem>
+            </SelectContent>
           </Select>
           <p className="text-red-500 text-[11px] ">{state?.data.errors.type}</p>
         </div>
