@@ -1,6 +1,6 @@
 "use client";
 import Label from "@/components/form/Label";
-import Input from "@/components/form/Input";
+import { Input } from "@/components/ui/input";
 import Select from "@/components/form/Select";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { useEffect } from "react";
@@ -8,8 +8,6 @@ import Submit from "@/components/form/Submit";
 import { PropsCategoryType, InitialState } from "./types";
 import { useFormState } from "react-dom";
 import { updateCategory } from "./actions";
-import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
-import { Plus } from "lucide-react";
 
 const initialState: InitialState = {
   data: {

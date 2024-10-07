@@ -1,15 +1,19 @@
 "use client";
 import Label from "@/components/form/Label";
-import Input from "@/components/form/Input";
-import Select from "@/components/form/Select";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { useEffect } from "react";
 import Submit from "@/components/form/Submit";
 import { InitialState } from "./types";
 import { useFormState } from "react-dom";
 import { saveCategory } from "./actions";
-import BtnLinkSubMenu from "@/components/btn/BtnLinkSubMenu";
-import { ArrowLeft } from "lucide-react";
 
 const initialState: InitialState = {
   data: {
@@ -48,22 +52,29 @@ const FormCreateCategory = ({ walletId }: formCagegoryPropsType) => {
         <input type="hidden" name="wallet_id" value={walletId} />
         <div className="mb-7">
           <Label>Nome</Label>
-          <Input type="text" name="name" />
+          <Input type="text" name="name" className="border-base-secondary" />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
         <div className="mb-7">
           <Label>Descrição</Label>
-          <Input type="text" name="description" />
+          <Input
+            type="text"
+            name="description"
+            className="border-base-secondary"
+          />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.description}
           </p>
         </div>
         <div className="mb-7">
-          <Label>Tipo</Label>
           <Select name="type">
-            <option value="">Escolha...</option>
-            <option value="expense">Despesas</option>
-            <option value="income">Receitas</option>
+            <SelectTrigger className=" border-base-secondary ">
+              <SelectValue placeholder="Tipo" />
+            </SelectTrigger>
+            <SelectContent className="border-base-secondary">
+              <SelectItem value="expense">Despesas</SelectItem>
+              <SelectItem value="income">Receitas</SelectItem>
+            </SelectContent>
           </Select>
           <p className="text-red-500 text-[11px] ">{state?.data.errors.type}</p>
         </div>
