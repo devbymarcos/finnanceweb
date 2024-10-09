@@ -1,5 +1,3 @@
-import { currency } from "remask";
-
 export function currencyFormatUI(value: number) {
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -22,18 +20,4 @@ export function jsonFormatterFormData(data: FormData) {
     jsonObject[key] = value;
   });
   return JSON.stringify(jsonObject);
-}
-
-export function maskUiFormTransaction(value: string) {
-  const originalValue = currency.unmask({
-    locale: "pt-BR",
-    currency: "BRL",
-    value: value,
-  });
-  const maskedValue = currency.mask({
-    locale: "pt-BR",
-    currency: "BRL",
-    value: originalValue,
-  });
-  return maskedValue;
 }

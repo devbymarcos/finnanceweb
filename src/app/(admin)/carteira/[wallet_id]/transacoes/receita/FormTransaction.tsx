@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { maskUiFormTransaction } from "@/functions/helpers";
+import { maskUiFormTransaction } from "@/functions/mask-ui-form-transaction";
 
 const initialState: typesTransaction = {
   data: {

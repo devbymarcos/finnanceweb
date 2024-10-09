@@ -17,7 +17,7 @@ import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
 import InputMask from "@/components/form/InputMask";
-import { maskUiFormTransaction } from "@/functions/helpers";
+import { maskUiFormTransaction } from "@/functions/mask-ui-form-transaction";
 
 const initialState: typesTransaction = {
   data: {

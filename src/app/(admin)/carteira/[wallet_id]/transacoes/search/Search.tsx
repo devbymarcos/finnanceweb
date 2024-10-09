@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import Input from "@/components/form/Input";
+import { Input } from "@/components/ui/input";
 import { useRouter, usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
-const Search = ({ date }: any) => {
+const Search = ({ date, loading }: any) => {
   const [dateOne, setDateOne] = useState("");
   const [dateTwo, setDateTwo] = useState("");
 
@@ -30,6 +31,7 @@ const Search = ({ date }: any) => {
             name="data_one"
             type="date"
             defaultValue={dateOne}
+            className="border-base-secondary"
           />
         </div>
         <div className="w-full">
@@ -40,15 +42,16 @@ const Search = ({ date }: any) => {
             name="data_two"
             type="date"
             defaultValue={dateTwo}
+            className="border-base-secondary"
           />
         </div>
         <div className="w-full">
-          <button
+          <Button
             onClick={search}
-            className="bg-base-secondary px-3 py-3 w-full text-white font-bold text-lg   rounded-lg"
+            className="bg-base-secondary px-3 py-3 w-full text-white    rounded-lg"
           >
             Buscar
-          </button>
+          </Button>
         </div>
       </div>
     </>
