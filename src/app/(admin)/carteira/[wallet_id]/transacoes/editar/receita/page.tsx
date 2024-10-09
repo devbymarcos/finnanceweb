@@ -24,8 +24,10 @@ const EditTransaction = async ({
   params,
 }: typeEditTransactionProps) => {
   const invoice = await getInvoiceId(searchParams?.invoiceId);
-
-  const category = await getCategory(params.wallet_id);
+  const categoryAll = await getCategory(params.wallet_id);
+  const category = categoryAll.data.filter(
+    (item: any) => item.type === "income"
+  );
 
   return (
     <section>

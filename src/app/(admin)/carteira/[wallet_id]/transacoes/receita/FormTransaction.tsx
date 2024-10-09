@@ -1,8 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
-import Input from "@/components/form/Input";
-import Label from "@/components/form/Label";
-import Select from "@/components/form/Select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
 import { postTransaction } from "./actions";
@@ -11,6 +10,13 @@ import { Alert, useAlert } from "@/components/alert/Alert";
 import { currency } from "remask";
 import { useState } from "react";
 import InputMask from "@/components/form/InputMask";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const initialState: typesTransaction = {
   data: {
@@ -87,7 +93,11 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
         </div>
         <div className="mb-3 md:col-span-3">
           <Label>Descrição</Label>
-          <Input type="text" name="description" />
+          <Input
+            type="text"
+            name="description"
+            className="border-base-secondary"
+          />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.description}
           </p>
@@ -96,7 +106,11 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-3">
             <Label>Data</Label>
-            <Input type="date" name="due_at" />
+            <Input
+              type="date"
+              name="due_at"
+              className="border-base-secondary"
+            />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.due_at}
             </p>
@@ -104,14 +118,18 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
           <div className="mb-3">
             <Label>Categoria</Label>
             <Select name="category_id">
-              <option value="">Escolha...</option>
-              {category.map((item: any) => {
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                {category.map((item: any, i) => {
+                  return (
+                    <SelectItem key={i} value={String(item.id)}>
+                      {item.name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.category_id}
@@ -122,9 +140,13 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
           <div className="mb-3">
             <Label>Repetir ? </Label>
             <Select name="repeat_when">
-              <option value="">Escolha...</option>
-              <option value="single">Única</option>
-              <option value="month">Mês</option>
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                <SelectItem value="single">Única</SelectItem>
+                <SelectItem value="month">Mês</SelectItem>
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.repeat_when}
@@ -136,17 +158,22 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
               type="number"
               placeholder="Insira a quantidade de repetições ex: 1"
               name="installments"
+              className="border-base-secondary"
             />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.installments}
             </p>
           </div>
           <div className="mb-3">
-            <Label>Pagamento status</Label>
+            <Label>Pagamento status </Label>
             <Select name="pay">
-              <option value="">Escolha...</option>
-              <option value="paid">Pago</option>
-              <option value="unpaid">Não pago</option>
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                <SelectItem value="paid">Pago</SelectItem>
+                <SelectItem value="unpaid">Não pago</SelectItem>
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.pay}

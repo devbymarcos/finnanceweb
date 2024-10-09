@@ -1,8 +1,7 @@
 "use client";
 import { useEffect } from "react";
-import Input from "@/components/form/Input";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Select from "@/components/form/Select";
 import { Switch } from "@/components/ui/switch";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
@@ -13,6 +12,13 @@ import { currency } from "remask";
 import { useState } from "react";
 import { formattedDateInput } from "@/functions/helpers";
 import InputMask from "@/components/form/InputMask";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const initialState: InitialState = {
   data: {
@@ -113,6 +119,7 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
               type="text"
               name="description"
               defaultValue={invoice.data[0].description}
+              className="border-base-secondary"
             />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.description}
@@ -124,6 +131,7 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
               type="date"
               name="due_at"
               defaultValue={formattedDateInput(invoice.data[0].due_at)}
+              className="border-base-secondary"
             />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.due_at}
@@ -134,20 +142,22 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
-
             <Select
               name="category_id"
-              defaultValue={invoice.data[0].category_id}
+              defaultValue={String(invoice.data[0].category_id)}
             >
-              <option value="">Escolha...</option>
-              {category.data.map((item: any) => {
-                if (item.type === "income") return null;
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                {category.map((item: any) => {
+                  return (
+                    <SelectItem key={item.id} value={String(item.id)}>
+                      {item.name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.category_id}
@@ -156,9 +166,13 @@ const FormEditExpense = ({ wallet, category, invoice }: Formtransaction) => {
           <div className="mb-3">
             <Label>Pagamento status</Label>
             <Select name="pay" defaultValue={invoice.data[0].pay}>
-              <option>Escolha...</option>
-              <option value="paid">Pago</option>
-              <option value="unpaid">Não pago</option>
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                <SelectItem value="paid">Pago</SelectItem>
+                <SelectItem value="unpaid">Não pago</SelectItem>
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.pay}

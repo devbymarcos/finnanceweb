@@ -1,8 +1,7 @@
 "use client";
 import { useEffect } from "react";
-import Input from "@/components/form/Input";
-import Label from "@/components/form/Label";
-import Select from "@/components/form/Select";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Submit from "@/components/form/Submit";
 import { useFormState } from "react-dom";
 import { UpdateTransaction } from "../actions";
@@ -12,6 +11,14 @@ import { currency } from "remask";
 import { useState } from "react";
 import { formattedDateInput } from "@/functions/helpers";
 import InputMask from "@/components/form/InputMask";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 
 const initialState: InitialState = {
   data: {
@@ -56,6 +63,7 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
     const confirmed = confirm(
       "Você marcou este registro para ser removido. Tem Certeza?"
     );
+    //TODO Esse recurso não funciona precisa ser revisto com as props do componentes
     if (!confirmed) {
       const inputElem: HTMLElement | null = document.getElementById("delete");
       if (inputElem instanceof HTMLInputElement) {
@@ -111,6 +119,7 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
               type="text"
               name="description"
               defaultValue={invoice.data[0].description}
+              className="border-base-secondary"
             />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.description}
@@ -122,6 +131,7 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
               type="date"
               name="due_at"
               defaultValue={formattedDateInput(invoice.data[0].due_at)}
+              className="border-base-secondary"
             />
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.due_at}
@@ -131,20 +141,22 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
         <div className="grid grid-cols-1  gap-4">
           <div className="mb-3">
             <Label>Categoria</Label>
-
             <Select
               name="category_id"
-              defaultValue={invoice.data[0].category_id}
+              defaultValue={String(invoice.data[0].category_id)}
             >
-              <option value="">Escolha...</option>
-              {category.data.map((item: any) => {
-                if (item.type === "expense") return null;
-                return (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                );
-              })}
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                {category.map((item: any, i) => {
+                  return (
+                    <SelectItem key={i} value={String(item.id)}>
+                      {item.name}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.category_id}
@@ -153,9 +165,13 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
           <div className="mb-3">
             <Label>Pagamento status</Label>
             <Select name="pay" defaultValue={invoice.data[0].pay}>
-              <option>Escolha...</option>
-              <option value="paid">Pago</option>
-              <option value="unpaid">Não pago</option>
+              <SelectTrigger className=" border-base-secondary ">
+                <SelectValue placeholder="Escolha..." />
+              </SelectTrigger>
+              <SelectContent className="border-base-secondary">
+                <SelectItem value="paid">Pago</SelectItem>
+                <SelectItem value="unpaid">Não pago</SelectItem>
+              </SelectContent>
             </Select>
             <p className="text-red-500 text-[11px] ">
               {state?.data.errors.pay}
@@ -165,20 +181,16 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
         <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
           <Submit text="Salvar" />
           <div className="flex items-center mb-4 col-start-4">
-            <input
-              id="delete"
-              type="checkbox"
-              name="delete"
-              className="w-5 h-5 cursor-pointer "
-              defaultValue="true"
-              onChange={deleteAlert}
-            />
-            <label
-              htmlFor="delete"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer"
-            >
-              Apagar este registro
-            </label>
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="rmove"
+                name="delete"
+                value="true"
+                onCheckedChange={deleteAlert}
+                className="data-[state=checked]:bg-base-secondary "
+              />
+              <Label htmlFor="rmove">Remover </Label>
+            </div>
           </div>
         </div>
       </form>

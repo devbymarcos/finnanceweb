@@ -2,15 +2,13 @@ export interface Formtransaction {
   wallet: {
     wallet_id: string;
   };
-  category: {
-    data: Array<{
-      id: number;
-      user_id: number;
-      name: string;
-      created_at: string;
-      updated_at: string;
-    }>;
-  };
+  category: Array<{
+    id: number;
+    user_id: number;
+    name: string;
+    created_at: string;
+    updated_at: string;
+  }>;
   invoice: any;
 }
 
