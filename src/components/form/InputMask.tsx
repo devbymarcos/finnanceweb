@@ -14,6 +14,7 @@ const InputMask = ({
   name,
   required,
   onChange,
+  placeholder,
 }: InputMaskTypes) => {
   return (
     <input
@@ -23,6 +24,7 @@ const InputMask = ({
       name={name}
       required={required}
       onChange={onChange}
+      placeholder={placeholder}
     />
   );
 };

@@ -17,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { maskUiFormTransaction } from "@/functions/helpers";
 
 const initialState: typesTransaction = {
   data: {
@@ -40,23 +41,12 @@ const initialState: typesTransaction = {
 const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
   const [state, formAction] = useFormState(postTransaction, initialState);
   const { alert, setAlert } = useAlert();
-  const [priceMask, setPriceMask] = useState("R$ 0,00");
+  const [priceMask, setPriceMask] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
   const onChange = (event: Event) => {
     const inputElement = event.target as HTMLInputElement;
-    const originalValue = currency.unmask({
-      locale: "pt-BR",
-      currency: "BRL",
-      value: inputElement.value,
-    });
-    const maskedValue = currency.mask({
-      locale: "pt-BR",
-      currency: "BRL",
-      value: originalValue,
-    });
-
-    setPriceMask(maskedValue);
+    setPriceMask(maskUiFormTransaction(inputElement.value));
   };
 
   useEffect(() => {
@@ -86,6 +76,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
             name="price"
             value={priceMask}
             onChange={onChange}
+            placeholder="R$ 0,00"
           />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.price}
