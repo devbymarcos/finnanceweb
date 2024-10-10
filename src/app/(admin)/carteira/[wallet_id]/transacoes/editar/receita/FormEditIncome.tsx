@@ -63,7 +63,7 @@ const FormEditIncome = ({ wallet, category, invoice }: Formtransaction) => {
     const confirmed = confirm(
       "Você marcou este registro para ser removido. Tem Certeza?"
     );
-    //TODO Esse recurso não funciona precisa ser revisto com as props do componentes
+
     if (!confirmed) {
       const inputElem: HTMLElement | null = document.getElementById("delete");
       if (inputElem instanceof HTMLInputElement) {

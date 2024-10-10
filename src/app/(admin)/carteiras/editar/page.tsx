@@ -20,7 +20,6 @@ type Params = {
 const CreateCategory = async ({ searchParams }: Params) => {
   const wallet = await getWallet(searchParams?.walletId);
 
-  // TODO ENVIAR DADOS PARA API PARA EDICAO
   return (
     <section>
       <CardStyle>
