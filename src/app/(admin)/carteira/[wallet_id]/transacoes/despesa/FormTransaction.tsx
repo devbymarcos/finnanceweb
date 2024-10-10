@@ -58,9 +58,9 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
         type: state.data.type,
       });
       formRef.current?.reset();
-      setPriceMask(" ");
+      setPriceMask("");
     }
-  }, [state, priceMask]);
+  }, [state]);
 
   return (
     <>
