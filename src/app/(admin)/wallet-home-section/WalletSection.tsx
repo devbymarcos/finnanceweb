@@ -1,7 +1,6 @@
 "use client";
 import CardStyle from "@/components/cards/CardStyle";
 import WalletIcon from "@/components/icons/WalletIcons";
-import WalletDashUiIcon from "@/components/icons/WalletDashUiIcon";
 import { currencyFormatUI } from "@/functions/helpers";
 
 import Link from "next/link";
@@ -25,7 +24,6 @@ const WalletSection = ({ data }: any) => {
                   className="flex gap-4 px-3 py-6  rounded-lg items-center"
                   href={`carteira/${wallet.id}`}
                 >
-                  <WalletDashUiIcon />
                   <div className="w-full flex justify-between items-center ">
                     <p>{wallet.name}</p>
                     <p>{currencyFormatUI(wallet.balance)}</p>
