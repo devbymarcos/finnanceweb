@@ -1,10 +1,6 @@
-# WCAPP
+# FINNACE WEB APP
 
-Aqui temos a construção apenas do front-end do WalletControl v2
-
-### VISITE PARA SABER COMO ESTA FICANDO
-
-https://wcapp.vercel.app/
+Aqui temos a construção apenas do front-end do Finnance 
 
 # FORK:
 
