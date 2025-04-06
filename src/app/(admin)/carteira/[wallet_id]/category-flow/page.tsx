@@ -26,7 +26,7 @@ async function getCategoryFlow(wallet_id: string) {
 
 const categoryFlow = async ({ params }: typePropscategoryFlow) => {
   const data = await getCategoryFlow(params.wallet_id);
-  console.log(data);
+  console.log(data.data.income);
   if (data.data.income.length === 0 && data.data.expense.length === 0)
     return null;
   return (
@@ -59,18 +59,44 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
                 className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
               >
                 <td className="py-3 px-3">{item.name}</td>
-                <td className="py-3">{currencyFormatUI(item.janeiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.fevereiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.marco)}</td>
-                <td className="py-3">{currencyFormatUI(item.abri)}</td>
-                <td className="py-3">{currencyFormatUI(item.maio)}</td>
-                <td className="py-3">{currencyFormatUI(item.junho)}</td>
-                <td className="py-3">{currencyFormatUI(item.julho)}</td>
-                <td className="py-3">{currencyFormatUI(item.agosto)}</td>
-                <td className="py-3">{currencyFormatUI(item.setembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.outubro)}</td>
-                <td className="py-3">{currencyFormatUI(item.novembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.dezembro)}</td>
+                <td className={`py-3 ${item.janeiro > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.janeiro)}
+                </td>
+                <td
+                  className={`py-3 ${item.fevereiro > 0 ? "font-bold" : " "}`}
+                >
+                  {currencyFormatUI(item.fevereiro)}
+                </td>
+                <td className={`py-3 ${item.marco > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.marco)}
+                </td>
+                <td className={`py-3 ${item.abri > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.abri)}
+                </td>
+                <td className={`py-3 ${item.maio > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.maio)}
+                </td>
+                <td className={`py-3 ${item.junho > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.junho)}
+                </td>
+                <td className={`py-3 ${item.julho > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.julho)}
+                </td>
+                <td className={`py-3 ${item.agosto > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.agosto)}
+                </td>
+                <td className={`py-3 ${item.setembro > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.setembro)}
+                </td>
+                <td className={`py-3 ${item.outubro > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.outubro)}
+                </td>
+                <td className={`py-3 ${item.novembro > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.novembro)}
+                </td>
+                <td className={`py-3 ${item.dezembro > 0 ? "font-bold" : " "}`}>
+                  {currencyFormatUI(item.dezembro)}
+                </td>
               </tr>
             );
           })}
