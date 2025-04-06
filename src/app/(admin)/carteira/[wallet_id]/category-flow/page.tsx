@@ -26,7 +26,9 @@ async function getCategoryFlow(wallet_id: string) {
 
 const categoryFlow = async ({ params }: typePropscategoryFlow) => {
   const data = await getCategoryFlow(params.wallet_id);
-
+  console.log(data);
+  if (data.data.income.length === 0 && data.data.expense.length === 0)
+    return null;
   return (
     <div className="relative overflow-x-auto ">
       <table className="w-full table-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
