@@ -3,7 +3,6 @@ import PrivateRouter from "./PrivateRouter";
 import { montserrat } from "@/fonts";
 import Header from "@/components/header/Header";
 import MenuSideBar from "@/components/menu/MenuSidebar";
-import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import Nprogress from "./Nprogress";
 export default function RootLayout({
   children,

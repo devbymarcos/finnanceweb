@@ -14,7 +14,7 @@ async function getCategory(wallet_id: string) {
 
 const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
   const categoryAll = await getCategory(params.wallet_id);
-  const category = categoryAll.data.filter(
+  const category = categoryAll.data?.filter(
     (item: any) => item.type === "income"
   );
 

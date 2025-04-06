@@ -113,7 +113,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
                 <SelectValue placeholder="Escolha..." />
               </SelectTrigger>
               <SelectContent className="border-base-secondary">
-                {category.map((item: any, i) => {
+                {category?.map((item: any, i) => {
                   return (
                     <SelectItem key={i} value={String(item.id)}>
                       {item.name}
