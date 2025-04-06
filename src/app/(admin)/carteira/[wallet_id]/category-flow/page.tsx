@@ -17,7 +17,7 @@ const months: string[] = [
   "Dez",
 ];
 
-const meses = [
+const monthsName = [
   "janeiro",
   "fevereiro",
   "marco",
@@ -74,12 +74,12 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
                 className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
               >
                 <td className="py-3 px-3">{item.name}</td>
-                {meses.map((mes) => (
+                {monthsName.map((month) => (
                   <td
-                    key={mes}
-                    className={`py-3 ${item[mes] > 0 ? "font-bold" : ""}`}
+                    key={month}
+                    className={`py-3 ${item[month] > 0 ? "font-bold" : ""}`}
                   >
-                    {currencyFormatUI(item[mes])}
+                    {currencyFormatUI(item[month])}
                   </td>
                 ))}
               </tr>
@@ -97,18 +97,14 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
                 className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
               >
                 <td className="py-3 px-3">{item.name}</td>
-                <td className="py-3">{currencyFormatUI(item.janeiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.fevereiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.marco)}</td>
-                <td className="py-3">{currencyFormatUI(item.abri)}</td>
-                <td className="py-3">{currencyFormatUI(item.maio)}</td>
-                <td className="py-3">{currencyFormatUI(item.junho)}</td>
-                <td className="py-3">{currencyFormatUI(item.julho)}</td>
-                <td className="py-3">{currencyFormatUI(item.agosto)}</td>
-                <td className="py-3">{currencyFormatUI(item.setembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.outubro)}</td>
-                <td className="py-3">{currencyFormatUI(item.novembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.dezembro)}</td>
+                {monthsName.map((month) => (
+                  <td
+                    key={month}
+                    className={`py-3 ${item[month] > 0 ? "font-bold" : ""}`}
+                  >
+                    {currencyFormatUI(item[month])}
+                  </td>
+                ))}
               </tr>
             );
           })}
