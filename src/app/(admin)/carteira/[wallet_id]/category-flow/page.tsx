@@ -50,7 +50,7 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
               Receitas
             </td>
           </tr>
-          {data.data.income?.map((item: any) => {
+          {data.data.income.map((item: any) => {
             return (
               <tr
                 key={item.id}
