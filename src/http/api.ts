@@ -373,7 +373,7 @@ export const getCategoryFlowApi = (
   wallet_id: string
 ): ApiRequest => {
   return {
-    url: `${URL}/category-flow?walletId=${wallet_id}`,
+    url: `${URL}/categoryflow?walletId=${wallet_id}`,
     options: {
       method: "GET",
       headers: {

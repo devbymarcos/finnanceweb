@@ -33,7 +33,7 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
         <thead className="text-xs text-gray-200 uppercase bg-base-secondary   ">
           <tr>
             <th scope="col" className="px-2 py-3 ">
-              Categoria
+              Mês
             </th>
             {months.map((item) => {
               return (
@@ -45,7 +45,12 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
           </tr>
         </thead>
         <tbody>
-          {data.data.income.map((item: any) => {
+          <tr className="bg-base-secondary   text-base-white">
+            <td className="py-2 px-2 table-cell-group uppercase" colSpan={13}>
+              Receitas
+            </td>
+          </tr>
+          {data.data.income?.map((item: any) => {
             return (
               <tr
                 key={item.id}

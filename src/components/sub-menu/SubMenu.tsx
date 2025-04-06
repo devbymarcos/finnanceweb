@@ -5,6 +5,7 @@ import {
   Plus,
   List,
   Tag,
+  Binoculars,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BtnActionSubMenu from "../btn/BtnActionSubMenu";
@@ -84,6 +85,20 @@ const SubMenu = ({ walletId }: SubMenuProps) => {
                 >
                   <Tag color="#fff" size={16} />
                   <p className="hidden md:block text-sm">Categorias</p>
+                </Link>
+              </Button>
+            </li>
+            <li>
+              <Button
+                asChild
+                className="gap-2 bg-base-secondary dark:text-base-white"
+              >
+                <Link
+                  title="Nova categoria"
+                  href={`/carteira/${walletId}/category-flow`}
+                >
+                  <Binoculars color="#fff" size={16} />
+                  <p className="hidden md:block text-sm">Categoria fluxo</p>
                 </Link>
               </Button>
             </li>
