@@ -17,6 +17,21 @@ const months: string[] = [
   "Dez",
 ];
 
+const monthsName = [
+  "janeiro",
+  "fevereiro",
+  "marco",
+  "abri",
+  "maio",
+  "junho",
+  "julho",
+  "agosto",
+  "setembro",
+  "outubro",
+  "novembro",
+  "dezembro",
+];
+
 async function getCategoryFlow(wallet_id: string) {
   const token: string | undefined = cookies().get("token")?.value;
   const { url, options } = getCategoryFlowApi(token, wallet_id);
@@ -26,7 +41,9 @@ async function getCategoryFlow(wallet_id: string) {
 
 const categoryFlow = async ({ params }: typePropscategoryFlow) => {
   const data = await getCategoryFlow(params.wallet_id);
-
+  console.log(data.data.income);
+  if (data.data.income.length === 0 && data.data.expense.length === 0)
+    return null;
   return (
     <div className="relative overflow-x-auto ">
       <table className="w-full table-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
@@ -50,25 +67,21 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
               Receitas
             </td>
           </tr>
-          {data.data.income?.map((item: any) => {
+          {data.data.income.map((item: any) => {
             return (
               <tr
                 key={item.id}
                 className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
               >
                 <td className="py-3 px-3">{item.name}</td>
-                <td className="py-3">{currencyFormatUI(item.janeiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.fevereiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.marco)}</td>
-                <td className="py-3">{currencyFormatUI(item.abri)}</td>
-                <td className="py-3">{currencyFormatUI(item.maio)}</td>
-                <td className="py-3">{currencyFormatUI(item.junho)}</td>
-                <td className="py-3">{currencyFormatUI(item.julho)}</td>
-                <td className="py-3">{currencyFormatUI(item.agosto)}</td>
-                <td className="py-3">{currencyFormatUI(item.setembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.outubro)}</td>
-                <td className="py-3">{currencyFormatUI(item.novembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.dezembro)}</td>
+                {monthsName.map((month) => (
+                  <td
+                    key={month}
+                    className={`py-3 ${item[month] > 0 ? "font-bold" : ""}`}
+                  >
+                    {currencyFormatUI(item[month])}
+                  </td>
+                ))}
               </tr>
             );
           })}
@@ -84,18 +97,14 @@ const categoryFlow = async ({ params }: typePropscategoryFlow) => {
                 className="bg-white border-b hover:bg-slate-200 cursor-pointer dark:bg-base-black dark:border-gray-700"
               >
                 <td className="py-3 px-3">{item.name}</td>
-                <td className="py-3">{currencyFormatUI(item.janeiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.fevereiro)}</td>
-                <td className="py-3">{currencyFormatUI(item.marco)}</td>
-                <td className="py-3">{currencyFormatUI(item.abri)}</td>
-                <td className="py-3">{currencyFormatUI(item.maio)}</td>
-                <td className="py-3">{currencyFormatUI(item.junho)}</td>
-                <td className="py-3">{currencyFormatUI(item.julho)}</td>
-                <td className="py-3">{currencyFormatUI(item.agosto)}</td>
-                <td className="py-3">{currencyFormatUI(item.setembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.outubro)}</td>
-                <td className="py-3">{currencyFormatUI(item.novembro)}</td>
-                <td className="py-3">{currencyFormatUI(item.dezembro)}</td>
+                {monthsName.map((month) => (
+                  <td
+                    key={month}
+                    className={`py-3 ${item[month] > 0 ? "font-bold" : ""}`}
+                  >
+                    {currencyFormatUI(item[month])}
+                  </td>
+                ))}
               </tr>
             );
           })}

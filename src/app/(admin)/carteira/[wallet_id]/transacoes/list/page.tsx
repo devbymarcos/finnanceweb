@@ -30,18 +30,25 @@ const ListTransaction = async ({
   const date = new Date();
 
   //conseguir o ultimo dia do mes
-  function monthLength(month: number, year: number) {
-    return new Date(year, month + 1, 0).getDate();
-  }
-  const dateOneDefault = `${date.getFullYear()}-${
-    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
-  }-01`;
-  const dateTwoDefault = `${date.getFullYear()}-${
-    date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
-  }-${monthLength(date.getFullYear(), date.getMonth() + 1)}`;
+  const lastDayMonth = (): string => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const lastDay = new Date(year, month + 1, 0);
+    return lastDay.toISOString().split("T")[0];
+  };
+
+  const firstDayMonth = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const firstDay = new Date(year, month, 1);
+    return firstDay.toISOString().split("T")[0];
+  };
+
   const pararametersGetInvoice = {
-    dateone: searchParams?.dateone ? searchParams?.dateone : dateOneDefault,
-    datetwo: searchParams?.datetwo ? searchParams?.datetwo : dateTwoDefault,
+    dateone: searchParams?.dateone ? searchParams?.dateone : firstDayMonth(),
+    datetwo: searchParams?.datetwo ? searchParams?.datetwo : lastDayMonth(),
     walletId: params.wallet_id,
   };
 
