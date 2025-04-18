@@ -37,9 +37,10 @@ export async function userLogin(prevState: any, formData: FormData) {
   }
 
   const { url, options } = postLoginApi(jsonFormatterFormData(formData));
+  console.log("url", url);
   const response = await fetch(url, options);
   const json = await response.json();
-
+  console.log("url", json);
   if (Array.isArray(json.data) && json.data[0].id) {
     const oneDay = 24 * 60 * 60 * 1000;
 
