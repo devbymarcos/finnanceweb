@@ -21,6 +21,7 @@ async function getWallet() {
 
 const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
   const wallets = await getWallet();
+
   let walletActivate: string = "";
   wallets.data.forEach((wallet: any) => {
     if (wallet.id == params.wallet_id) {

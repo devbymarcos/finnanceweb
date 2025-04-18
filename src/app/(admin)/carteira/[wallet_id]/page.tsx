@@ -24,7 +24,7 @@ const getDataDash = async (wallet_id: string): Promise<ApiReturn> => {
 
 async function Index({ params }: PropsIndex) {
   const data = await getDataDash(params.wallet_id);
-
+  console.log(data);
   return (
     <>
       <section className="grid grid-cols-1 gap-5 mb-5">
