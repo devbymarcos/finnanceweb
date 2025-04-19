@@ -1,14 +1,15 @@
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
   return NextResponse.json(
     {
       data: [
         {
-          token: "token_fake_gerado_pelo_mock",
+          name: "teste de carteira",
           id: 1,
-          name: "Usuário Mock",
-          email: "usuario@exemplo.com",
+          balance: 1000,
+          message: "Record not found",
+          request: request,
         },
       ],
     },
