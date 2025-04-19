@@ -10,8 +10,8 @@ export async function GET(request: Request) {
         invoiceOpen: [
           {
             id: 1,
-            name: "Fatura 1",
-            value: 1000,
+            description: "Fatura 1",
+            price: 1000,
             date: "2023-10-01",
             status: "open",
           },

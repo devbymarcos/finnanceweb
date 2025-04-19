@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   const { email, password } = await request.json();
 
   // Validação mockada (usuário fixo)
-  if (email === "usuario@exemplo.com" && password === "testeR1234") {
+  if (email === "mock@mock.com" && password === "mock1234") {
     return NextResponse.json(
       {
         data: [
