@@ -1,6 +1,6 @@
 export interface PropsWalletType {
   wallet: {
-    data: Array<{
+    data: {
       id: number;
       user_id: number;
       name: string;
@@ -8,7 +8,7 @@ export interface PropsWalletType {
       option_wallet: number;
       created_at: string;
       updated_at: string;
-    }>;
+    };
   };
 }
 

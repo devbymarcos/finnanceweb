@@ -40,7 +40,7 @@ export async function createWallet(prevState: any, formData: FormData) {
 
   revalidatePath("/carteiras/list");
 
-  if (json.data && json.data[0].id) {
+  if (json.data && json.data.id) {
     return {
       data: {
         errors: {

@@ -26,6 +26,7 @@ const FormEditCarteira = ({ wallet }: PropsWalletType) => {
   const [state, formAction] = useFormState(updateWallet, initialState);
   const { alert, setAlert } = useAlert();
 
+  console.log(wallet);
   const deleteAlert = () => {
     const confirmed = confirm(
       "Você marcou este registro para ser removido. Tem Certeza?"
@@ -51,14 +52,14 @@ const FormEditCarteira = ({ wallet }: PropsWalletType) => {
     <>
       <Alert {...alert} />
       <form action={formAction}>
-        <input type="hidden" value={wallet.data[0].id} name="id" />
+        <input type="hidden" value={wallet.data.id} name="id" />
         <div className="mb-4">
           <Label>Nome</Label>
           <Input
             type="text"
             className="border-base-secondary"
             name="name"
-            defaultValue={wallet.data[0].name}
+            defaultValue={wallet.data.name}
           />
           <p className="text-red-500 text-[11px] ">{state?.data.errors.name}</p>
         </div>
@@ -68,7 +69,7 @@ const FormEditCarteira = ({ wallet }: PropsWalletType) => {
             type="text"
             name="description"
             className="border-base-secondary"
-            defaultValue={wallet.data[0].description}
+            defaultValue={wallet.data.description}
           />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.description}
