@@ -2,8 +2,14 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   return NextResponse.json({
-    id: 1,
-    name: "Usuário Fake",
-    email: "fake@email.com",
+    data: {
+      id: 3,
+      first_name: "marcos ",
+      last_name: "juvencio",
+      email: "marcoslopes.dev@gmail.com",
+      photo: "default",
+    },
+    message: "",
+    success: "user",
   });
 }

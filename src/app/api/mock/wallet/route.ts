@@ -5,13 +5,26 @@ export async function GET(request: Request) {
     {
       data: [
         {
-          name: "teste de carteira",
-          id: 1,
-          balance: 1000,
-          message: "Record not found",
-          request: request,
+          id: 14,
+          user_id: 3,
+          name: "Minha carteira",
+          description: "padrão",
+          option_wallet: 0,
+          created_at: "2024-05-26T11:07:09.000Z",
+          updated_at: null,
+        },
+        {
+          id: 15,
+          user_id: 3,
+          name: "Investimento",
+          description: "Reserva",
+          option_wallet: 0,
+          created_at: "2024-05-28T21:53:34.000Z",
+          updated_at: null,
         },
       ],
+      message: "Requisição realizada com sucesso",
+      success: true,
     },
 
     { status: 200 }
