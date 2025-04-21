@@ -5,8 +5,6 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
 
 const Login = () => {
-  const remember = cookies().get("remember")?.value;
-
   return (
     <>
       <section className="flex flex-col p-6 justify-center items-center">
@@ -16,7 +14,7 @@ const Login = () => {
         <h2 className="mb-5">Faça Login e comece a controlar</h2>
         <Card className="pt-10 w-full max-w-[400px]">
           <CardContent>
-            <FormLogin remember={remember} />
+            <FormLogin />
           </CardContent>
           <CardFooter>
             <Link

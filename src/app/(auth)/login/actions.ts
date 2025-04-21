@@ -24,18 +24,6 @@ export async function userLogin(prevState: any, formData: FormData) {
       },
     };
   }
-  if (formData.get("remember")) {
-    const loginRemember = String(formData.get("email"));
-    cookies().set({
-      name: "remember",
-      value: loginRemember,
-      httpOnly: true,
-      path: "/",
-    });
-  } else {
-    cookies().delete("remember");
-  }
-
   const { url, options } = postLoginApi(jsonFormatterFormData(formData));
 
   const response = await fetch(url, options);

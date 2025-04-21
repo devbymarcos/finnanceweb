@@ -1,10 +1,10 @@
 "use client";
-import Link from "next/link";
+
 import { Alert, useAlert } from "@/components/alert/Alert";
 import { useFormState } from "react-dom";
 import { userLogin } from "./actions";
-import { useEffect, useState } from "react";
-import { StateTypes, PropsFormLogin } from "./types";
+import { use, useEffect, useState } from "react";
+import { StateTypes } from "./types";
 import Submit from "@/components/form/Submit";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -21,15 +21,36 @@ const initialState: StateTypes = {
   },
 };
 
-const FormLogin = ({ remember }: PropsFormLogin) => {
+const FormLogin = () => {
   const [state, formAction] = useFormState(userLogin, initialState);
   const { alert, setAlert } = useAlert();
   const [look, setLook] = useState(false);
+  const [remember, setRemember] = useState<boolean>(false);
+  const [loginRemember, setLoginRemember] = useState<string>("");
 
   function passLook(e: any) {
     e.preventDefault();
     setLook(!look);
   }
+
+  const createdRemember = () => {
+    const getRemember = localStorage.getItem("finnance_login_remember");
+    if (getRemember) {
+      localStorage.removeItem("finnance_login_remember");
+      setRemember(false);
+    } else {
+      localStorage.setItem("finnance_login_remember", loginRemember);
+      setRemember(true);
+    }
+  };
+
+  useEffect(() => {
+    const getRemember = localStorage.getItem("finnance_login_remember");
+    if (getRemember) {
+      setLoginRemember(getRemember);
+      setRemember(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (state.data.message) {
@@ -52,7 +73,8 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
             id="email"
             type="text"
             name="email"
-            defaultValue={remember}
+            value={loginRemember}
+            onChange={(e) => setLoginRemember(e.target.value)}
           />
           <p className="text-red-500 text-[11px] ">
             {state?.data.errors.email}
@@ -90,7 +112,10 @@ const FormLogin = ({ remember }: PropsFormLogin) => {
           <label className="flex gap-2 dark:text-base-white">
             <Checkbox
               name="remember"
-              defaultChecked={remember ? true : false}
+              checked={remember}
+              onCheckedChange={() => {
+                createdRemember();
+              }}
             />
             Lembrar-me
           </label>
