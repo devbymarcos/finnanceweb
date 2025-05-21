@@ -68,6 +68,8 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
       <form ref={formRef} action={formAction}>
         <input type="hidden" name="wallet_id" value={wallet.wallet_id} />
         <input type="hidden" value="income" name="type" />
+        <input type="hidden" value="single" name="repeat_when" />
+        <input type="hidden" value="1" name="installments" />
 
         <div className="mb-3">
           <Label>Valor</Label>
@@ -93,86 +95,49 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
             {state?.data.errors.description}
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="mb-3">
-            <Label>Data</Label>
-            <Input
-              type="date"
-              name="due_at"
-              className="border-base-secondary"
-            />
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.due_at}
-            </p>
-          </div>
-          <div className="mb-3">
-            <Label>Categoria</Label>
-            <Select name="category_id">
-              <SelectTrigger className=" border-base-secondary ">
-                <SelectValue placeholder="Escolha..." />
-              </SelectTrigger>
-              <SelectContent className="border-base-secondary">
-                {category?.map((item: any, i) => {
-                  return (
-                    <SelectItem key={i} value={String(item.id)}>
-                      {item.name}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.category_id}
-            </p>
-          </div>
+        <div className="mb-3">
+          <Label>Data</Label>
+          <Input type="date" name="due_at" className="border-base-secondary" />
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.due_at}
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="mb-3">
-            <Label>Repetir ? </Label>
-            <Select name="repeat_when">
-              <SelectTrigger className=" border-base-secondary ">
-                <SelectValue placeholder="Escolha..." />
-              </SelectTrigger>
-              <SelectContent className="border-base-secondary">
-                <SelectItem value="single">Única</SelectItem>
-                <SelectItem value="month">Mês</SelectItem>
-              </SelectContent>
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.repeat_when}
-            </p>
-          </div>
-          <div className="mb-3">
-            <Label>Repetições</Label>
-            <Input
-              type="number"
-              placeholder="Insira a quantidade de repetições ex: 1"
-              name="installments"
-              className="border-base-secondary"
-            />
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.installments}
-            </p>
-          </div>
-          <div className="mb-3">
-            <Label>Pagamento status </Label>
-            <Select name="pay">
-              <SelectTrigger className=" border-base-secondary ">
-                <SelectValue placeholder="Escolha..." />
-              </SelectTrigger>
-              <SelectContent className="border-base-secondary">
-                <SelectItem value="paid">Pago</SelectItem>
-                <SelectItem value="unpaid">Não pago</SelectItem>
-              </SelectContent>
-            </Select>
-            <p className="text-red-500 text-[11px] ">
-              {state?.data.errors.pay}
-            </p>
-          </div>
+        <div className="mb-3">
+          <Label>Categoria</Label>
+          <Select name="category_id">
+            <SelectTrigger className=" border-base-secondary ">
+              <SelectValue placeholder="Escolha..." />
+            </SelectTrigger>
+            <SelectContent className="border-base-secondary">
+              {category?.map((item: any, i) => {
+                return (
+                  <SelectItem key={i} value={String(item.id)}>
+                    {item.name}
+                  </SelectItem>
+                );
+              })}
+            </SelectContent>
+          </Select>
+          <p className="text-red-500 text-[11px] ">
+            {state?.data.errors.category_id}
+          </p>
         </div>
 
-        <div className="my-3 grid grid-cols-1 md:grid-cols-4 gap-5">
+        <div className="mb-3">
+          <Label>Pagamento status </Label>
+          <Select name="pay">
+            <SelectTrigger className=" border-base-secondary ">
+              <SelectValue placeholder="Escolha..." />
+            </SelectTrigger>
+            <SelectContent className="border-base-secondary">
+              <SelectItem value="paid">Pago</SelectItem>
+              <SelectItem value="unpaid">Não pago</SelectItem>
+            </SelectContent>
+          </Select>
+          <p className="text-red-500 text-[11px] ">{state?.data.errors.pay}</p>
+        </div>
+
+        <div className="my-3 grid grid-cols-1  gap-5">
           <Submit text="Salvar" />
         </div>
       </form>

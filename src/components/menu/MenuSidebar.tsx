@@ -59,7 +59,7 @@ const MenuSideBar = () => {
       >
         <button
           onClick={open}
-          className="scale-75 w-12 h-12  bg-base-white  dark:bg-base-black-200 flex items-center justify-center rounded-2xl shadow shadow-base-yellow"
+          className="scale-75 w-12 h-12  bg-base-white  dark:bg-base-black-200 flex items-center justify-center rounded-2xl shadow shadow-base-yellow  "
         >
           <ChevronLeft color={dark == true ? "#fff" : "#000"} />
         </button>

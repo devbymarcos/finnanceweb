@@ -31,8 +31,8 @@ const layoutWallet = async ({ children, params }: PropslayoutWallet) => {
 
   return (
     <>
-      <div className="mb-3">
-        <SubMenu walletId={params.wallet_id} />
+      <SubMenu walletId={params.wallet_id} />
+      <div className="mb-3 px-3 ">
         <Card>
           <CardHeader>
             <CardTitle className="text-base-secondary">

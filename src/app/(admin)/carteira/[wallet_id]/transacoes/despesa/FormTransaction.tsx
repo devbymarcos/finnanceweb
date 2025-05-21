@@ -69,6 +69,7 @@ const FormTransaction = ({ wallet, category }: typeFormTransactionProps) => {
       <form ref={formRef} action={formAction}>
         <input type="hidden" value="expense" name="type" />
         <input type="hidden" name="wallet_id" value={wallet.wallet_id} />
+
         <div className="mb-3">
           <Label>Valor</Label>
           <InputMask

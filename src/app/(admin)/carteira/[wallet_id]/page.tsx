@@ -27,7 +27,7 @@ async function Index({ params }: PropsIndex) {
 
   return (
     <>
-      <section className="grid grid-cols-1 gap-5 mb-5">
+      <section className="grid grid-cols-1 gap-5 mb-5 px-3 ">
         <Card>
           <CardHeader>
             <CardTitle className="text-base-secondary">
@@ -76,7 +76,7 @@ async function Index({ params }: PropsIndex) {
           </Card>
         </div>
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-5 px-3  mb-5">
         <div className="">
           <ChartAreaDash dataChart={data.data.chart} />
         </div>

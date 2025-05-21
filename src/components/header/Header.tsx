@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={` w-full  h-20 justify-between px-4  flex items-center  gap-6 dark:bg-base-black bg-base-white z-40  `}
+        className={` w-full  h-20 justify-between px-4  flex items-center  gap-6 dark:bg-base-black bg-base-white z-40    `}
       >
         <div className="flex gap-20 items-center justify-between mx-auto   container-custom h-full">
           <div className=" flex gap-20 items-center">

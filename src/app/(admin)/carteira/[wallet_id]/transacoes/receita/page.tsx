@@ -1,6 +1,6 @@
 import CardStyle from "@/components/cards/CardStyle";
 import FormTransaction from "./FormTransaction";
-import { getWalletApi, getCategoryApi } from "@/http/api";
+import { getCategoryApi } from "@/http/api";
 import { cookies } from "next/headers";
 import { typeCreateTransactionProps } from "./types";
 
@@ -19,7 +19,7 @@ const CreateTransaction = async ({ params }: typeCreateTransactionProps) => {
   );
 
   return (
-    <section className="mb-12">
+    <section className="mb-12 px-3 ">
       <CardStyle>
         <FormTransaction wallet={params} category={category} />
       </CardStyle>
